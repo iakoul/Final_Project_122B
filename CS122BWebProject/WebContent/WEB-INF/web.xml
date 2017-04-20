@@ -9,4 +9,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <servlet-name>shows</servlet-name>
+    <servlet-class>main.ShowSession</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>shows</servlet-name>
+    <url-pattern>/check</url-pattern>
+  </servlet-mapping>
 </web-app>
