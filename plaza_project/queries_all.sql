@@ -6524,5 +6524,3 @@ INSERT INTO StoreTbl VALUES ( 6260017011031,   "Rusty Pelican",                 
 INSERT INTO StoreTbl VALUES ( 6260017011032,   "Wok-In",                                             "2394 Newport Blvd Costa Mesa",                                    "(949) 287-6785",              null, null,      6260017011, null) ;    
 INSERT INTO StoreTbl VALUES ( 6260017011033,   "Meiji Seimen",                                       "1113 Baker St Ste E",                                             "(714) 545-5175",              null, null,      6260017011, null) ;    
 INSERT INTO StoreTbl VALUES ( 6260017011034,   "Anjin",                                              "3033 Bristol St Ste N Costa Mesa",                                "(714) 979-6700",              null, null,      6260017011, null) ;    
-
-
