@@ -1,3 +1,6 @@
+INSERT INTO UsersTbl VALUES ("Alex", "$2a$12$/7soAd89PYtEdXkH5nu2LecLPc4FfX449Fa8fkG8GXq/0EyAgQWai", 0);
+INSERT INTO UsersTbl VALUES ("admin", "$2a$12$nWDKDrqsGbjfrMPc9pcDY.wUEl5QKLcSnopZ3.0GHtM9mvLt8DmCq", 1);
+
 INSERT INTO CityTbl VALUES (6260001 , "Artesia");
 INSERT INTO CityTbl VALUES (6260002 , "Brea");
 INSERT INTO CityTbl VALUES (6260003 , "Buena Park");
@@ -2952,7 +2955,7 @@ INSERT INTO StoreTbl VALUES ( 6260007001623,   "Trusted Tattoo Company",        
 INSERT INTO StoreTbl VALUES ( 6260007001624,   "Double OO Nails & Spa",                              "80 W Grand Blvd",                                                 "(951) 278-0235",              null, null,      6260007001, null) ;     
 INSERT INTO StoreTbl VALUES ( 6260007001625,   "The Electrolysis Lab",                               "390 N Mckinley St",                                               "(951) 768-0936",              null, null,      6260007001, null) ;     
 INSERT INTO StoreTbl VALUES ( 6260007001626,   "Heavenly Hair Creations by Darlene",                 "390 N Mckinley St, Studio 19",                                    "(909) 268-5350",              null, null,      6260007001, null) ;     
-INSERT INTO StoreTbl VALUES ( 6260007001627,   "Solo Salon Studios Heavenly Hair Creations by Darlene"390 N Mckinley St",                                               "(909) 268-5350",              null, null,      6260007001, null) ;     
+INSERT INTO StoreTbl VALUES ( 6260007001627,   "Solo Salon Studios Heavenly Hair Creations by Darlene","390 N Mckinley St",                                               "(909) 268-5350",              null, null,      6260007001, null) ;     
 INSERT INTO StoreTbl VALUES ( 6260007001628,   "Beauty By Lauren U",                                 "2780 Cabot Dr",                                                   "(619) 252-8168",              null, null,      6260007001, null) ;     
 INSERT INTO StoreTbl VALUES ( 6260007001629,   "Tao Massage",                                        "210 W Grand Blvd",                                                "(951) 454-8330",              null, null,      6260007001, null) ;     
 INSERT INTO StoreTbl VALUES ( 6260007001630,   "Hair By Arri",                                       "284 Dupont St",                                                   "(714) 313-1544",              null, null,      6260007001, null) ;     

@@ -1,6 +1,7 @@
 CREATE DATABASE IF NOT EXISTS `StoreMarketing` DEFAULT CHARACTER SET latin1;
 USE `StoreMarketing`;
 
+DROP TABLE IF EXISTS `UsersTbl`;
 DROP TABLE IF EXISTS `AcceptsPaymentTbl`;
 DROP TABLE IF EXISTS `StoreTbl`;
 DROP TABLE IF EXISTS `PlazaTbl`;
@@ -82,4 +83,11 @@ CREATE TABLE `AcceptsPaymentTbl` (
     FOREIGN KEY (`paymentID`)
         REFERENCES `AcceptedPaymentsTbl` (`paymentID`)
         ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
+
+CREATE TABLE `UsersTbl` (
+	`username` CHAR(20) NOT NULL,
+    `hashPW` CHAR(60) NOT NULL,
+    `isAdmin` BOOL NOT NULL DEFAULT 0,
+    PRIMARY KEY (`username`)
 ) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
