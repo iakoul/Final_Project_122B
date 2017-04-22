@@ -18,15 +18,10 @@ import javax.servlet.http.HttpSession;
 @WebServlet(description = "Makes queries and displays them", urlPatterns = { "/queryResults" })
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
 	
 	Connection connection = null;
     public Login() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     public void destroy() {
@@ -37,17 +32,10 @@ public class Login extends HttpServlet {
     	}
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setHeader("Refresh", "3; URL=./index.html");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 	    response.setContentType("text/html");
@@ -118,8 +106,6 @@ public class Login extends HttpServlet {
 		out.println("</body></html>");
 		
 		response.setHeader("Refresh", "3; URL=./mainPage");
-		
-		
 	}
-
+	
 }

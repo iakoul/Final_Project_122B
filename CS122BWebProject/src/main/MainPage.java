@@ -17,18 +17,10 @@ import javax.servlet.http.HttpSession;
 public class MainPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public MainPage() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
-    
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 	    response.setContentType("text/html");
@@ -37,7 +29,7 @@ public class MainPage extends HttpServlet {
 	    		+ "<html>"
 	    		+ "<head>"
 	    		+ "<title>"
-	    		+ "Log in"
+	    		+ "Welcome"
 	    		+ "</title>"
 	    		+ "</head>");
 
@@ -47,34 +39,34 @@ public class MainPage extends HttpServlet {
 			out.println("<br>Search for specific terms" /* Link to search servlet */);
 			out.println("<br>Browse alphabetically by store name");
 			out.println("<ul>");
-			out.println("<li><a href=\"./browse?letter=a\">A</a></li>");
-			out.println("<li><a href=\"./browse?letter=b\">B</a></li>");
-			out.println("<li><a href=\"./browse?letter=c\">C</a></li>");
-			out.println("<li><a href=\"./browse?letter=d\">D</a></li>");
-			out.println("<li><a href=\"./browse?letter=e\">E</a></li>");
-			out.println("<li><a href=\"./browse?letter=f\">F</a></li>");
-			out.println("<li><a href=\"./browse?letter=g\">G</a></li>");
-			out.println("<li><a href=\"./browse?letter=h\">H</a></li>");
-			out.println("<li><a href=\"./browse?letter=i\">I</a></li>");
-			out.println("<li><a href=\"./browse?letter=j\">J</a></li>");
-			out.println("<li><a href=\"./browse?letter=k\">K</a></li>");
-			out.println("<li><a href=\"./browse?letter=l\">L</a></li>");
-			out.println("<li><a href=\"./browse?letter=m\">M</a></li>");
-			out.println("<li><a href=\"./browse?letter=n\">N</a></li>");
-			out.println("<li><a href=\"./browse?letter=o\">O</a></li>");
-			out.println("<li><a href=\"./browse?letter=p\">P</a></li>");
-			out.println("<li><a href=\"./browse?letter=q\">Q</a></li>");
-			out.println("<li><a href=\"./browse?letter=r\">R</a></li>");
-			out.println("<li><a href=\"./browse?letter=s\">S</a></li>");
-			out.println("<li><a href=\"./browse?letter=t\">T</a></li>");
-			out.println("<li><a href=\"./browse?letter=u\">U</a></li>");
-			out.println("<li><a href=\"./browse?letter=v\">V</a></li>");
-			out.println("<li><a href=\"./browse?letter=w\">W</a></li>");
-			out.println("<li><a href=\"./browse?letter=x\">X</a></li>");
-			out.println("<li><a href=\"./browse?letter=y\">Y</a></li>");
-			out.println("<li><a href=\"./browse?letter=z\">Z</a></li>");
-			out.println("<li><a href=\"./browse?letter=numbers\">Numbers</a></li>");
-			out.println("<li><a href=\"./browse?letter=others\">Others</a></li>");
+			out.println("<li><a href=\"./browse?letter=a&pg=1\">A</a></li>");
+			out.println("<li><a href=\"./browse?letter=b&pg=1\">B</a></li>");
+			out.println("<li><a href=\"./browse?letter=c&pg=1\">C</a></li>");
+			out.println("<li><a href=\"./browse?letter=d&pg=1\">D</a></li>");
+			out.println("<li><a href=\"./browse?letter=e&pg=1\">E</a></li>");
+			out.println("<li><a href=\"./browse?letter=f&pg=1\">F</a></li>");
+			out.println("<li><a href=\"./browse?letter=g&pg=1\">G</a></li>");
+			out.println("<li><a href=\"./browse?letter=h&pg=1\">H</a></li>");
+			out.println("<li><a href=\"./browse?letter=i&pg=1\">I</a></li>");
+			out.println("<li><a href=\"./browse?letter=j&pg=1\">J</a></li>");
+			out.println("<li><a href=\"./browse?letter=k&pg=1\">K</a></li>");
+			out.println("<li><a href=\"./browse?letter=l&pg=1\">L</a></li>");
+			out.println("<li><a href=\"./browse?letter=m&pg=1\">M</a></li>");
+			out.println("<li><a href=\"./browse?letter=n&pg=1\">N</a></li>");
+			out.println("<li><a href=\"./browse?letter=o&pg=1\">O</a></li>");
+			out.println("<li><a href=\"./browse?letter=p&pg=1\">P</a></li>");
+			out.println("<li><a href=\"./browse?letter=q&pg=1\">Q</a></li>");
+			out.println("<li><a href=\"./browse?letter=r&pg=1\">R</a></li>");
+			out.println("<li><a href=\"./browse?letter=s&pg=1\">S</a></li>");
+			out.println("<li><a href=\"./browse?letter=t&pg=1\">T</a></li>");
+			out.println("<li><a href=\"./browse?letter=u&pg=1\">U</a></li>");
+			out.println("<li><a href=\"./browse?letter=v&pg=1\">V</a></li>");
+			out.println("<li><a href=\"./browse?letter=w&pg=1\">W</a></li>");
+			out.println("<li><a href=\"./browse?letter=x&pg=1\">X</a></li>");
+			out.println("<li><a href=\"./browse?letter=y&pg=1\">Y</a></li>");
+			out.println("<li><a href=\"./browse?letter=z&pg=1\">Z</a></li>");
+			out.println("<li><a href=\"./browse?letter=numbers&pg=1\">Numbers</a></li>");
+			out.println("<li><a href=\"./browse?letter=others&pg=1\">Others</a></li>");
 			out.println("</ul>");
 	    } else {
 	    	out.println("<h1>Please log in</h1>");
@@ -84,11 +76,7 @@ public class MainPage extends HttpServlet {
 		out.println("</body></html>");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
