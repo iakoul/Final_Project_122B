@@ -62,9 +62,9 @@ public class Login extends HttpServlet {
 
 	    out.println("<BODY BGCOLOR=\"#FDF5E6\">\n");
 		
-		Integer loggedIn = (Integer) request.getAttribute("loggedIn");
+		Boolean loggedIn = (Boolean) request.getAttribute("loggedIn");
 		
-		if (loggedIn == null || loggedIn == 0) {
+		if (loggedIn == null || loggedIn == false) {
 			//check if username and password are correct
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
@@ -91,16 +91,17 @@ public class Login extends HttpServlet {
 					if (results.next()) {
 						if (BCrypt.checkpw(password, results.getString(3))) {
 							out.println("<h1 align=\"center\">Welcome, " + results.getString(1));
-							loggedIn = 1;
+							loggedIn = true;
 							if (results.getBoolean(2)) {
 								out.println("(A)");
+								request.setAttribute("isAdmin", true);
 							}
 							out.println("</h1>\n");
 						}
 					} else {
 						out.println("<h1>Incorrect username or password</h1>\n");
 						out.println(password);
-						loggedIn = 0;
+						loggedIn = false;
 					}
 				} catch (SQLException e) {
 					out.println("Select statement failed with code " + e.getMessage());
@@ -115,6 +116,9 @@ public class Login extends HttpServlet {
 		}
 		
 		out.println("</BODY></HTML>");
+		
+		
+		
 	}
 
 }
