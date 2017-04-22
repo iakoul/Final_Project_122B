@@ -60,7 +60,7 @@ public class Login extends HttpServlet {
 	    		+ "</title>"
 	    		+ "</head>");
 
-	    out.println("<BODY BGCOLOR=\"#FDF5E6\">\n");
+	    out.println("<body bgcolor=\"#FDF5E6\">\n");
 		
 		Boolean loggedIn = (Boolean) request.getAttribute("loggedIn");
 		
@@ -115,10 +115,10 @@ public class Login extends HttpServlet {
 			out.println("<h1 align=\"center\">Welcome back " + request.getAttribute("username") + "</h1>\n");
 		}
 		
-		out.println("</BODY></HTML>");
+		out.println("</body></html>");
 		
-		response.setHeader("Refresh", "3; URL=./shows?myname="+session.getAttribute("username"));
-		//response.setHeader("Refresh", "3; URL=./mainPage");
+		response.setHeader("Refresh", "3; URL=./mainPage");
+		
 		
 	}
 
