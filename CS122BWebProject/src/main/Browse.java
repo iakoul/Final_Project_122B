@@ -53,7 +53,40 @@ public class Browse extends HttpServlet {
 				out.println(e.getMessage());
 			}
 			
-			
+			//connect to the database
+			try {
+				connection = DriverManager.getConnection("jdbc:mysql:///storemarketing?autoReconnect=true&useSSL=false","root","mysqlpass");
+				/*
+				try {
+					String prepQuery = "SELECT * FROM UsersTbl u WHERE u.username = ?";
+					PreparedStatement pstmt = connection.prepareStatement(prepQuery);
+					pstmt.setString(1, username);
+					ResultSet results = pstmt.executeQuery();
+					if (results.next()) {
+						if (BCrypt.checkpw(password, results.getString(3))) {
+							out.println("<h1 align=\"center\">Welcome, " + results.getString(1));
+							loggedIn = true;
+							if (results.getBoolean(2)) {
+								out.println("(A)");
+								session.setAttribute("isAdmin", true);
+							}
+							out.println("</h1>\n");
+						}
+					} else {
+						out.println("<h1>Incorrect username or password</h1>\n");
+						out.println(password);
+						loggedIn = false;
+					}
+				} catch (SQLException e) {
+					out.println("Select statement failed with code " + e.getMessage());
+				}
+				
+			    session.setAttribute("loggedIn", loggedIn);
+			    session.setAttribute("username", username);
+			    */
+			} catch (SQLException e) {
+				out.println("Connection failed " + e.getMessage());
+			}
 		}
 	}
 
