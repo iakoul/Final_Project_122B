@@ -49,7 +49,7 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		HttpSession session = request.getSession(true);
 	    response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
 	    out.println("<!DOCTYPE HTML>"
@@ -94,7 +94,7 @@ public class Login extends HttpServlet {
 							loggedIn = true;
 							if (results.getBoolean(2)) {
 								out.println("(A)");
-								request.setAttribute("isAdmin", true);
+								session.setAttribute("isAdmin", true);
 							}
 							out.println("</h1>\n");
 						}
@@ -106,8 +106,8 @@ public class Login extends HttpServlet {
 				} catch (SQLException e) {
 					out.println("Select statement failed with code " + e.getMessage());
 				}
-			    request.setAttribute("loggedIn", loggedIn);
-			    request.setAttribute("username", username);
+			    session.setAttribute("loggedIn", loggedIn);
+			    session.setAttribute("username", username);
 			} catch (SQLException e) {
 				out.println("Connection failed " + e.getMessage());
 			}
@@ -117,7 +117,8 @@ public class Login extends HttpServlet {
 		
 		out.println("</BODY></HTML>");
 		
-		
+		response.setHeader("Refresh", "3; URL=./shows?myname="+session.getAttribute("username"));
+		//response.setHeader("Refresh", "3; URL=./mainPage");
 		
 	}
 

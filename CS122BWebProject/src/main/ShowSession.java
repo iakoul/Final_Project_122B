@@ -57,7 +57,9 @@ public class ShowSession extends HttpServlet {
     //http://localhost:8080/project2/servlet/ShowSession?myname=Chen%20Li
    String myname = request.getParameter("myname");
    if (myname != null)
-       out.println("Hey " + myname+"<br><br>");
+       out.println("Hey " + myname + "<br><br>");
+   
+   out.println("Session username " + session.getAttribute("username"));
 
     out.println("</BODY></HTML>");
   }
