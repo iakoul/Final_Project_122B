@@ -60,6 +60,7 @@ public class Login extends HttpServlet {
 	    		+ "</title>"
 	    		+ "</head>");
 
+	    
 	    out.println("<BODY BGCOLOR=\"#FDF5E6\">\n");
 		
 		Integer loggedIn = (Integer) request.getAttribute("loggedIn");
