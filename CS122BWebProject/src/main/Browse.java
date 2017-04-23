@@ -56,12 +56,13 @@ public class Browse extends HttpServlet {
 			//connect to the database
 			try {
 				connection = DriverManager.getConnection("jdbc:mysql:///storemarketing?autoReconnect=true&useSSL=false","root","mysqlpass");
-				/*
 				try {
-					String prepQuery = "SELECT * FROM UsersTbl u WHERE u.username = ?";
+					
+					String prepQuery = "SELECT * FROM UsersTbl u WHERE u.username = ?"; //change
 					PreparedStatement pstmt = connection.prepareStatement(prepQuery);
-					pstmt.setString(1, username);
+					pstmt.setString(1, request.getParameter("letter")); //probably change
 					ResultSet results = pstmt.executeQuery();
+					/*
 					if (results.next()) {
 						if (BCrypt.checkpw(password, results.getString(3))) {
 							out.println("<h1 align=\"center\">Welcome, " + results.getString(1));
@@ -77,13 +78,10 @@ public class Browse extends HttpServlet {
 						out.println(password);
 						loggedIn = false;
 					}
+					*/
 				} catch (SQLException e) {
 					out.println("Select statement failed with code " + e.getMessage());
 				}
-				
-			    session.setAttribute("loggedIn", loggedIn);
-			    session.setAttribute("username", username);
-			    */
 			} catch (SQLException e) {
 				out.println("Connection failed " + e.getMessage());
 			}
