@@ -40,8 +40,8 @@ public class Browse extends HttpServlet {
 	    		+ "<html>"
 	    		+ "<head>"
 	    		+ "<title>"
-	    		+ "Search Results "
-	    		+ request.getAttribute("letter")
+	    		+ "Search Results for "
+	    		+ request.getParameter("letter")
 	    		+ "</title>"
 	    		+ "</head>");
 		if ((Boolean)session.getAttribute("loggedIn")) {
