@@ -70,16 +70,26 @@ public class Browse extends HttpServlet {
 								+ "`StoreTbl` s, "
 								+ "`PlazaTbl` p, "
 								+ "`OwnerTbl` o "
-								+ "WHERE "
-								+ "(s.storeName LIKE ?) AND "
-								+ "s.storeID = ap.storeID "
+								+ "WHERE ";
+								if (request.getParameter("letter").equals("others")) {
+									countQuery += "s.storeName NOT REGEXP ? ";
+								} else {
+									countQuery += "s.storeName REGEXP ? ";
+								}
+								countQuery += "AND s.storeID = ap.storeID "
 								+ "AND s.plazaID = p.plazaID "
 								+ "AND p.cityID = c.cityID "
 								+ "AND s.ownerID = o.ownerID "
 								+ "AND o.primaryLangID = l1.langID "
 								+ "AND o.secondaryLangID = l2.langID;";
 						PreparedStatement pstmtCount = connection.prepareStatement(countQuery);
-						pstmtCount.setString(1, request.getParameter("letter") + "%");
+						if (request.getParameter("letter").equals("numbers")) {
+							pstmtCount.setString(1, "^[0-9]");
+						} else if (request.getParameter("letter").equals("others")) {
+							pstmtCount.setString(1, "^[a-zA-Z0-9]");
+						} else {
+							pstmtCount.setString(1, "^" + request.getParameter("letter"));
+						}
 						ResultSet resultCount = pstmtCount.executeQuery();
 						if (resultCount.next()) {
 							storeCount = resultCount.getInt(1);
@@ -103,7 +113,7 @@ public class Browse extends HttpServlet {
 						out.println("</tr>");
 						
 						if (storeCount > 0) {
-							Integer limit = 10;
+							Integer limit = 10; //results per page
 							String prepQuery = "SELECT DISTINCT "
 									+ "s.storeName, "
 									+ "c.cityID, "
@@ -123,9 +133,13 @@ public class Browse extends HttpServlet {
 									+ "`StoreTbl` s, "
 									+ "`PlazaTbl` p, "
 									+ "`OwnerTbl` o "
-									+ "WHERE "
-									+ "(s.storeName LIKE ?) AND "
-									+ "s.storeID = ap.storeID "
+									+ "WHERE ";
+							if (request.getParameter("letter").equals("others")) {
+								prepQuery += "s.storeName NOT REGEXP ? ";
+							} else {
+								prepQuery += "s.storeName REGEXP ? ";
+							}
+							prepQuery += "AND s.storeID = ap.storeID "
 									+ "AND s.plazaID = p.plazaID "
 									+ "AND p.cityID = c.cityID "
 									+ "AND s.ownerID = o.ownerID "
@@ -134,9 +148,16 @@ public class Browse extends HttpServlet {
 									+ "ORDER BY s.storeName "
 									+ "LIMIT ? OFFSET ?;";
 							PreparedStatement pstmt = connection.prepareStatement(prepQuery);
-							pstmt.setString(1, request.getParameter("letter")  + "%"); //probably change
+							if (request.getParameter("letter").equals("numbers")) {
+								pstmt.setString(1, "^[0-9]");
+							} else if (request.getParameter("letter").equals("others")) {
+								pstmt.setString(1, "^[a-zA-Z0-9]");
+							} else {
+								pstmt.setString(1, "^" + request.getParameter("letter"));
+							}
 							pstmt.setInt(2, limit);
 							pstmt.setInt(3, (Integer.parseInt(request.getParameter("pg")) - 1) * limit);
+							//out.println(pstmt.toString()); //debugging
 							ResultSet results = pstmt.executeQuery();
 							while (results.next()) {
 								out.println("<tr>\n");
@@ -152,8 +173,18 @@ public class Browse extends HttpServlet {
 								out.println("<td>" + results.getString(10) + "</td>\n");
 								out.println("</tr>\n");
 							}
-							out.println("<a href=\"./Browse?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) - 1) + "\">Back</a>");
-							out.println("<a href=\"./Browse?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) + 1) + "\">Next</a>");
+							if (Integer.parseInt(request.getParameter("pg")) > 1) {
+								out.println("<a href=\"./Browse?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) - 1) + "\">Back</a>");
+							}
+							Integer pageCount = 1;
+							if (storeCount % limit > 0) {
+								pageCount = storeCount/limit + 1;
+							} else {
+								pageCount = storeCount/limit;
+							}
+							if (Integer.parseInt(request.getParameter("pg")) < pageCount) {
+								out.println("<a href=\"./Browse?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) + 1) + "\">Next</a>");
+							}
 						}
 					} catch (SQLException e) {
 						out.println("Select statement failed with code " + e.getMessage());
