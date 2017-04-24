@@ -46,7 +46,7 @@ public class Browse extends HttpServlet {
 	    		+ "</head>");
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
 	    try {
-	    	if ((Boolean)session.getAttribute("loggedIn")) {
+	    	if ((Boolean)session.getAttribute("loggedIn")) { //throws null pointer exception
 				//Incorporate mySQL driver
 				try {
 					Class.forName("com.mysql.jdbc.Driver").newInstance();
