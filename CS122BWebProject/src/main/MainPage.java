@@ -72,7 +72,6 @@ public class MainPage extends HttpServlet {
 	    	out.println("<h1>Please log in</h1>");
 	    	response.setHeader("Refresh", "3; URL=./index.html");
 	    }
-	    
 		out.println("</body></html>");
 	}
 

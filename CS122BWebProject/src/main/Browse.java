@@ -98,6 +98,11 @@ public class Browse extends HttpServlet {
 						out.println("<h1 align=\"center\">Browsing stores starting with letter " + request.getParameter("letter") + "</h1>\n");
 						out.println("<h1 align=\"center\">There are a total of " + storeCount.toString() + " starting with that letter</h1>\n");
 						
+						out.println("<div style=\"text-align: center;\">");
+						out.println("<a href=\"./mainPage\">Main Page</a>");
+						out.println("</div>");
+						
+						out.println("<div>");
 						out.println("<table style=\"text-align: left; width: 100%; border: 1px solid black;\">\n");
 						out.println("<tr>\n");
 						out.println("<th style=\"border: 1px solid black; text-align: left;\">Business Name</th>\n");
@@ -112,11 +117,13 @@ public class Browse extends HttpServlet {
 						out.println("<th style=\"border: 1px solid black; text-align: left;\">Secondary Language</th>\n");
 						out.println("</tr>");
 						
+						
+						
 						if (storeCount > 0) {
-							Integer limit = 10; //results per page
+							Integer limit = 1; //results per page
 							String prepQuery = "SELECT DISTINCT "
 									+ "s.storeName, "
-									+ "c.cityID, "
+									+ "c.cityName, "
 									+ "ap.acceptsVisa, "
 									+ "ap.acceptsMasterCard, "
 									+ "ap.acceptsDiscover, "
@@ -124,7 +131,8 @@ public class Browse extends HttpServlet {
 									+ "ap.acceptsPaypal, "
 									+ "ap.acceptsVenmo, "
 									+ "l1.languageSpoken AS primaryLang, "
-									+ "l2.languageSpoken AS secondaryLang "
+									+ "l2.languageSpoken AS secondaryLang, "
+									+ "s.storeID "
 									+ "FROM "
 									+ "`AcceptsPaymentTbl` ap, "
 									+ "`LanguageTbl` l1, "
@@ -161,20 +169,23 @@ public class Browse extends HttpServlet {
 							ResultSet results = pstmt.executeQuery();
 							while (results.next()) {
 								out.println("<tr>\n");
-								out.println("<td>" + results.getString(1) + "</td>\n");
-								out.println("<td>" + results.getString(2) + "</td>\n");
-								out.println("<td>" + results.getBoolean(3) + "</td>\n");
-								out.println("<td>" + results.getBoolean(4) + "</td>\n");
-								out.println("<td>" + results.getBoolean(5) + "</td>\n");
-								out.println("<td>" + results.getBoolean(6) + "</td>\n");
-								out.println("<td>" + results.getBoolean(7) + "</td>\n");
-								out.println("<td>" + results.getBoolean(8) + "</td>\n");
-								out.println("<td>" + results.getString(9) + "</td>\n");
-								out.println("<td>" + results.getString(10) + "</td>\n");
+								out.println("<td>" + "<a href=\"./detailBiz?bizID=" + results.getString(11) + "\">" + results.getString(1) + "</a></td>\n"); //business name
+								out.println("<td>" + results.getString(2) + "</td>\n"); //business city
+								out.println("<td>" + results.getBoolean(3) + "</td>\n"); //visa
+								out.println("<td>" + results.getBoolean(4) + "</td>\n"); //master card
+								out.println("<td>" + results.getBoolean(5) + "</td>\n"); //discover
+								out.println("<td>" + results.getBoolean(6) + "</td>\n"); //american express
+								out.println("<td>" + results.getBoolean(7) + "</td>\n"); //paypal
+								out.println("<td>" + results.getBoolean(8) + "</td>\n"); //venmo
+								out.println("<td>" + results.getString(9) + "</td>\n"); //primary language
+								out.println("<td>" + results.getString(10) + "</td>\n"); //secondary language
 								out.println("</tr>\n");
 							}
+							out.println("</div>\n");
 							if (Integer.parseInt(request.getParameter("pg")) > 1) {
-								out.println("<a href=\"./Browse?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) - 1) + "\">Back</a>");
+								out.println("<div style=\"text-align: left;\">\n");
+								out.println("<a href=\"./Browse?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) - 1) + "\">Back</a>\n");
+								out.println("</div>\n");
 							}
 							Integer pageCount = 1;
 							if (storeCount % limit > 0) {
@@ -183,7 +194,9 @@ public class Browse extends HttpServlet {
 								pageCount = storeCount/limit;
 							}
 							if (Integer.parseInt(request.getParameter("pg")) < pageCount) {
-								out.println("<a href=\"./Browse?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) + 1) + "\">Next</a>");
+								out.println("<div style=\"text-align: right;\">\n");
+								out.println("<a href=\"./Browse?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) + 1) + "\">Next</a>\n");
+								out.println("</div>\n");
 							}
 						}
 					} catch (SQLException e) {

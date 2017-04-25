@@ -56,7 +56,6 @@ public class Login extends HttpServlet {
 			//check if username and password are correct
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
-			
 			//String salt = BCrypt.gensalt(12); //workload = 12
 			//String hashed_password = BCrypt.hashpw(password, salt);
 
@@ -85,11 +84,19 @@ public class Login extends HttpServlet {
 								session.setAttribute("isAdmin", true);
 							}
 							out.println("</h1>\n");
+							response.setHeader("Refresh", "3; URL=./mainPage");
+							out.println("</body></html>");
+						} else {
+							out.println("<h1>Incorrect username or password</h1>\n");
+							loggedIn = false;
+							out.println("</body></html>");
+							response.setHeader("Refresh", "3; URL=./index.html");
 						}
 					} else {
 						out.println("<h1>Incorrect username or password</h1>\n");
-						out.println(password);
 						loggedIn = false;
+						out.println("</body></html>");
+						response.setHeader("Refresh", "3; URL=./index.html");
 					}
 				} catch (SQLException e) {
 					out.println("Select statement failed with code " + e.getMessage());
@@ -101,11 +108,9 @@ public class Login extends HttpServlet {
 			}
 		} else {
 			out.println("<h1 align=\"center\">Welcome back " + request.getAttribute("username") + "</h1>\n");
+			response.setHeader("Refresh", "3; URL=./mainPage");
+			out.println("</body></html>");
 		}
-		
-		out.println("</body></html>");
-		
-		response.setHeader("Refresh", "3; URL=./mainPage");
 	}
 	
 }
