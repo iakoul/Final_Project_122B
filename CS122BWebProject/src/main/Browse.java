@@ -95,18 +95,34 @@ public class Browse extends HttpServlet {
 							storeCount = resultCount.getInt(1);
 						}
 						
+						Integer limit = 1; //results per page
+						if (request.getParameter("show") != null) {
+							limit = Integer.parseInt(request.getParameter("show"));
+						}
+						
 						out.println("<h1 align=\"center\">Browsing stores starting with letter " + request.getParameter("letter") + "</h1>\n");
 						out.println("<h1 align=\"center\">There are a total of " + storeCount.toString() + " starting with that letter</h1>\n");
 						
-						out.println("<div style=\"text-align: center;\">");
-						out.println("<a href=\"./mainPage\">Main Page</a>");
-						out.println("</div>");
+						out.println("<div style=\"text-align: center;\">\n");
+						out.println("<a href=\"./mainPage\">Main Page</a>\n");
+						out.println("</div>\n");
+						
+						out.println("<div>\n");
+						out.println("Results ");
+						out.println("<a href=\"./browse?letter=" + request.getParameter("letter") + "&pg=1&show=1\">1</a> ");
+						out.println("<a href=\"./browse?letter=" + request.getParameter("letter") + "&pg=1&show=10\">10</a> ");
+						out.println("<a href=\"./browse?letter=" + request.getParameter("letter") + "&pg=1&show=100\">100</a>\n");
+						out.println("</div>\n");
 						
 						out.println("<div>");
 						out.println("<table style=\"text-align: left; width: 100%; border: 1px solid black;\">\n");
 						out.println("<tr>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">Business Name</th>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">City</th>\n");
+						out.println("<th style=\"border: 1px solid black; text-align: left;\">Business Name <a href=\"./browse?letter="
+						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=name\">Asc</a> <a href=\"./browse?letter="
+						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=name\">Desc</a> </th>\n");
+						out.println("<th style=\"border: 1px solid black; text-align: left;\">City  <a href=\"./browse?letter="
+						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=city\">Asc</a> <a href=\"./browse?letter="
+						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=city\">Desc</a> </th>\n");
 						out.println("<th style=\"border: 1px solid black; text-align: left;\">Visa</th>\n");
 						out.println("<th style=\"border: 1px solid black; text-align: left;\">MasterCard</th>\n");
 						out.println("<th style=\"border: 1px solid black; text-align: left;\">Discover</th>\n");
@@ -120,7 +136,6 @@ public class Browse extends HttpServlet {
 						
 						
 						if (storeCount > 0) {
-							Integer limit = 1; //results per page
 							String prepQuery = "SELECT DISTINCT "
 									+ "s.storeName, "
 									+ "c.cityName, "
@@ -152,9 +167,18 @@ public class Browse extends HttpServlet {
 									+ "AND p.cityID = c.cityID "
 									+ "AND s.ownerID = o.ownerID "
 									+ "AND o.primaryLangID = l1.langID "
-									+ "AND o.secondaryLangID = l2.langID "
-									+ "ORDER BY s.storeName "
-									+ "LIMIT ? OFFSET ?;";
+									+ "AND o.secondaryLangID = l2.langID ";
+							if (request.getParameter("orderby") == null || request.getParameter("orderby").equals("name")) {
+								prepQuery += "ORDER BY s.storeName";
+							} else {
+								prepQuery += "ORDER BY c.cityName";
+							}
+							if (request.getParameter("orderin") == null || request.getParameter("orderin").equals("asc")) {
+								prepQuery += " ASC ";
+							} else {
+								prepQuery += " DESC ";
+							}
+							prepQuery += "LIMIT ? OFFSET ?;";
 							PreparedStatement pstmt = connection.prepareStatement(prepQuery);
 							if (request.getParameter("letter").equals("numbers")) {
 								pstmt.setString(1, "^[0-9]");
@@ -196,6 +220,11 @@ public class Browse extends HttpServlet {
 							if (Integer.parseInt(request.getParameter("pg")) < pageCount) {
 								out.println("<div style=\"text-align: right;\">\n");
 								out.println("<a href=\"./Browse?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) + 1) + "\">Next</a>\n");
+								out.println("</div>\n");
+							}
+							if (pageCount == 1) {
+								out.println("<div style=\"text-align: center;\">\n");
+								out.println("<p></p>\n");
 								out.println("</div>\n");
 							}
 						}
