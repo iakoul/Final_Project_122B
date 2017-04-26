@@ -147,7 +147,8 @@ public class Browse extends HttpServlet {
 									+ "ap.acceptsVenmo, "
 									+ "l1.languageSpoken AS primaryLang, "
 									+ "l2.languageSpoken AS secondaryLang, "
-									+ "s.storeID "
+									+ "s.storeID, "
+									+ "c.cityID "
 									+ "FROM "
 									+ "`AcceptsPaymentTbl` ap, "
 									+ "`LanguageTbl` l1, "
@@ -189,12 +190,11 @@ public class Browse extends HttpServlet {
 							}
 							pstmt.setInt(2, limit);
 							pstmt.setInt(3, (Integer.parseInt(request.getParameter("pg")) - 1) * limit);
-							//out.println(pstmt.toString()); //debugging
 							ResultSet results = pstmt.executeQuery();
 							while (results.next()) {
 								out.println("<tr>\n");
-								out.println("<td>" + "<a href=\"./detailBiz?bizID=" + results.getString(11) + "\">" + results.getString(1) + "</a></td>\n"); //business name
-								out.println("<td>" + results.getString(2) + "</td>\n"); //business city
+								out.println("<td>" + "<a href=\"./detailBiz?bizid=" + results.getString(11) + "\">" + results.getString(1) + "</a></td>\n"); //business name
+								out.println("<td><a href=\"./detailCity?cityid=" + results.getString(12) + "\">" + results.getString(2) + "</a></td>\n"); //business city
 								out.println("<td>" + results.getBoolean(3) + "</td>\n"); //visa
 								out.println("<td>" + results.getBoolean(4) + "</td>\n"); //master card
 								out.println("<td>" + results.getBoolean(5) + "</td>\n"); //discover

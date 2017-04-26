@@ -42,7 +42,7 @@ public class DetailCity extends HttpServlet {
 	    		+ "<html>\n"
 	    		+ "<head>\n"
 	    		+ "<title>"
-	    		+ "Business Detail"
+	    		+ "City Detail"
 	    		+ "</title>\n"
 	    		+ "</head>\n");
 
@@ -62,46 +62,36 @@ public class DetailCity extends HttpServlet {
 				connection = DriverManager.getConnection("jdbc:mysql:///storemarketing?autoReconnect=true&useSSL=false","root","mysqlpass");
 				try {
 					String prepQuery = "SELECT "
-							+ "s.storeName, "
-							+ "s.address, "
-							+ "c.cityName, "
 							+ "p.plazaName, "
-							+ "s.phoneNum, "
-							+ "s.yearOpened, "
-							+ "t.storeType, "
-							+ "o.name, "
-							+ "c.cityID "
+							+ "p.plazaID, "
+							+ "c.cityName "
 							+ "FROM "
-							+ "StoreTbl s, "
-							+ "OwnerTbl o, "
-							+ "StoreTypeTbl t, "
-							+ "PlazaTbl p, "
-							+ "CityTbl c "
+							+ "CityTbl c, "
+							+ "PlazaTbl p "
 							+ "WHERE "
-							+ "s.storeID = ? "
-							+ "AND s.ownerID = o.ownerID "
-							+ "AND s.typeID = t.typeID "
-							+ "AND s.plazaID = p.plazaID "
-							+ "AND p.cityID = c.cityID;";
+							+ "c.cityID = ? "
+							+ "AND "
+							+ "c.cityID = p.cityID "
+							+ "ORDER BY p.plazaName ASC;";
 					PreparedStatement pstmt = connection.prepareStatement(prepQuery);
-					pstmt.setString(1, request.getParameter("bizID"));
+					pstmt.setString(1, request.getParameter("cityid"));
 					ResultSet results = pstmt.executeQuery();
 					out.println("<div style=\"padding-left: 5%; padding-top: 5%;\">\n");
 					if (!results.next()) {
-						out.println("<p>Business data is missing from database.</p>\n");
+						out.println("<p>City data is missing from database.</p>\n");
 					} else {
-						out.println("<h1>" + results.getString(1) + "</h1>\n");
-						out.println("<p> <b>Address: </b>" + results.getString(2) + "</p>\n");
-						out.println("<p> <b>City: </b>" + results.getString(3) + "</p>\n");
-						out.println("<p> <b>Plaza: </b><a href=\"./detailCity?cityid=" + results.getString(9) + "\">" + results.getString(4) + "</a></p>\n");
-						out.println("<p> <b>Phone Number: </b>" + results.getString(5) + "</p>\n");
-						out.println("<p> <b>Since: </b>" + results.getString(6) + "</p>\n");
-						out.println("<p> <b>Business Type: </b>" + results.getString(7) + "</p>\n");
-						out.println("<p> <b>Owner: </b>" + results.getString(8) + "</p>\n");
+						out.println("<h1>Plazas present in " + results.getString(3) + "</h1>\n");
+						out.println("<ul>");
+						out.println("<li><a href=\"./detailPlaza?plazaid=" + results.getString(2) + "\">" + results.getString(1) + "</a></li>\n");
+						while(results.next()) {
+							out.println("<li><a href=\"./detailPlaza?plazaid=" + results.getString(2) + "\">" + results.getString(1) + "</a></li>\n");
+						}
+						out.println("</ul>");
 					}
 					out.println("<button onclick=\"goBack()\">Go Back</button>");
 					out.println("</div>");
 					
+					out.println("<a href=\"./mainPage\">Main Page</a>\n");
 					out.println("<script language=\"javascript\">\n");
 					out.println("function goBack() {window.history.back();}\n");
 					out.println("</script>\n");
