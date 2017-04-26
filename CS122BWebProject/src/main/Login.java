@@ -40,17 +40,17 @@ public class Login extends HttpServlet {
 		HttpSession session = request.getSession(true);
 	    response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
-	    out.println("<!DOCTYPE HTML>"
-	    		+ "<html>"
-	    		+ "<head>"
+	    out.println("<!DOCTYPE HTML>\n"
+	    		+ "<html>\n"
+	    		+ "<head>\n"
 	    		+ "<title>"
-	    		+ "Log in"
-	    		+ "</title>"
-	    		+ "</head>");
+	    		+ "Login"
+	    		+ "</title>\n"
+	    		+ "</head>\n");
 
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
 		
-		Boolean loggedIn = (Boolean) request.getAttribute("loggedIn");
+		Boolean loggedIn = (Boolean)session.getAttribute("loggedIn");
 		
 		if (loggedIn == null || loggedIn == false) {
 			//check if username and password are correct
@@ -85,17 +85,17 @@ public class Login extends HttpServlet {
 							}
 							out.println("</h1>\n");
 							response.setHeader("Refresh", "3; URL=./mainPage");
-							out.println("</body></html>");
+							out.println("</body>\n</html>");
 						} else {
 							out.println("<h1>Incorrect username or password</h1>\n");
 							loggedIn = false;
-							out.println("</body></html>");
+							out.println("</body>\n</html>");
 							response.setHeader("Refresh", "3; URL=./index.html");
 						}
 					} else {
 						out.println("<h1>Incorrect username or password</h1>\n");
 						loggedIn = false;
-						out.println("</body></html>");
+						out.println("</body>\n</html>");
 						response.setHeader("Refresh", "3; URL=./index.html");
 					}
 				} catch (SQLException e) {
@@ -107,9 +107,9 @@ public class Login extends HttpServlet {
 				out.println("Connection failed " + e.getMessage());
 			}
 		} else {
-			out.println("<h1 align=\"center\">Welcome back " + request.getAttribute("username") + "</h1>\n");
+			out.println("<h1 align=\"center\">Welcome back " + session.getAttribute("username") + "</h1>\n");
 			response.setHeader("Refresh", "3; URL=./mainPage");
-			out.println("</body></html>");
+			out.println("</body>\n</html>");
 		}
 	}
 	

@@ -36,14 +36,14 @@ public class Browse extends HttpServlet {
 		HttpSession session = request.getSession(true);
 	    response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
-	    out.println("<!DOCTYPE HTML>"
-	    		+ "<html>"
-	    		+ "<head>"
+	    out.println("<!DOCTYPE HTML>\n"
+	    		+ "<html>\n"
+	    		+ "<head>\n"
 	    		+ "<title>"
 	    		+ "Search Results for "
 	    		+ request.getParameter("letter")
-	    		+ "</title>"
-	    		+ "</head>");
+	    		+ "</title>\n"
+	    		+ "</head>\n");
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
 	    try {
 	    	if ((Boolean)session.getAttribute("loggedIn")) { //throws null pointer exception
@@ -227,6 +227,7 @@ public class Browse extends HttpServlet {
 								out.println("<p></p>\n");
 								out.println("</div>\n");
 							}
+							out.println("</body>\n</html>");
 						}
 					} catch (SQLException e) {
 						out.println("Select statement failed with code " + e.getMessage());

@@ -25,16 +25,16 @@ public class MainPage extends HttpServlet {
 		HttpSession session = request.getSession(true);
 	    response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
-	    out.println("<!DOCTYPE HTML>"
-	    		+ "<html>"
-	    		+ "<head>"
+	    out.println("<!DOCTYPE HTML>\n"
+	    		+ "<html>\n"
+	    		+ "<head>\n"
 	    		+ "<title>"
 	    		+ "Welcome"
-	    		+ "</title>"
-	    		+ "</head>");
+	    		+ "</title>\n"
+	    		+ "</head>\n");
 
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
-	    if ((Boolean)session.getAttribute("loggedIn")) {
+	    if (session.getAttribute("loggedIn") != null && (Boolean)session.getAttribute("loggedIn")) {
 			out.println("<h1 align=\"center\">Welcome, " + session.getAttribute("username") + " to StoreMarketing Search</h1>");
 			out.println("<br>Search for specific terms" /* Link to search servlet */);
 			out.println("<br>Browse alphabetically by store name");
@@ -68,11 +68,13 @@ public class MainPage extends HttpServlet {
 			out.println("<li><a href=\"./browse?letter=numbers&pg=1\">Numbers</a></li>");
 			out.println("<li><a href=\"./browse?letter=others&pg=1\">Others</a></li>");
 			out.println("</ul>");
+			out.println("<p><a href=\"./logout\">Log Out</a></p>\n");
+			out.println("</body>\n</html>");
 	    } else {
-	    	out.println("<h1>Please log in</h1>");
+	    	out.println("<h1>Please log in</h1>\n");
+	    	out.println("</body>\n</html>");
 	    	response.setHeader("Refresh", "3; URL=./index.html");
 	    }
-		out.println("</body></html>");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
