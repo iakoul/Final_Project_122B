@@ -61,7 +61,7 @@ public class Browse extends HttpServlet {
 					try {
 						Integer storeCount = 0;
 						String countQuery = "SELECT DISTINCT "
-								+ "COUNT(s.storeID)"
+								+ "COUNT(s.storeID) "
 								+ "FROM "
 								+ "`AcceptsPaymentTbl` ap, "
 								+ "`LanguageTbl` l1, "
