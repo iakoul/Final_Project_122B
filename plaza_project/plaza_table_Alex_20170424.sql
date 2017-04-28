@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS `StoreMarketing` DEFAULT CHARACTER SET latin1;
-USE `StoreMarketing`;
+CREATE DATABASE IF NOT EXISTS `storemarketing` DEFAULT CHARACTER SET latin1;
+USE `storemarketing`;
 
 DROP TABLE IF EXISTS `UsersTbl`;
 DROP TABLE IF EXISTS `AcceptsPaymentTbl`;
