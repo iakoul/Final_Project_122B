@@ -208,7 +208,7 @@ public class Browse extends HttpServlet {
 							out.println("</div>\n");
 							if (Integer.parseInt(request.getParameter("pg")) > 1) {
 								out.println("<div style=\"text-align: left;\">\n");
-								out.println("<a href=\"./Browse?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) - 1) + "\">Back</a>\n");
+								out.println("<a href=\"./Browse?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) - 1) + "\">Prev</a>\n");
 								out.println("</div>\n");
 							}
 							Integer pageCount = 1;
