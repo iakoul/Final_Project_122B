@@ -2,6 +2,11 @@ package main;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,17 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import java.sql.*;
-
 /**
- * Servlet implementation class Browse
+ * Servlet implementation class BrowseItems
  */
-@WebServlet("/Browse")
-public class Browse extends HttpServlet {
+@WebServlet("/BrowseItems")
+public class BrowseItems extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+       
 	Connection connection = null;
-    public Browse() {
+    public BrowseItems() {
         super();
     }
     
@@ -59,29 +62,18 @@ public class Browse extends HttpServlet {
 				try {
 					connection = DriverManager.getConnection("jdbc:mysql:///storemarketing?autoReconnect=true&useSSL=false","root","mysqlpass");
 					try {
-						Integer storeCount = 0;
+						Integer itemCount = 0;
 						String countQuery = "SELECT DISTINCT "
-								+ "COUNT(s.storeID) "
+								+ "COUNT(m.merchID) "
 								+ "FROM "
-								+ "`AcceptsPaymentTbl` ap, "
-								+ "`LanguageTbl` l1, "
-								+ "`LanguageTbl` l2, "
-								+ "`CityTbl` c, "
-								+ "`StoreTbl` s, "
-								+ "`PlazaTbl` p, "
-								+ "`OwnerTbl` o "
+								+ "`MerchandiseTbl` m "
 								+ "WHERE ";
 								if (request.getParameter("letter").equals("others")) {
-									countQuery += "s.storeName NOT REGEXP ? ";
+									countQuery += "m.merchName NOT REGEXP ? ";
 								} else {
-									countQuery += "s.storeName REGEXP ? ";
+									countQuery += "m.merchName REGEXP ? ";
 								}
-								countQuery += "AND s.storeID = ap.storeID "
-								+ "AND s.plazaID = p.plazaID "
-								+ "AND p.cityID = c.cityID "
-								+ "AND s.ownerID = o.ownerID "
-								+ "AND o.primaryLangID = l1.langID "
-								+ "AND o.secondaryLangID = l2.langID;";
+								countQuery += ";";
 						PreparedStatement pstmtCount = connection.prepareStatement(countQuery);
 						if (request.getParameter("letter").equals("numbers")) {
 							pstmtCount.setString(1, "^[0-9]");
@@ -92,7 +84,7 @@ public class Browse extends HttpServlet {
 						}
 						ResultSet resultCount = pstmtCount.executeQuery();
 						if (resultCount.next()) {
-							storeCount = resultCount.getInt(1);
+							itemCount = resultCount.getInt(1);
 						}
 						
 						Integer limit = 1; //results per page
@@ -100,8 +92,8 @@ public class Browse extends HttpServlet {
 							limit = Integer.parseInt(request.getParameter("show"));
 						}
 						
-						out.println("<h1 align=\"center\">Browsing stores starting with letter " + request.getParameter("letter") + "</h1>\n");
-						out.println("<h1 align=\"center\">There are a total of " + storeCount.toString() + " starting with that letter</h1>\n");
+						out.println("<h1 align=\"center\">Browsing items starting with letter " + request.getParameter("letter") + "</h1>\n");
+						out.println("<h1 align=\"center\">There are a total of " + itemCount.toString() + " starting with that letter</h1>\n");
 						
 						out.println("<div style=\"text-align: center;\">\n");
 						out.println("<a href=\"./mainPage\">Main Page</a>\n");
@@ -117,62 +109,39 @@ public class Browse extends HttpServlet {
 						out.println("<div>");
 						out.println("<table style=\"text-align: left; width: 100%; border: 1px solid black;\">\n");
 						out.println("<tr>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">Business Name <a href=\"./browse?letter="
-						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=name\">Asc</a> <a href=\"./browse?letter="
-						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=name\">Desc</a> </th>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">City  <a href=\"./browse?letter="
-						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=city\">Asc</a> <a href=\"./browse?letter="
-						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=city\">Desc</a> </th>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">Visa</th>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">MasterCard</th>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">Discover</th>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">AmEx</th>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">Paypal</th>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">Venmo</th>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">Primary Language</th>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">Secondary Language</th>\n");
+						out.println("<th style=\"border: 1px solid black; text-align: left;\">Item Name <a href=\"./browse?letter="
+								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=name\">Asc</a> <a href=\"./browse?letter="
+								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=name\">Desc</a> </th>\n");
+						out.println("<th style=\"border: 1px solid black; text-align: left;\">Item Type  <a href=\"./browse?letter="
+								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=type\">Asc</a> <a href=\"./browse?letter="
+								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=type\">Desc</a> </th>\n");
+						out.println("<th style=\"border: 1px solid black; text-align: left;\">Item Price  <a href=\"./browse?letter="
+								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=price\">Asc</a> <a href=\"./browse?letter="
+								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=price\">Desc</a> </th>\n");
 						out.println("</tr>");
 						
 						
 						
-						if (storeCount > 0) {
+						if (itemCount > 0) {
 							String prepQuery = "SELECT DISTINCT "
-									+ "s.storeName, "
-									+ "c.cityName, "
-									+ "ap.acceptsVisa, "
-									+ "ap.acceptsMasterCard, "
-									+ "ap.acceptsDiscover, "
-									+ "ap.acceptsAmEx, "
-									+ "ap.acceptsPaypal, "
-									+ "ap.acceptsVenmo, "
-									+ "l1.languageSpoken AS primaryLang, "
-									+ "l2.languageSpoken AS secondaryLang, "
-									+ "s.storeID, "
-									+ "c.cityID "
+									+ "m.merchID, "
+									+ "m.merchName, "
+									+ "m.merchType, "
+									+ "m.merchPrice "
 									+ "FROM "
-									+ "`AcceptsPaymentTbl` ap, "
-									+ "`LanguageTbl` l1, "
-									+ "`LanguageTbl` l2, "
-									+ "`CityTbl` c, "
-									+ "`StoreTbl` s, "
-									+ "`PlazaTbl` p, "
-									+ "`OwnerTbl` o "
+									+ "`MerchandiseTbl` m "
 									+ "WHERE ";
 							if (request.getParameter("letter").equals("others")) {
-								prepQuery += "s.storeName NOT REGEXP ? ";
+								prepQuery += "m.merchName NOT REGEXP ? ";
 							} else {
-								prepQuery += "s.storeName REGEXP ? ";
+								prepQuery += "m.merchName REGEXP ? ";
 							}
-							prepQuery += "AND s.storeID = ap.storeID "
-									+ "AND s.plazaID = p.plazaID "
-									+ "AND p.cityID = c.cityID "
-									+ "AND s.ownerID = o.ownerID "
-									+ "AND o.primaryLangID = l1.langID "
-									+ "AND o.secondaryLangID = l2.langID ";
 							if (request.getParameter("orderby") == null || request.getParameter("orderby").equals("name")) {
-								prepQuery += "ORDER BY s.storeName";
+								prepQuery += "ORDER BY m.merchName";
+							} else if (request.getParameter("orderby").equals("type")){
+								prepQuery += "ORDER BY m.merchType";
 							} else {
-								prepQuery += "ORDER BY c.cityName";
+								prepQuery += "ORDER BY m.merchPrice";
 							}
 							if (request.getParameter("orderin") == null || request.getParameter("orderin").equals("asc")) {
 								prepQuery += " ASC ";
@@ -193,16 +162,9 @@ public class Browse extends HttpServlet {
 							ResultSet results = pstmt.executeQuery();
 							while (results.next()) {
 								out.println("<tr>\n");
-								out.println("<td>" + "<a href=\"./detailBiz?bizid=" + results.getString(11) + "\">" + results.getString(1) + "</a></td>\n"); //business name
-								out.println("<td><a href=\"./detailCity?cityid=" + results.getString(12) + "\">" + results.getString(2) + "</a></td>\n"); //business city
-								out.println("<td>" + results.getBoolean(3) + "</td>\n"); //visa
-								out.println("<td>" + results.getBoolean(4) + "</td>\n"); //master card
-								out.println("<td>" + results.getBoolean(5) + "</td>\n"); //discover
-								out.println("<td>" + results.getBoolean(6) + "</td>\n"); //american express
-								out.println("<td>" + results.getBoolean(7) + "</td>\n"); //paypal
-								out.println("<td>" + results.getBoolean(8) + "</td>\n"); //venmo
-								out.println("<td>" + results.getString(9) + "</td>\n"); //primary language
-								out.println("<td>" + results.getString(10) + "</td>\n"); //secondary language
+								out.println("<td>" + "<a href=\"./detailItem?itemid=" + results.getString(1) + "\">" + results.getString(2) + "</a></td>\n"); //item name
+								out.println("<td>" + results.getString(3) + "</td>\n"); //item type
+								out.println("<td>$" + results.getBigDecimal(4) + "</td>\n"); //item price
 								out.println("</tr>\n");
 							}
 							out.println("</div>\n");
@@ -212,10 +174,10 @@ public class Browse extends HttpServlet {
 								out.println("</div>\n");
 							}
 							Integer pageCount = 1;
-							if (storeCount % limit > 0) {
-								pageCount = storeCount/limit + 1;
+							if (itemCount % limit > 0) {
+								pageCount = itemCount/limit + 1;
 							} else {
-								pageCount = storeCount/limit;
+								pageCount = itemCount/limit;
 							}
 							if (Integer.parseInt(request.getParameter("pg")) < pageCount) {
 								out.println("<div style=\"text-align: right;\">\n");
