@@ -1,0 +1,272 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+ 
+<!-- If IE use the latest rendering engine -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
+<!-- Set the page to the width of the device and set the zoon level -->
+<meta name="viewport" content="width = device-width, initial-scale = 1">
+<title>Bootstrap Tutorial</title>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+ 
+<style>
+.jumbotron{
+    background-color:#1994d6;
+    color:#FFF;
+}
+/* Adds borders for tabs */
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+.nav-tabs {
+    margin-bottom: 0;
+}
+</style>
+ 
+</head>
+
+
+<body>
+ 
+<!-- CONTAINERS -->
+<!-- container puts padding around itself while container-fluid fills the whole screen. Bootstap grids require a container. -->
+<div class="container">
+ 
+<!-- page-header adds space aroundtext and enlarges it. It also adds an underline at the end -->
+<div class="page-header">
+<h1>Bootstrap Tutorial</h1>
+</div>
+
+
+<!-- jumbotron enlarges fonts and puts everything in a gray box with rounded corners. If jumbotron is outside a container it fills the total width. You can change the styles by placing the changes after the Bootstrap CDN link -->
+<div class="jumbotron">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+ 
+<!-- BUTTONS -->
+<!-- There are many built in button colors and sizes. If a link is to trigger in page functionality it should use role="button". The button element should be used in most situations -->
+<p>
+<a href="#" class = "btn btn-default btn-lg" role="button">More info</a>
+<button type="submit" class = "btn btn-danger" role = "button">Button</button>
+<input type="button" value="Info" class = "btn btn-info">
+<button type="submit" class = "btn-primary btn-sm">Primary</button>
+<button type="submit" class = "btn btn-success btn-xs">Success</button>
+<button type="submit" class = "btn btn-warning btn-lg">Warning</button>
+<button type="submit" class = "btn btn-link btn-lg">Link</button>
+
+
+<!-- You disable links in a similar way -->
+<a href="#" class="btn btn-default btn-lg disabled" role="button">Link</a>
+ 
+<!-- You can group buttons. You can size the buttons with btn-group-lg, btn-group-sm, or btn-group-xs -->
+<div class="btn-group btn-group-lg" role="group" aria-label="...">
+  <button type="button" class="btn btn-default">Small</button>
+  <button type="button" class="btn btn-default">Medium</button>
+  <button type="button" class="btn btn-default">Large</button>
+</div>
+
+<!-- bootstraptut2.html -->
+ 
+<!-- ICONS -->
+<!-- Bootstrap has hundreds of free icons. http://getbootstrap.com/components/#glyphicons They can be used on their own or inside of buttons with a link or regular button for example. -->
+
+<p>
+<span class="glyphicon glyphicon-film"></span>
+ 
+<a href="#" class="btn btn-primary btn-lg">Trash <span class="glyphicon glyphicon-trash"></span></a>
+<a href="#" class="btn btn-primary btn-lg">Trash <span class="glyphicon glyphicon-home"></span></a>
+ 
+<button type="button" class="btn btn-default btn-lg">
+ 
+  <!-- aria-hidden hides decorative icons from screen readers -->
+  <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> Call Me
+</button>
+</p>
+ 
+</div>
+</div>
+
+<div class="container">
+<div class="row">
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    <div class="thumbnail">
+      <img src="thumb1.png" alt="...">
+      <div class="caption">
+        <h3>Hamburger</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#" class="btn btn-primary" role="button">Add to Cart</a></p>
+      </div>
+      </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    <div class="thumbnail">
+      <img src="thumb2.png" alt="...">
+      <div class="caption">
+        <h3>Polenta</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#" class="btn btn-primary" role="button">Add to Cart</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    <div class="thumbnail">
+      <img src="thumb3.png" alt="...">
+      <div class="caption">
+        <h3>Meatball Sub</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#" class="btn btn-primary" role="button">Add to Cart</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    <div class="thumbnail">
+      <img src="thumb4.jpg" alt="...">
+      <div class="caption">
+        <h3>Eggplant</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#" class="btn btn-primary" role="button">Add to Cart</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<!-- Collapsible Navigation Bar -->
+<div class="container">
+ 
+<!-- .navbar-fixed-top, or .navbar-fixed-bottom can be added to keep the nav bar fixed on the screen -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+ 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+ 
+      <!-- Button that toggles the navbar on and off on small screens -->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+ 
+      <!-- Hides information from screen readers -->
+        <span class="sr-only"></span>
+ 
+        <!-- Draws 3 bars in navbar button when in small mode -->
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+ 
+      <!-- You'll have to add padding in your image on the top and right of a few pixels (CSS Styling will break the navbar) -->
+      <a class="pull-left" href="#"><img src="NTTLogosm.png"></a>
+    </div>
+ 
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">About</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact Us <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Email</a></li>
+            <li><a href="#">Phone</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Set Appointment</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- navbar-left will move the search to the left -->
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Isam duide">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</div>
+<br>
+
+
+<div class="continer">
+
+<div class="well hidden-sm hidden-md hidden-lg">
+<p>Scren &lt; 768px </p>
+</div>
+
+<div class="well hidden-md hidden-lg">
+<p>Scren &lt; 768px and &lt; 992px </p>
+</div>
+
+<div class="well hidden-lg">
+<p>Scren &lt; 992px and &lt; 1200px</p>
+</div>
+
+<div class="well">
+<p>Scren &gt; 1200px </p>
+</div>
+
+</div>
+
+<!------------------------------------------------------------------------------------------------>
+
+<div class="container">
+ 
+  <!-- You can constrain the columns if you want -->
+  <div class="row">
+ 
+  <!-- We could move it to the right with a blank div
+  <div class="col-md-6"></div> -->
+ 
+  <!-- Or we could use offset -->
+  <div class="col-md-6 col-md-offset-1">
+ 
+    <!-- The table class adds nice spacing and the other classes add additional style -->
+    <table class="table table-bordered table-striped table-hover">
+    <thead>
+    <tr>
+    <td colspan="6">Best Baseball Players</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+ 
+    <!-- You can adjust the width of table columns as well -->
+    <th class="col-md-1"></td>
+ 
+    <!-- Use text alignment like text-center or text-right -->
+    <th class="text-center">Average</td>
+    <th class="text-center">RBIs</td>
+    <th class="text-right">Homeruns</td>
+    </tr>
+    <tr>
+    <td><a href="#">Hank Aaron*</a></td>
+    <td><a href="#">Hank Aaron*</a></td>
+    <td>.305</td>
+    <td>2297</td>
+    <td>755</td>
+    </tr>
+    <tr>
+    <td><a href="#">Babe Ruth*</a></td>
+    <td>.342</td>
+    <td>2214</td>
+    <td>714</td>
+    <td>714</td>
+    <td>714</td>
+    </tr>
+    <tr>
+    <td><a href="#">Barry Bonds</a></td>
+    <td>.298</td>
+    <td>1996</td>
+    <td>762</td>
+    </tr>
+    </tbody>
+    </table>
+  </div>
+</div>
+
+
+</body>

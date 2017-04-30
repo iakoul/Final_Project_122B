@@ -32,7 +32,7 @@ CREATE TABLE `LanguageTbl` (
 CREATE TABLE `OwnerTbl` (
     `ownerID` INTEGER NOT NULL,
     `name` CHAR(50) NOT NULL,
-    `phoneNum` CHAR(20) NOT NULL,
+    `phoneNum` CHAR(20),
     PRIMARY KEY (`ownerID`)
 ) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
