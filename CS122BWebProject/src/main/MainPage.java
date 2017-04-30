@@ -2,6 +2,8 @@ package main;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,6 +36,12 @@ public class MainPage extends HttpServlet {
 	    		+ "</head>\n");
 
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
+	    out.println("Cart contents: ");
+	    HashMap<ArrayList<String>, Integer> cart = (HashMap<ArrayList<String>, Integer>)session.getAttribute("cart");
+	    if (session.getAttribute("cart") != null) {
+	    	out.println(cart.toString());
+	    	out.println(cart.values());
+	    }
 	    if (session.getAttribute("loggedIn") != null && (Boolean)session.getAttribute("loggedIn")) {
 			out.println("<h1 align=\"center\">Welcome, " + session.getAttribute("username") + " to StoreMarketing Search</h1>");
 			out.println("<br>Search for specific terms" /* Link to search servlet */);

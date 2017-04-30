@@ -73,19 +73,25 @@ public class DetailBiz extends HttpServlet {
 							+ "t.storeType, "
 							+ "o.name, "
 							+ "p.plazaID, "
-							+ "c.cityID "
+							+ "c.cityID, "
+							+ "m.merchID, "
+							+ "m.merchName "
 							+ "FROM "
 							+ "StoreTbl s, "
 							+ "OwnerTbl o, "
 							+ "StoreTypeTbl t, "
 							+ "PlazaTbl p, "
-							+ "CityTbl c "
+							+ "CityTbl c, "
+							+ "StoreSellsTbl se, "
+							+ "MerchandiseTbl m "
 							+ "WHERE "
 							+ "s.storeID = ? "
 							+ "AND s.ownerID = o.ownerID "
 							+ "AND s.typeID = t.typeID "
 							+ "AND s.plazaID = p.plazaID "
-							+ "AND p.cityID = c.cityID;";
+							+ "AND p.cityID = c.cityID "
+							+ "AND s.storeID = se.storeID "
+							+ "AND se.merchID = m.merchID;";
 					PreparedStatement pstmt = connection.prepareStatement(prepQuery);
 					pstmt.setString(1, request.getParameter("bizid"));
 					ResultSet results = pstmt.executeQuery();
@@ -101,6 +107,13 @@ public class DetailBiz extends HttpServlet {
 						out.println("<p> <b>Since: </b>" + results.getString(6) + "</p>\n");
 						out.println("<p> <b>Business Type: </b>" + results.getString(7) + "</p>\n");
 						out.println("<p> <b>Owner: </b>" + results.getString(8) + "</p>\n");
+						out.println("<p> <b>Merchandise available at this store: </b></p>\n");
+						out.println("<ul>\n");
+						out.println("<li><a href=\"./detailItem?itemid=" + results.getString(11) + "\">" + results.getString(12) + "</a></li>\n");
+						while(results.next()) {
+							out.println("<li><a href=\"./detailItem?itemid=" + results.getString(11) + "\">" + results.getString(12) + "</a></li>\n");
+						}
+						out.println("</ul>\n");
 					}
 					out.println("<button onclick=\"goBack()\">Go Back</button>");
 					out.println("</div>");

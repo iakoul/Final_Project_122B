@@ -1,5 +1,5 @@
-INSERT INTO UsersTbl VALUES ("Alex", "$2a$12$/7soAd89PYtEdXkH5nu2LecLPc4FfX449Fa8fkG8GXq/0EyAgQWai", 0);
-INSERT INTO UsersTbl VALUES ("admin", "$2a$12$nWDKDrqsGbjfrMPc9pcDY.wUEl5QKLcSnopZ3.0GHtM9mvLt8DmCq", 1);
+INSERT INTO UsersTbl VALUES ("Alex", "Alex", "Bustelo", "$2a$12$/7soAd89PYtEdXkH5nu2LecLPc4FfX449Fa8fkG8GXq/0EyAgQWai", 0);
+INSERT INTO UsersTbl VALUES ("admin", "Administrator", "McAdministratorson", "$2a$12$nWDKDrqsGbjfrMPc9pcDY.wUEl5QKLcSnopZ3.0GHtM9mvLt8DmCq", 1);
 
 INSERT INTO LanguageTbl VALUES (null, "English");
 INSERT INTO LanguageTbl VALUES (null, "Spanish");

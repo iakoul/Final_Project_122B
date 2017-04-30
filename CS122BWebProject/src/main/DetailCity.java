@@ -86,10 +86,10 @@ public class DetailCity extends HttpServlet {
 						while(results.next()) {
 							out.println("<li><a href=\"./detailPlaza?plazaid=" + results.getString(2) + "\">" + results.getString(1) + "</a></li>\n");
 						}
-						out.println("</ul>");
+						out.println("</ul>\n");
 					}
 					out.println("<button onclick=\"goBack()\">Go Back</button>");
-					out.println("</div>");
+					out.println("</div>\n");
 					
 					out.println("<a href=\"./mainPage\">Main Page</a>\n");
 					out.println("<script language=\"javascript\">\n");
