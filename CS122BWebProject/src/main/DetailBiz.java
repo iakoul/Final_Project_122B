@@ -116,9 +116,19 @@ public class DetailBiz extends HttpServlet {
 						out.println("<p> <b>Owner: </b>" + results.getString(8) + "</p>\n");
 						out.println("<p> <b>Merchandise available at this store: </b></p>\n");
 						out.println("<ul>\n");
-						out.println("<li><a href=\"./detailItem?itemid=" + results.getString(11) + "\">" + results.getString(12) + "</a></li>\n");
+						//out.println("<li><a href=\"./detailItem?itemid=" + results.getString(11) + "\">" + results.getString(12) + "</a></li>\n");
+						out.println("<li><a href=\"./detailItem?itemid=" + results.getString(11) + "\">" + results.getString(12) + "</a> "
+								+ "<form action=\"./addToCart\" method=\"get\">"
+								+ "<input type=\"hidden\" name=\"storeid\" value=\"" + request.getParameter("bizid").toString() + "\"/>\n"
+								+ "<input type=\"hidden\" name=\"itemid\" value=\"" + results.getString(11) + "\"/>\n"
+								+ "<input type=\"text\" name=\"qty\">" + "<input type=\"submit\" value=\"Add\">\n" + "</form><br>");	
 						while(results.next()) {
-							out.println("<li><a href=\"./detailItem?itemid=" + results.getString(11) + "\">" + results.getString(12) + "</a></li>\n");
+							//out.println("<li><a href=\"./detailItem?itemid=" + results.getString(11) + "\">" + results.getString(12) + "</a></li>\n");
+							out.println("<li><a href=\"./detailItem?itemid=" + results.getString(11) + "\">" + results.getString(12) + "</a> "
+									+ "<form action=\"./addToCart\" method=\"get\">"
+									+ "<input type=\"hidden\" name=\"storeid\" value=\"" + request.getParameter("bizid").toString() + "\"/>\n"
+									+ "<input type=\"hidden\" name=\"itemid\" value=\"" + results.getString(11) + "\"/>\n"
+									+ "<input type=\"text\" name=\"qty\">" + "<input type=\"submit\" value=\"Add\">\n" + "</form><br>");
 						}
 						out.println("</ul>\n");
 					}

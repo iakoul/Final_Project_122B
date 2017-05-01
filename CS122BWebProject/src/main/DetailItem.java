@@ -96,11 +96,21 @@ public class DetailItem extends HttpServlet {
 						out.println("<p></b>Item price:</b> $" + results.getString(4) + "</p>\n");
 						out.println("<p>This item is available for purchase at the following locations: </p>\n");
 						out.println("<ul>\n");
+						//out.println("<li><a href=\"./detailBiz?bizid=" + results.getString(5) + "\">" + results.getString(6) + "</a> "
+						//		+ "<a href=\"./addToCart?storeid=" + results.getString(5) + "&itemid=" + results.getString(1) + "&qty=1\">Add 1 to cart</a></li>\n");
 						out.println("<li><a href=\"./detailBiz?bizid=" + results.getString(5) + "\">" + results.getString(6) + "</a> "
-								+ "<a href=\"./addToCart?storeid=" + results.getString(5) + "&itemid=" + results.getString(1) + "&qty=1\">Add 1 to cart</a></li>\n");
+								+ "<form action=\"./addToCart\" method=\"get\">"
+								+ "<input type=\"hidden\" name=\"storeid\" value=\"" + results.getString(5) + "\"/>\n"
+								+ "<input type=\"hidden\" name=\"itemid\" value=\"" + results.getString(1) + "\"/>\n"
+								+ "<input type=\"text\" name=\"qty\">" + "<input type=\"submit\" value=\"Add\">\n" + "</form><br>");
 						while(results.next()) {
+							//out.println("<li><a href=\"./detailBiz?bizid=" + results.getString(5) + "\">" + results.getString(6) + "</a> "
+							//		+ "<a href=\"./addToCart?storeid=" + results.getString(5) + "&itemid=" + results.getString(1) + "&qty=1\">Add 1 to cart</a></li>\n");
 							out.println("<li><a href=\"./detailBiz?bizid=" + results.getString(5) + "\">" + results.getString(6) + "</a> "
-									+ "<a href=\"./addToCart?storeid=" + results.getString(5) + "&itemid=" + results.getString(1) + "&qty=1\">Add 1 to cart</a></li>\n");
+									+ "<form action=\"./addToCart\" method=\"get\">"
+									+ "<input type=\"hidden\" name=\"storeid\" value=\"" + results.getString(5) + "\"/>\n"
+									+ "<input type=\"hidden\" name=\"itemid\" value=\"" + results.getString(1) + "\"/>\n"
+									+ "<input type=\"text\" name=\"qty\">" + "<input type=\"submit\" value=\"Add\">\n" + "</form><br>");
 						}
 						out.println("</ul>\n");
 					}
