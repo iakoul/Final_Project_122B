@@ -29,9 +29,19 @@ public class AddToCart extends HttpServlet {
 		HttpSession session = request.getSession(true);
 	    response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
+	    out.println("<!DOCTYPE HTML>\n"
+				+ "<html>\n"
+				+ "<head>\n"
+				+ "<title>"
+				+ "Add to cart"
+				+ "</title>\n"
+				+ "</head>\n");
+
+		out.println("<body bgcolor=\"#FDF5E6\">\n");
+	    
 	    
 	    HashMap<ArrayList<String>, Integer> cart = null;
-	    ArrayList<String> itemAndStore = new ArrayList<String>();
+	    ArrayList<String> itemAndStore = new ArrayList<String>(); //[storeid, itemid]
 	    itemAndStore.add(request.getParameter("storeid"));
 	    itemAndStore.add(request.getParameter("itemid"));
 	    
@@ -39,18 +49,35 @@ public class AddToCart extends HttpServlet {
 	    	if (session.getAttribute("cart") != null) {
 		    	cart = (HashMap<ArrayList<String>, Integer>)session.getAttribute("cart");
 		    	if (cart.containsKey(itemAndStore)) {
-		    		Integer currQty = cart.get(itemAndStore);
-		    		currQty += (Integer)request.getAttribute("qty");
+		    		Integer currQty = (Integer)cart.get(itemAndStore);
+		    		currQty += Integer.parseInt(request.getParameter("qty"));
 		    		cart.put(itemAndStore, currQty);
 		    		session.setAttribute("cart", cart);
+		    	} else {
+		    		cart.put(itemAndStore, Integer.parseInt(request.getParameter("qty")));
 		    	}
 		    } else {
 		    	cart = new HashMap<ArrayList<String>, Integer>();
-		    	cart.put(itemAndStore, (Integer)request.getAttribute("qty"));
+		    	cart.put(itemAndStore, Integer.parseInt(request.getParameter("qty")));
 		    	session.setAttribute("cart", cart);
 		    }
-	    	//request.getRequestDispatcher(request.getParameter("viewid")).forward(request, response);
+	    	out.println("<p>Done... added " + Integer.parseInt(request.getParameter("qty")) + " item to cart. "
+	    			+ "You will now be redirected. If you are not redirected, click the button. </p>\n");
+	    	
+	    	out.println("<button onclick=\"goBack()\">Go Back</button>");
+	    	out.println("<script language=\"javascript\">\n");
+			out.println("function goBack() {window.history.back();}\n");
+			out.println("</script>\n");
+	    	
+	    	out.println("<script language=\"javascript\">\n"
+	    			+ "setTimeout(function(){window.history.back();}, 1);\n"
+	    			+ "</script>");
+	    	
+	    	//out.println("<script language=\"javascript\">setTimeOut(goBack(),10000);\n function goBack(){ $(\".button\").click();}\n</script>");
+	    	
+	    	out.println("</body>\n</html>");
 	    } else {
+	    	out.println("</body>\n</html>");
 	    	response.setHeader("Refresh", "3; URL=./index.html");
 	    }
 	}

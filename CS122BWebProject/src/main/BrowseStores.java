@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Servlet implementation class Browse
@@ -45,6 +47,12 @@ public class BrowseStores extends HttpServlet {
 	    		+ "</title>\n"
 	    		+ "</head>\n");
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
+	    Integer itemsInCart = 0;
+	    if ((HashMap<ArrayList<String>, Integer>)session.getAttribute("cart") != null) {
+	    	HashMap<ArrayList<String>, Integer> cart = (HashMap<ArrayList<String>, Integer>)session.getAttribute("cart");
+	    	itemsInCart = cart.size();
+	    }
+	    out.println("<div align=\"right\"><a href=\"./shoppingCart\">Cart(" + itemsInCart + ")</a></div>");
 	    try {
 	    	if ((Boolean)session.getAttribute("loggedIn")) { //throws null pointer exception
 				//Incorporate mySQL driver

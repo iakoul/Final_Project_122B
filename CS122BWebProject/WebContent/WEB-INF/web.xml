@@ -46,8 +46,16 @@
     <servlet-class>main.DetailItem</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>addToCart</servlet-name>
-  	<servlet-class>main.AddToCart</servlet-class>
+    <servlet-name>addToCart</servlet-name>
+    <servlet-class>main.AddToCart</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>shoppingCart</servlet-name>
+    <servlet-class>main.ShoppingCart</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>checkout</servlet-name>
+  	<servlet-class>main.Checkout</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>login</servlet-name>
@@ -86,7 +94,15 @@
     <url-pattern>/detailItem</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>addToCart</servlet-name>
-  	<url-pattern>/addToCart</url-pattern>
+    <servlet-name>addToCart</servlet-name>
+    <url-pattern>/addToCart</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>shoppingCart</servlet-name>
+    <url-pattern>/shoppingCart</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>checkout</servlet-name>
+  	<url-pattern>/checkout</url-pattern>
   </servlet-mapping>
 </web-app>

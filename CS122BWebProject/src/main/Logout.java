@@ -36,8 +36,7 @@ public class Logout extends HttpServlet {
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
 	    out.println("<h1>Logging out</h1>\n");
 	    out.println("</body>\n</html>");
-	    session.setAttribute("loggedIn", false);
-	    session.setAttribute("isAdmin", false);
+	    session.invalidate();
 	    response.setHeader("Refresh", "3; URL=./index.html");
 	}
 
