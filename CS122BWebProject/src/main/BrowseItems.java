@@ -49,6 +49,10 @@ public class BrowseItems extends HttpServlet {
 	    		+ request.getParameter("letter")
 	    		+ "</title>\n"
 	    		+ "</head>\n");
+	    out.println("<script language=\"javascript\">\n");
+	    out.println("window.onpageshow = function(event) {if (event.persisted) {window.location.reload() }};");
+		out.println("</script>\n");
+	    
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
 	    Integer itemsInCart = 0;
 	    if ((HashMap<ArrayList<String>, Integer>)session.getAttribute("cart") != null) {

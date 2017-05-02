@@ -73,6 +73,10 @@ public class ShoppingCart extends HttpServlet {
 	    		+ "}\n"
 	    		+ "</style>\n"
 	    		+ "</head>\n");
+	    
+	    out.println("<script language=\"javascript\">\n");
+		out.println("window.onpageshow = function(event) {if (event.persisted) {window.location.reload() }};");
+		out.println("</script>\n");
 
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
 		
@@ -104,6 +108,7 @@ public class ShoppingCart extends HttpServlet {
 					out.println("<th style=\"border: 1px solid black; text-align: left;\">Item Name</th>");
 					out.println("<th style=\"border: 1px solid black; text-align: left;\">Item Quantity</th>");
 					out.println("<th style=\"border: 1px solid black; text-align: left;\">Item Price</th>");
+					out.println("<th style=\"border: 1px solid black; text-align: left;\"></th>");
 					out.println("</tr>");
 			    	
 			    	for (ArrayList<String> key: cart.keySet()) {
@@ -119,8 +124,8 @@ public class ShoppingCart extends HttpServlet {
 								+ "s.storeID = ? "
 								+ "AND m.merchID = ?;";
 						PreparedStatement pstmt = connection.prepareStatement(prepQuery);
-						pstmt.setString(1, key.get(0).toString());
-						pstmt.setString(2, key.get(1).toString());
+						pstmt.setString(1, key.get(0).toString()); //storeid
+						pstmt.setString(2, key.get(1).toString()); //itemid
 						ResultSet results = pstmt.executeQuery();
 						
 			    		if (results.next()) {
@@ -129,22 +134,34 @@ public class ShoppingCart extends HttpServlet {
 				    		out.println("<td>" + results.getString(2) + "</td>");
 				    		out.println("<td>" + cart.get(key).toString() + "</td>");
 				    		out.println("<td>$" + results.getString(3) + "</td>");
+				    		
+				    		
+				    		out.println("<td><form id=\"form\" action=\"./addToCart\" method=\"get\">"
+									+ "<input type=\"hidden\" name=\"storeid\" value=\"" + key.get(0).toString() + "\"/>\n"
+									+ "<input type=\"hidden\" name=\"itemid\" value=\"" + key.get(1).toString() + "\"/>\n"
+									+ "<input type=\"hidden\" name=\"update\" value=\"true\"/>\n"
+									+ "<input type=\"text\" name=\"qty\">" + "<input type=\"submit\" value=\"Update\">\n" + "</form></td>");
+				    		
+				    		
 				    		out.println("</tr>");
-				    		totalCost += results.getDouble(3);
+				    		totalCost += results.getDouble(3) * Integer.parseInt(cart.get(key).toString());
 				    		
 			    		} else {
 			    			out.println("Item or store not found in database");
 			    		}
 			    	}
 			    	out.println("<tr>");
-			    	out.println("<td></td><td></td><td></td><td><b>Total Is $" + totalCost + "</b></td>");
+			    	//out.println("<td></td><td></td><td></td><td><b>Total Is $" + totalCost + "</b></td>");
+			    	out.println("<td></td><td></td><td></td><td><b>Total Is $");
+			    	out.format("%.2f", totalCost);
+			    	out.println("</b></td>");
 			    	out.println("</table>\n");
 			    	out.println("</div>\n"); //end table
 			    	out.println("<br>");
 				    //out.println("<div id=\"total\">"); //total
 				    //out.println("Total is $" + totalCost);
 				    
-				    out.println("<form action=\"./checkout\" method=\"post\">\n"
+				    out.println("<form id=\"form\" action=\"./checkout\" method=\"post\">\n"
 				    		+ "First name: "
 				    		+ "<input type=\"text\" name=\"firstname\"><br>\n"
 				    		+ "Last name: "

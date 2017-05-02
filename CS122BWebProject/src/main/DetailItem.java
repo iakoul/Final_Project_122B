@@ -47,6 +47,9 @@ public class DetailItem extends HttpServlet {
 				+ "Item Detail"
 				+ "</title>\n"
 				+ "</head>\n");
+		out.println("<script language=\"javascript\">\n");
+		out.println("window.onpageshow = function(event) {if (event.persisted) {window.location.reload() }};");
+		out.println("</script>\n");
 
 		out.println("<body bgcolor=\"#FDF5E6\">\n");
 		Integer itemsInCart = 0;
@@ -102,6 +105,7 @@ public class DetailItem extends HttpServlet {
 								+ "<form action=\"./addToCart\" method=\"get\">"
 								+ "<input type=\"hidden\" name=\"storeid\" value=\"" + results.getString(5) + "\"/>\n"
 								+ "<input type=\"hidden\" name=\"itemid\" value=\"" + results.getString(1) + "\"/>\n"
+								+ "<input type=\"hidden\" name=\"update\" value=\"false\"/>\n"
 								+ "<input type=\"text\" name=\"qty\">" + "<input type=\"submit\" value=\"Add\">\n" + "</form><br>");
 						while(results.next()) {
 							//out.println("<li><a href=\"./detailBiz?bizid=" + results.getString(5) + "\">" + results.getString(6) + "</a> "
@@ -110,6 +114,7 @@ public class DetailItem extends HttpServlet {
 									+ "<form action=\"./addToCart\" method=\"get\">"
 									+ "<input type=\"hidden\" name=\"storeid\" value=\"" + results.getString(5) + "\"/>\n"
 									+ "<input type=\"hidden\" name=\"itemid\" value=\"" + results.getString(1) + "\"/>\n"
+									+ "<input type=\"hidden\" name=\"update\" value=\"false\"/>\n"
 									+ "<input type=\"text\" name=\"qty\">" + "<input type=\"submit\" value=\"Add\">\n" + "</form><br>");
 						}
 						out.println("</ul>\n");
