@@ -44,9 +44,13 @@ public class MainPage extends HttpServlet {
 	    }
 	    out.println("<div align=\"right\"><a href=\"./shoppingCart\">Cart(" + itemsInCart + ")</a></div>");
 	    if (session.getAttribute("loggedIn") != null && (Boolean)session.getAttribute("loggedIn")) {
-			out.println("<h1 align=\"center\">Welcome, " + session.getAttribute("username") + " to StoreMarketing Search</h1>");
-			out.println("<br>Search for specific terms " + "<a href=\"./AdvancedSearch.jsp\">Here</a>\n");
-			out.println("<br>Browse alphabetically by item name\n");
+			out.println("<h1 align=\"center\">Welcome, " + session.getAttribute("username") + " to Mega Marketplace Search</h1>\n");
+			out.println("<div style=\"padding-left: 5%; padding-top: 5%;\">\n");
+			out.println("<div style=\"text-align: center;\">");
+			out.println("<a href=\"./AdvancedSearch.jsp\">Advanced Search</a><br>\n");
+			out.println("<br>Browse alphabetically by item name by clicking on a letter:");
+			out.println("</div>\n");
+			out.println("<div style=\"float:left; width:30%;\">\n");
 			out.println("<ul>\n");
 			out.println("<li><a href=\"./browseItems?letter=a&pg=1\">A</a></li>\n");
 			out.println("<li><a href=\"./browseItems?letter=b&pg=1\">B</a></li>\n");
@@ -62,6 +66,9 @@ public class MainPage extends HttpServlet {
 			out.println("<li><a href=\"./browseItems?letter=l&pg=1\">L</a></li>\n");
 			out.println("<li><a href=\"./browseItems?letter=m&pg=1\">M</a></li>\n");
 			out.println("<li><a href=\"./browseItems?letter=n&pg=1\">N</a></li>\n");
+			out.println("</ul>\n</div>\n");
+			out.println("<div style=\"float:right; width:30%;\">\n");
+			out.println("<ul>\n");
 			out.println("<li><a href=\"./browseItems?letter=o&pg=1\">O</a></li>\n");
 			out.println("<li><a href=\"./browseItems?letter=p&pg=1\">P</a></li>\n");
 			out.println("<li><a href=\"./browseItems?letter=q&pg=1\">Q</a></li>\n");
@@ -76,7 +83,9 @@ public class MainPage extends HttpServlet {
 			out.println("<li><a href=\"./browseItems?letter=z&pg=1\">Z</a></li>\n");
 			out.println("<li><a href=\"./browseItems?letter=numbers&pg=1\">Numbers</a></li>\n");
 			out.println("<li><a href=\"./browseItems?letter=others&pg=1\">Others</a></li>\n");
-			out.println("</ul>\n");
+			out.println("</ul>\n</div>");
+			out.println("</div>");
+			out.println("<div style=\"clear: both;\"></div>\n");
 			out.println("<p><a href=\"./logout\">Log Out</a></p>\n");
 			out.println("</body>\n</html>");
 	    } else {

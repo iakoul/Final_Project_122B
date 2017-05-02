@@ -103,7 +103,7 @@ public class BrowseStores extends HttpServlet {
 							storeCount = resultCount.getInt(1);
 						}
 						
-						Integer limit = 1; //results per page
+						Integer limit = 20; //results per page
 						if (request.getParameter("show") != null) {
 							limit = Integer.parseInt(request.getParameter("show"));
 						}
@@ -117,9 +117,10 @@ public class BrowseStores extends HttpServlet {
 						
 						out.println("<div>\n");
 						out.println("Results ");
-						out.println("<a href=\"./browse?letter=" + request.getParameter("letter") + "&pg=1&show=1\">1</a> ");
-						out.println("<a href=\"./browse?letter=" + request.getParameter("letter") + "&pg=1&show=10\">10</a> ");
-						out.println("<a href=\"./browse?letter=" + request.getParameter("letter") + "&pg=1&show=100\">100</a>\n");
+						out.println("<a href=\"./browse?letter=" + request.getParameter("letter") + "&pg=1&show=20\">20</a> ");
+						out.println("<a href=\"./browse?letter=" + request.getParameter("letter") + "&pg=1&show=40\">40</a> ");
+						out.println("<a href=\"./browse?letter=" + request.getParameter("letter") + "&pg=1&show=60\">60</a>\n");
+						out.println("<a href=\"./browse?letter=" + request.getParameter("letter") + "&pg=1&show=80\">80</a>\n");
 						out.println("</div>\n");
 						
 						out.println("<div>");

@@ -19,7 +19,7 @@ import java.sql.*;
  */
 
 public class SearchResult extends HttpServlet {
-	private static final int DEFAULT_LIMIT = 1;
+	private static final int DEFAULT_LIMIT = 20;
 	private final String JOIN_STORE_TABLE = "JOIN StoreSellsTbl sells ON m.merchID = sells.merchID JOIN StoreTbl s ON sells.storeID = s.storeID ";
 
 	public static boolean isStringEmpty(String s) {
