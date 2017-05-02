@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="css/basicStyle.css">
 </head>
 <body>
-	<form action="/Project2/search">
+	<form action="./search">
 		<h3>Advanced Search</h3>
 
 		<div class="form-group">

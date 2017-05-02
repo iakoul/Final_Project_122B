@@ -28,9 +28,9 @@ public class ItemResult extends HttpServlet {
 
 		try {
 			// Database connection info
-			String user = "mytestuser";
-        	String pass = "mypassword";
-        	String url = "jdbc:mysql://localhost:3306/storemarketing";
+			String user = "root";
+        	String pass = "mysqlpass";
+        	String url = "jdbc:mysql:///storemarketing?autoReconnect=true&useSSL=false";
 
 			// Load driver
 			Class.forName("com.mysql.jdbc.Driver").newInstance();

@@ -153,7 +153,7 @@ public class SearchResult extends HttpServlet {
 			// Database connection info
 			String user = "root";
         	String pass = "mysqlpass";
-        	String url = "jdbc:mysql://localhost:3306/storemarketing";
+        	String url = "jdbc:mysql:///storemarketing?autoReconnect=true&useSSL=false";
 
 			// Load driver
 			Class.forName("com.mysql.jdbc.Driver").newInstance();

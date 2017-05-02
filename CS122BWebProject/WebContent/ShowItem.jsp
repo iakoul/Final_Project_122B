@@ -21,15 +21,15 @@
 		<tbody>
 			<c:forEach var="business" items="${businesses}">
 				<tr>
-					<td><a href="/Project2/store?id=${business.id}">${business.name}</a></td>
+					<td><a href="./store?id=${business.id}">${business.name}</a></td>
 					<td>
-						<form action="/Project2/addToCart">
+						<form action="./addToCart">
 						<div>
 							<div class="form-group" align="left">
-								<input class="form-control" type="number" id="quantity" name="quantity" value="1">
+								<input class="form-control" type="number" id="quantity" name="qty" value="1">
 							</div>
-							<input type="hidden" name="business" value="${business.id}">
-							<input type="hidden" name="item" value="${item.id}">
+							<input type="hidden" name="storeid" value="${business.id}">
+							<input type="hidden" name="itemid" value="${item.id}">
 							<div align="right">
 								<button type="submit" class="btn btn-primary">Add to cart</button>
 							</div>

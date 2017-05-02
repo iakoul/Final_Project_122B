@@ -12,7 +12,7 @@
 	Address: ${business.address}<br/>
 	Phone Number: ${business.phoneNumber}<br/>
 	Year Opened: ${business.yearOpened}<br/>
-	Plaza: <a href="/Project2/plaza?id=${business.plaza.id}">${business.plaza.name}</a><br/>
+	Plaza: <a href="./plaza?id=${business.plaza.id}">${business.plaza.name}</a><br/>
 
 	<table class="table">
 		<thead>
@@ -25,16 +25,16 @@
 		<tbody>
 			<c:forEach var="item" items="${items}">
 				<tr>
-					<td><a href="/Project2/item?id=${item.id}">${item.name}</a></td>
+					<td><a href="./item?id=${item.id}">${item.name}</a></td>
 					<td>${item.price}</td>
 					<td>
-						<form action="/Project2/addToCart">
+						<form action="./addToCart">
 						<div>
 							<div class="form-group" align="left">
-								<input class="form-control" type="number" id="quantity" name="quantity" value="1">
+								<input class="form-control" type="number" id="quantity" name="qty" value="1">
 							</div>
-							<input type="hidden" name="business" value="${business.id}">
-							<input type="hidden" name="item" value="${item.id}">
+							<input type="hidden" name="storeid" value="${business.id}">
+							<input type="hidden" name="itemid" value="${item.id}">
 							<div align="right">
 								<button type="submit" class="btn btn-primary">Add to cart</button>
 							</div>

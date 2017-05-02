@@ -11,32 +11,32 @@
 	<h3>Results</h3>
 	Results per page: 
 	<c:forEach begin="1" end="4" var="i">
-		<a href="/Project2/search?business=${param.business}&city=${param.city}&payment=${param.payment}&item=${param.item}&price=${param.price}&results=${i*20}&page=1&ascItem=${param.ascItem}&ascType=${param.ascType}&ascPrice=${param.ascPrice}">${i*20}</a> 
+		<a href="./search?business=${param.business}&city=${param.city}&payment=${param.payment}&item=${param.item}&price=${param.price}&results=${i*20}&page=1&ascItem=${param.ascItem}&ascType=${param.ascType}&ascPrice=${param.ascPrice}">${i*20}</a> 
 	</c:forEach>
 
 	<table class="table">
 		<thead>
 			<th>Item
-				<a href="/Project2/search?business=${param.business}&city=${param.city}&payment=${param.payment}&item=${param.item}&price=${param.price}&results=${param.results}&page=1&ascItem=1&ascType=${param.ascType}&ascPrice=${param.ascPrice}">
+				<a href="./search?business=${param.business}&city=${param.city}&payment=${param.payment}&item=${param.item}&price=${param.price}&results=${param.results}&page=1&ascItem=1&ascType=${param.ascType}&ascPrice=${param.ascPrice}">
 					<span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
 				</a>
-				<a href="/Project2/search?business=${param.business}&city=${param.city}&payment=${param.payment}&item=${param.item}&price=${param.price}&results=${param.results}&page=1&ascItem=0&ascType=${param.ascType}&ascPrice=${param.ascPrice}">
+				<a href="./search?business=${param.business}&city=${param.city}&payment=${param.payment}&item=${param.item}&price=${param.price}&results=${param.results}&page=1&ascItem=0&ascType=${param.ascType}&ascPrice=${param.ascPrice}">
 					<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
 				</a>
 			</th>
 			<th>Type
-				<a href="/Project2/search?business=${param.business}&city=${param.city}&payment=${param.payment}&item=${param.item}&price=${param.price}&results=${param.results}&page=1&ascType=1&ascPrice=${param.ascPrice}">
+				<a href="./search?business=${param.business}&city=${param.city}&payment=${param.payment}&item=${param.item}&price=${param.price}&results=${param.results}&page=1&ascType=1&ascPrice=${param.ascPrice}">
 					<span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
 				</a>
-				<a href="/Project2/search?business=${param.business}&city=${param.city}&payment=${param.payment}&item=${param.item}&price=${param.price}&results=${param.results}&page=1&ascType=0&ascPrice=${param.ascPrice}">
+				<a href="./search?business=${param.business}&city=${param.city}&payment=${param.payment}&item=${param.item}&price=${param.price}&results=${param.results}&page=1&ascType=0&ascPrice=${param.ascPrice}">
 					<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
 				</a>
 			</th>
 			<th>Price
-				<a href="/Project2/search?business=${param.business}&city=${param.city}&payment=${param.payment}&item=${param.item}&price=${param.price}&results=${param.results}&page=1&ascPrice=1">
+				<a href="./search?business=${param.business}&city=${param.city}&payment=${param.payment}&item=${param.item}&price=${param.price}&results=${param.results}&page=1&ascPrice=1">
 					<span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
 				</a>
-				<a href="/Project2/search?business=${param.business}&city=${param.city}&payment=${param.payment}&item=${param.item}&price=${param.price}&results=${param.results}&page=1&ascPrice=0">
+				<a href="./search?business=${param.business}&city=${param.city}&payment=${param.payment}&item=${param.item}&price=${param.price}&results=${param.results}&page=1&ascPrice=0">
 					<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
 				</a>
 			</th>
@@ -44,7 +44,7 @@
 		<tbody>
 			<c:forEach var="item" items="${items}">
 				<tr>
-					<td><a href="/Project2/item?id=${item.id}">${item.name}</a></td>
+					<td><a href="./item?id=${item.id}">${item.name}</a></td>
 					<td>${item.type}</td>
 					<td>${item.price}</td>
 				</tr>
