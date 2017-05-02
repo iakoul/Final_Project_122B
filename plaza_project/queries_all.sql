@@ -1468,8 +1468,8 @@ INSERT INTO StoreTbl VALUES ( 6260012001097,   "The Bike Company",              
 -- Artesia
 
 INSERT INTO PlazaTbl VALUES ( 6260001001, "Pioneer Artesia Center",       6260001 );
-INSERT INTO PlazaTbl VALUES ( 6260001002, "Pioneer Blvd Strip",           6260001 )
-INSERT INTO PlazaTbl VALUES ( 6260001003, "Others",                       6260001 )
+INSERT INTO PlazaTbl VALUES ( 6260001002, "Pioneer Blvd Strip",           6260001 );
+INSERT INTO PlazaTbl VALUES ( 6260001003, "Others",                       6260001 );
 INSERT INTO StoreTbl VALUES ( 6260001001001,   "Us Donut",                                                  "11809 Artesia Blvd",                                       "(562) 924-0312",       null, null,     6260001001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260001001002,   "Mabuhay Kitchen",                                           "12233 Artesia Blvd",                                       "(562) 924-4600",       null, null,     6260001001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260001001003,   "Cho Dang Tofu Restaurant",                                  "12245 Artesia Blvd",                                       "(562) 924-6099",       null, null,     6260001001, null) ;  -- rst
@@ -2072,9 +2072,9 @@ INSERT INTO StoreTbl VALUES ( 6260005004046,   "The Pub At Chino Hills",        
 
 -- Brea
 
-INSERT INTO PlazaTbl VALUES ( 6260002001,   "Brea Downtown",                      6260002 )
-INSERT INTO PlazaTbl VALUES ( 6260002002,   "Other Local Businesses",             6260002 )
-INSERT INTO PlazaTbl VALUES ( 6260002003,   "Other Local Resturaunt",             6260002 )
+INSERT INTO PlazaTbl VALUES ( 6260002001,   "Brea Downtown",                      6260002 );
+INSERT INTO PlazaTbl VALUES ( 6260002002,   "Other Local Businesses",             6260002 );
+INSERT INTO PlazaTbl VALUES ( 6260002003,   "Other Local Resturaunt",             6260002 );
 
 INSERT INTO StoreTbl VALUES ( 6260002001001,   "Brea Plaza Shopping Center",                                "",                                                         "",                     null, null,     6260002001, null) ;
 
@@ -2386,7 +2386,7 @@ INSERT INTO StoreTbl VALUES ( 6260020001002,   "Patagonia Empanadas",           
 INSERT INTO StoreTbl VALUES ( 6260020001003,   "Kaigen Japanese Restaurant & Sushi Bar",                    "1736 N Tustin St",                                         "(714) 974-7723",       null, null,     6260020001, null) ;  -- rst  -- sushi
 INSERT INTO StoreTbl VALUES ( 6260020001004,   "Ristorante Mascarpone’s",                                   "1448 E Katella Ave",                                       "(714) 633-0101",       null, null,     6260020001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260020001005,   "Koisan Sushi & Japanese Cuisine",                           "1132 E Katella Ave",                                       "(714) 639-2330",       null, null,     6260020001, null) ;  -- sushi
-INSERT INTO StoreTbl VALUES ( 6260020001006,   "Saffron Grill",                                             "720 E Katella Ave",                                        "(714) 538-3940",       null, null,     6260020001, null) ;  rst
+INSERT INTO StoreTbl VALUES ( 6260020001006,   "Saffron Grill",                                             "720 E Katella Ave",                                        "(714) 538-3940",       null, null,     6260020001, null) ;  -- rst
 INSERT INTO StoreTbl VALUES ( 6260020001007,   "The Tulsa Rib Company & Catering",                          "220 E Katella Ave",                                        "(714) 633-3760",       null, null,     6260020001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260020001008,   "Billy Boy Burgers & Restaurant",                            "114 E Katella Ave",                                        "(714) 633-5920",       null, null,     6260020001, null) ;  -- rst
 INSERT INTO StoreTbl VALUES ( 6260020001009,   "The Pint House of Orange",                                  "1547 W Katella Ave Ste 102",                               "(714) 633-7468",       null, null,     6260020001, null) ;
@@ -2401,16 +2401,16 @@ INSERT INTO StoreTbl VALUES ( 6260020001017,   "Calivino Wine Pub",             
 INSERT INTO StoreTbl VALUES ( 6260020001018,   "Brew Hawg BBQ & Root Beer",                                 "665 N Tustin St",                                          "(714) 502-4053",       null, null,     6260020001, null) ;  -- wbq
 INSERT INTO StoreTbl VALUES ( 6260020001019,   "Jeff’s Inviting Food and Spirits",                          "1904 N. Tustin St",                                        "(714) 998-8282",       null, null,     6260020001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260020001020,   "Haven Gastropub",                                           "190 S Glassell St",                                        "(714) 221-0680",       null, null,     6260020001, null) ;
-INSERT INTO StoreTbl VALUES ( 6260020001021,   "Green Tomato Grill",                                        "1419 N Tustin St",                                         "(714) 532-1220",       null, null,     6260020001, null) ;  rst
+INSERT INTO StoreTbl VALUES ( 6260020001021,   "Green Tomato Grill",                                        "1419 N Tustin St",                                         "(714) 532-1220",       null, null,     6260020001, null) ;  -- rst
 INSERT INTO StoreTbl VALUES ( 6260020001022,   "Lanta Thai Fusion",                                         "724 E Katella Ave",                                        "(714) 532-4922",       null, null,     6260020001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260020001023,   "Tutto Fresco",                                              "1333 N Glassell St",                                       "(714) 771-1555",       null, null,     6260020001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260020001024,   "Mead’s Green Door Cafe",                                    "642 W Chapman Ave",                                        "(714) 771-8556",       null, null,     6260020001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260020001025,   "Ohshima Japanese Cuisine",                                  "1956 N Tustin St",                                         "(714) 998-0098",       null, null,     6260020001, null) ;
-INSERT INTO StoreTbl VALUES ( 6260020001026,   "United Rose Deli & Pho",                                    "816 E Lincoln Ave",                                        "(714) 282-1500",       null, null,     6260020001, null) ;  rst, viet --- x
+INSERT INTO StoreTbl VALUES ( 6260020001026,   "United Rose Deli & Pho",                                    "816 E Lincoln Ave",                                        "(714) 282-1500",       null, null,     6260020001, null) ;  -- rst, viet --- x
 INSERT INTO StoreTbl VALUES ( 6260020001027,   "Colleary’s Bistro & Bakery",                                "2143 N Tustin St",                                         "(714) 633-8650",       null, null,     6260020001, null) ;  -- rst, bistro
 INSERT INTO StoreTbl VALUES ( 6260020001028,   "Salty Dawg Tavern",                                         "1214 N Parker St",                                         "(714) 532-9977",       null, null,     6260020001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260020001029,   "Pancho’s Mexican Restaurant & Catering",                    "131 E Collins Ave",                                        "(714) 639-2702",       null, null,     6260020001, null) ;  -- rst
-INSERT INTO StoreTbl VALUES ( 6260020001030,   "Citrus City Grille",                                        "122 N Glassell St",                                        "(714) 639-9600",       null, null,     6260020001, null) ;  rst
+INSERT INTO StoreTbl VALUES ( 6260020001030,   "Citrus City Grille",                                        "122 N Glassell St",                                        "(714) 639-9600",       null, null,     6260020001, null) ;  -- rst
 INSERT INTO StoreTbl VALUES ( 6260020001031,   "Prime Cut Cafe & Wine Bar",                                 "1547 W Katella Ave",                                       "(714) 532-4300",       null, null,     6260020001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260020001032,   "Shiki Japanese Restaurant",                                 "1936 E Katella Ave",                                       "(714) 633-1765",       null, null,     6260020001, null) ;  -- rst
 INSERT INTO StoreTbl VALUES ( 6260020001033,   "Conca D’ Oro Italian Restaurant",                           "776 N Tustin St",                                          "(714) 532-2070",       null, null,     6260020001, null) ;  -- rst
@@ -7040,7 +7040,7 @@ INSERT INTO StoreTbl VALUES ( 6260017011032,   "Wok-In",                        
 INSERT INTO StoreTbl VALUES ( 6260017011033,   "Meiji Seimen",                                              "1113 Baker St Ste E",                                      "(714) 545-5175",       null, 0018,     6260017011, 304) ;   -- rst, jap
 INSERT INTO StoreTbl VALUES ( 6260017011034,   "Anjin",                                                     "3033 Bristol St Ste N Costa Mesa",                         "(714) 979-6700",       null, 0018,     6260017011, 305) ;   -- rst, jap
 INSERT INTO StoreTbl VALUES ( 6260017011035,   "Uroko Cafe",                                                "3030 Bristol St, Costa Mesa, CA 92626",                    "(714) 436-5798",       null, 0018,     6260017011, 626) ;   -- rst, jap
-INSERT INTO StoreTbl VALUES ( 6260017011036,   "Jojo's Bizzare Military Weapons"                            "36969 Bristol St, Costa Mesa, CA 92626",                   "(714) 436-5798",       null, 0018,     6260017011, 626) ;  -- rst, jap
+INSERT INTO StoreTbl VALUES ( 6260017011036,   "Jojo's Bizzare Military Weapons",                            "36969 Bristol St, Costa Mesa, CA 92626",                   "(714) 436-5798",       null, 0018,     6260017011, 626) ;  -- rst, jap
 
  -- random
 
@@ -7068,11 +7068,7 @@ INSERT INTO StoreSellsTbl VALUES ( 6260014002102, 72056 );
 INSERT INTO StoreSellsTbl VALUES ( 6260014002102, 72071 );
 
 INSERT INTO StoreSellsTbl VALUES ( 6260006003003, 72018 );
-INSERT INTO StoreSellsTbl VALUES ( 6260006003003, 72018 );
-INSERT INTO StoreSellsTbl VALUES ( 6260006003003, 72018 );
 
-INSERT INTO StoreSellsTbl VALUES ( 6260006003003, 72042 );
-INSERT INTO StoreSellsTbl VALUES ( 6260006003003, 72042 );
 INSERT INTO StoreSellsTbl VALUES ( 6260006003003, 72042 );
 
 
@@ -7084,7 +7080,6 @@ INSERT INTO StoreSellsTbl VALUES (6260007001466, 72060);
 
 INSERT INTO StoreSellsTbl VALUES (6260007001466, 72067);
 
-INSERT INTO StoreSellsTbl VALUES (6260007001466, 72064);
 INSERT INTO StoreSellsTbl VALUES (6260007001466, 72064);
 
 
@@ -7102,21 +7097,15 @@ INSERT INTO StoreSellsTbl VALUES (6260017005003, 72058);
 
 
 INSERT INTO StoreSellsTbl VALUES (6260007001466, 72027);
-INSERT INTO StoreSellsTbl VALUES (6260007001466, 72027);
 
-INSERT INTO StoreSellsTbl VALUES (6260026001077, 72027);
 INSERT INTO StoreSellsTbl VALUES (6260026001077, 72027);
 
 INSERT INTO StoreSellsTbl VALUES (6260013001572, 72027);
-INSERT INTO StoreSellsTbl VALUES (6260013001572, 72027);
 
-INSERT INTO StoreSellsTbl VALUES (6260017005003, 72027);
 INSERT INTO StoreSellsTbl VALUES (6260017005003, 72027);
 
 INSERT INTO StoreSellsTbl VALUES (6260017005003, 72057);
-INSERT INTO StoreSellsTbl VALUES (6260017005003, 72057);
 
-INSERT INTO StoreSellsTbl VALUES (6260017005003, 72065);
 INSERT INTO StoreSellsTbl VALUES (6260017005003, 72065);
 
 
@@ -7246,13 +7235,6 @@ INSERT INTO StoreSellsTbl VALUES (6260017003011, 72029);
 INSERT INTO StoreSellsTbl VALUES (6260017003017, 72029);
 INSERT INTO StoreSellsTbl VALUES (6260017003020, 72029);
 
-INSERT INTO StoreSellsTbl VALUES (6260010019008, 72029);
-INSERT INTO StoreSellsTbl VALUES (6260017002006, 72029);
-INSERT INTO StoreSellsTbl VALUES (6260017003003, 72029);
-INSERT INTO StoreSellsTbl VALUES (6260017003011, 72029);
-INSERT INTO StoreSellsTbl VALUES (6260017003017, 72029);
-INSERT INTO StoreSellsTbl VALUES (6260017003020, 72029);
-
 
 
 -- brazillian wax
@@ -7346,104 +7328,8 @@ INSERT INTO StoreSellsTbl VALUES (6260007001615, 72028);
 
 INSERT INTO StoreSellsTbl VALUES (6260010002002, 72028);
 INSERT INTO StoreSellsTbl VALUES (6260010003006, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010003012, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010007005, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010007008, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010007011, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010010006, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010010007, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010013002, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010013003, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010013004, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010015005, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010015006, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010016005, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010016011, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010017001, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010017007, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010017011, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260010019007, 72028);
-INSERT INTO StoreSellsTbl VALUES (626001800110,  72028);
-INSERT INTO StoreSellsTbl VALUES (626001800303,  72028);
-INSERT INTO StoreSellsTbl VALUES (6260006001008, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260004002008, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260028001004, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260028002062, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260019003051, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260023001001, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260023002008, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260023002013, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260023004033, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260023005035, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260024002003, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260024002004, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260024006007, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260024011002, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260005003016, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260002001002, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260002001004, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260002001017, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260002001020, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260002002005, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260002002019, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260002003054, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260027001019, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260025001039, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260014002074, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001380, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001485, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001486, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001489, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001490, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001492, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001500, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001503, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001505, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001507, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001511, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001515, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001522, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001523, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001524, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001525, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001526, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001527, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001528, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001530, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001531, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001535, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001539, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001541, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001550, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001552, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001563, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001564, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001566, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001581, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001583, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001585, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001589, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001592, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001593, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001594, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001603, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001608, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001612, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001613, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001614, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001615, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001617, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001620, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001621, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001624, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001636, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001639, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001646, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001648, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001649, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001656, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001662, 72028);
-INSERT INTO StoreSellsTbl VALUES (6260007001667, 72028);
+
+
 
 
 INSERT INTO StoreSellsTbl VALUES (6260010002002, 72038);
@@ -7779,13 +7665,10 @@ INSERT INTO StoreSellsTbl VALUES (6260010016003, 72044);
 -- hand mirror
 INSERT INTO StoreSellsTbl VALUES (6260006003003, 72026);
 INSERT INTO StoreSellsTbl VALUES (6260026001077, 72026);
-INSERT INTO StoreSellsTbl VALUES (6260026001077, 72026);
 INSERT INTO StoreSellsTbl VALUES (6260017003002, 72026);
 INSERT INTO StoreSellsTbl VALUES (6260017003003, 72026);
 
 INSERT INTO StoreSellsTbl VALUES (6260006003003, 72026);
-INSERT INTO StoreSellsTbl VALUES (6260026001077, 72026);
-INSERT INTO StoreSellsTbl VALUES (6260026001077, 72026);
 INSERT INTO StoreSellsTbl VALUES (6260017003002, 72026);
 INSERT INTO StoreSellsTbl VALUES (6260017003003, 72026);
 
@@ -7826,7 +7709,7 @@ INSERT INTO StoreSellsTbl VALUES (6260010016007, 72051);
 
 
 
-- jap
+-- jap
 
 INSERT INTO StoreSellsTbl VALUES ( 6260010006008, 72050);
 INSERT INTO StoreSellsTbl VALUES ( 6260010014008, 72050);
