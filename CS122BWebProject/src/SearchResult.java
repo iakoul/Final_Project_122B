@@ -28,6 +28,21 @@ public class SearchResult extends HttpServlet {
 		}
 		return false;
 	}
+	
+	private boolean isValidPaymentType(String payment) {
+		boolean isValid = false;
+		ArrayList<String> formsOfPayment = new ArrayList<String>();
+		formsOfPayment.add("visa");
+		formsOfPayment.add("mastercard");
+		formsOfPayment.add("discover");
+		formsOfPayment.add("amex");
+		formsOfPayment.add("paypal");
+		formsOfPayment.add("venmo");
+		if(formsOfPayment.contains(payment)) {
+			isValid = true;
+		}
+		return isValid;
+	}
 
 	private String createQuery(String business, String city, String payment, String item, double price, int results, int page, int ascItem, int ascType, int ascPrice) {
 		String query = "SELECT m.merchID, m.merchName, m.merchType, m.merchPrice ";
@@ -58,14 +73,14 @@ public class SearchResult extends HttpServlet {
 			from += "JOIN PlazaTbl p ON s.plazaID = p.plazaID JOIN CityTbl c ON p.cityID = c.cityID ";
 			where += (isStringEmpty(where) ? "" : "AND") + " c.cityName LIKE ? ";
 		}
-		if(!isStringEmpty(payment)) {
+		if(!isStringEmpty(payment) && isValidPaymentType(payment.toLowerCase())) {
 			if(!joinedStoreTable) {
 				from += JOIN_STORE_TABLE;
 				joinedStoreTable = true;
 			}
 			from += "JOIN AcceptsPaymentTbl a ON s.storeID = a.storeID ";
 			where += (isStringEmpty(where) ? "" : "AND");
-			switch(payment) {
+			switch(payment.toLowerCase()) {
 				case "visa":
 					where += " a.acceptsVisa = 1 ";
 					break;
