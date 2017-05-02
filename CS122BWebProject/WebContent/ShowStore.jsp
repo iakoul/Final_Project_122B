@@ -15,9 +15,10 @@
 	</div>
 	<h3>${business.name}</h3><br/>
 	Address: ${business.address}<br/>
+	City:  <a href="./city?id=${business.plaza.city.id}">${business.plaza.city.name}</a><br/>
+	Plaza: <a href="./plaza?id=${business.plaza.id}">${business.plaza.name}</a><br/>
 	Phone Number: ${business.phoneNumber}<br/>
 	Year Opened: ${business.yearOpened}<br/>
-	Plaza: <a href="./plaza?id=${business.plaza.id}">${business.plaza.name}</a><br/>
 
 	<table class="table">
 		<thead>

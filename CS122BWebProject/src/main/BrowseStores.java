@@ -117,10 +117,10 @@ public class BrowseStores extends HttpServlet {
 						
 						out.println("<div>\n");
 						out.println("Results ");
-						out.println("<a href=\"./browse?letter=" + request.getParameter("letter") + "&pg=1&show=20\">20</a> ");
-						out.println("<a href=\"./browse?letter=" + request.getParameter("letter") + "&pg=1&show=40\">40</a> ");
-						out.println("<a href=\"./browse?letter=" + request.getParameter("letter") + "&pg=1&show=60\">60</a>\n");
-						out.println("<a href=\"./browse?letter=" + request.getParameter("letter") + "&pg=1&show=80\">80</a>\n");
+						out.println("<a href=\"./browseStores?letter=" + request.getParameter("letter") + "&pg=1&show=20\">20</a> ");
+						out.println("<a href=\"./browseStores?letter=" + request.getParameter("letter") + "&pg=1&show=40\">40</a> ");
+						out.println("<a href=\"./browseStores?letter=" + request.getParameter("letter") + "&pg=1&show=60\">60</a>\n");
+						out.println("<a href=\"./browseStores?letter=" + request.getParameter("letter") + "&pg=1&show=80\">80</a>\n");
 						out.println("</div>\n");
 						
 						out.println("<div>");
