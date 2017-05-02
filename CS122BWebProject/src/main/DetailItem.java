@@ -92,7 +92,7 @@ public class DetailItem extends HttpServlet {
 					ResultSet results = pstmt.executeQuery();
 					out.println("<div style=\"padding-left: 5%; padding-top: 5%;\">\n");
 					if (!results.next()) {
-						out.println("<p>Item data is missing from database.</p>\n");
+						out.println("<p>This item is not available for purchase from any sellers.</p>\n");
 					} else {
 						out.println("<h1>Item name: " + results.getString(2) + "</h1>\n");
 						out.println("<p></b>Item type:</b> " + results.getString(3) + "</p>\n");
