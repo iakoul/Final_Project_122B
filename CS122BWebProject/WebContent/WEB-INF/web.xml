@@ -57,7 +57,7 @@
   	<servlet-name>checkout</servlet-name>
   	<servlet-class>main.Checkout</servlet-class>
   </servlet>
-  
+
 	<servlet>
       <servlet-name>advancedSearch</servlet-name>
       <servlet-class>SearchResult</servlet-class>
