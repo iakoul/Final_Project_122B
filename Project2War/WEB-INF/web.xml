@@ -24,6 +24,14 @@
       <servlet-name>storeDisplay</servlet-name>
       <servlet-class>StoreResult</servlet-class>
     </servlet>
+    <servlet>
+      <servlet-name>plazaDisplay</servlet-name>
+      <servlet-class>PlazaResult</servlet-class>
+    </servlet>
+    <servlet>
+      <servlet-name>cityDisplay</servlet-name>
+      <servlet-class>CityResult</servlet-class>
+    </servlet>
 
 
     <servlet-mapping>
@@ -37,6 +45,14 @@
     <servlet-mapping>
       <servlet-name>storeDisplay</servlet-name>
       <url-pattern>/store</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>plazaDisplay</servlet-name>
+      <url-pattern>/plaza</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>cityDisplay</servlet-name>
+      <url-pattern>/city</url-pattern>
     </servlet-mapping>
 
 

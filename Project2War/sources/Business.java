@@ -13,6 +13,13 @@ public class Business {
 		this.name = name;
 	}
 
+	public Business(long id, String name, String address, String phoneNumber) {
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
+	}
+
 	public Business(long id, String name, String address, String phoneNumber, int yearOpened, int typeId, Plaza plaza) {
 		this.id = id;
 		this.name = name;
