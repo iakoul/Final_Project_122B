@@ -8,6 +8,11 @@
 	<link rel="stylesheet" type="text/css" href="css/basicStyle.css">
 </head>
 <body>
+	<div style="text-align: right;">
+		<a href="./mainPage">Main Page</a>
+		<br>
+		<a href="./shoppingCart">Cart</a>
+	</div>
 	<h3>${item.name}</h3><br/>
 	Type: ${item.type}<br/>
 	Price: ${item.price}<br/>

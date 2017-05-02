@@ -8,6 +8,11 @@
 	<link rel="stylesheet" type="text/css" href="css/basicStyle.css">
 </head>
 <body>
+	<div style="text-align: right;">
+		<a href="./mainPage">Main Page</a>
+		<br>
+		<a href="./shoppingCart">Cart</a>
+	</div>
 	<h3>Results</h3>
 	Results per page: 
 	<c:forEach begin="1" end="4" var="i">

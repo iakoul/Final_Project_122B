@@ -6,6 +6,11 @@
 	<link rel="stylesheet" type="text/css" href="css/basicStyle.css">
 </head>
 <body>
+	<div style="text-align: right;">
+		<a href="./mainPage">Main Page</a>
+		<br>
+		<a href="./shoppingCart">Cart</a>
+	</div>
 	<form action="./search">
 		<h3>Advanced Search</h3>
 
