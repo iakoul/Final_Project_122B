@@ -18,7 +18,7 @@ import java.sql.*;
 
 public class StoreResult extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = SearchResult.isStringEmpty(request.getParameter("id")) ? -1 : Integer.parseInt(request.getParameter("id"));
+		long id = SearchResult.isStringEmpty(request.getParameter("id")) ? -1 : Long.parseLong(request.getParameter("id"));
 
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -44,7 +44,7 @@ public class StoreResult extends HttpServlet {
 								"WHERE s.storeID = ? ";
 
 			statement = connection.prepareStatement(storeQuery);
-			statement.setInt(1, id);
+			statement.setLong(1, id);
 			result = statement.executeQuery();
 			if(result.next()) {
 				long storeId = result.getLong("s.storeID");
@@ -65,7 +65,7 @@ public class StoreResult extends HttpServlet {
 							"WHERE s.storeID = ? ";
 
 			statement = connection.prepareStatement(itemQuery);
-			statement.setInt(1, id);
+			statement.setLong(1, id);
 
 			// execute query
 			result = statement.executeQuery();

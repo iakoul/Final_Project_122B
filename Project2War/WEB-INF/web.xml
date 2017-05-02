@@ -20,6 +20,11 @@
       <servlet-name>itemDisplay</servlet-name>
       <servlet-class>ItemResult</servlet-class>
     </servlet>
+    <servlet>
+      <servlet-name>storeDisplay</servlet-name>
+      <servlet-class>StoreResult</servlet-class>
+    </servlet>
+
 
     <servlet-mapping>
       <servlet-name>advancedSearch</servlet-name>
@@ -28,6 +33,10 @@
     <servlet-mapping>
       <servlet-name>itemDisplay</servlet-name>
       <url-pattern>/item</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>storeDisplay</servlet-name>
+      <url-pattern>/store</url-pattern>
     </servlet-mapping>
 
 
