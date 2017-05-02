@@ -51,7 +51,7 @@ public class AddToCart extends HttpServlet {
 		    	if (cart.containsKey(itemAndStore)) {
 		    		Integer currQty = (Integer)cart.get(itemAndStore);
 		    		
-		    		if (request.getParameter("update").equals("true")) {
+		    		if (request.getParameter("update") != null && request.getParameter("update").equals("true")) {
 		    			try {
 		    				currQty = Integer.parseInt(request.getParameter("qty"));
 		    				out.println("<p>Quantity updated. You will now be redirected. If you are not redirected, click the button. </p>\n");

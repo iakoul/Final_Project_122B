@@ -123,14 +123,14 @@ public class BrowseItems extends HttpServlet {
 						out.println("<div>");
 						out.println("<table style=\"text-align: left; width: 100%; border: 1px solid black;\">\n");
 						out.println("<tr>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">Item Name <a href=\"./browse?letter="
-								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=name\">Asc</a> <a href=\"./browse?letter="
+						out.println("<th style=\"border: 1px solid black; text-align: left;\">Item Name <a href=\"./browseItems?letter="
+								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=name\">Asc</a> <a href=\"./browseItems?letter="
 								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=name\">Desc</a> </th>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">Item Type  <a href=\"./browse?letter="
-								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=type\">Asc</a> <a href=\"./browse?letter="
+						out.println("<th style=\"border: 1px solid black; text-align: left;\">Item Type  <a href=\"./browseItems?letter="
+								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=type\">Asc</a> <a href=\"./browseItems?letter="
 								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=type\">Desc</a> </th>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">Item Price  <a href=\"./browse?letter="
-								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=price\">Asc</a> <a href=\"./browse?letter="
+						out.println("<th style=\"border: 1px solid black; text-align: left;\">Item Price  <a href=\"./browseItems?letter="
+								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=price\">Asc</a> <a href=\"./browseItems?letter="
 								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=price\">Desc</a> </th>\n");
 						out.println("</tr>");
 						

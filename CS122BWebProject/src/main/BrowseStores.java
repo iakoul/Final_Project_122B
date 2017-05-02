@@ -127,11 +127,11 @@ public class BrowseStores extends HttpServlet {
 						out.println("<div>");
 						out.println("<table style=\"text-align: left; width: 100%; border: 1px solid black;\">\n");
 						out.println("<tr>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">Business Name <a href=\"./browse?letter="
-						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=name\">Asc</a> <a href=\"./browse?letter="
+						out.println("<th style=\"border: 1px solid black; text-align: left;\">Business Name <a href=\"./browseStores?letter="
+						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=name\">Asc</a> <a href=\"./browseStores?letter="
 						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=name\">Desc</a> </th>\n");
-						out.println("<th style=\"border: 1px solid black; text-align: left;\">City  <a href=\"./browse?letter="
-						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=city\">Asc</a> <a href=\"./browse?letter="
+						out.println("<th style=\"border: 1px solid black; text-align: left;\">City  <a href=\"./browseStores?letter="
+						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=city\">Asc</a> <a href=\"./browseStores?letter="
 						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=city\">Desc</a> </th>\n");
 						out.println("<th style=\"border: 1px solid black; text-align: left;\">Visa</th>\n");
 						out.println("<th style=\"border: 1px solid black; text-align: left;\">MasterCard</th>\n");
