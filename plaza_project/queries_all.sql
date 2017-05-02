@@ -515,12 +515,7 @@ INSERT INTO MerchandiseTbl VALUES (72070, "Yoyo                    ",   null, "9
 INSERT INTO MerchandiseTbl VALUES (72071, "Zepplin Toy             ",   null, "99.99");
 INSERT INTO MerchandiseTbl VALUES (72072, "Zuccini                 ",   null, "99.99");
 
-INSERT INTO AcceptsPaymentTbl VALUES (6260017011034,  1, 0, 0, 0, 0, 0);
-INSERT INTO AcceptsPaymentTbl VALUES (6260017011033,  0, 1, 1, 0, 0, 0);
-INSERT INTO AcceptsPaymentTbl VALUES (6260017011032,  1, 1, 0, 1, 0, 0);
-INSERT INTO AcceptsPaymentTbl VALUES (62600090010669, 1, 1, 0, 1, 0, 0);
-INSERT INTO AcceptsPaymentTbl VALUES (6260017011035,  1, 1, 0, 1, 0, 0);
-INSERT INTO AcceptsPaymentTbl VALUES (6260017003002,  1, 1, 0, 1, 0, 0);
+
 
 INSERT INTO CityTbl VALUES (6260001 , "Artesia");
 INSERT INTO CityTbl VALUES (6260002 , "Brea");
@@ -551,7 +546,7 @@ INSERT INTO CityTbl VALUES (6260026, "Santa Monica");
 INSERT INTO CityTbl VALUES (6260027, "Tustin");
 INSERT INTO CityTbl VALUES (6260028, "West Covina");
 
-#Irvine
+-- Irvine
 INSERT INTO PlazaTbl VALUES (6260010001, "Alton Retail Center",                6260010);
 INSERT INTO PlazaTbl VALUES (6260010002, "Alton Square",                       6260010);
 INSERT INTO PlazaTbl VALUES (6260010003, "Arbor Village Shopping Center",      6260010);
@@ -745,7 +740,7 @@ INSERT INTO StoreTbl VALUES (6260010019009,     "Pialago Cleaners",             
 INSERT INTO StoreTbl VALUES (6260010019010,     "Simply Orthodontics",                                      "6246 Irvine Blvd",                                         "(949) 264-3314",       null, 0014,     6260010019, 170) ;  -- med, ortho
 INSERT INTO StoreTbl VALUES (6260010019011,     "WePlay Music Academy",                                     "6460 Irvine Blvd",                                         "(949) 396-6907",       null, 0009,     6260010019, 171) ;  -- education, music
 
-#Northridge
+-- Northridge
 
 INSERT INTO PlazaTbl VALUES (6260018001, "Lindley Ave Strip",    6260018);
 INSERT INTO PlazaTbl VALUES (6260018002, "Parthenia St Strip",   6260018);
@@ -847,7 +842,7 @@ INSERT INTO StoreTbl VALUES ( 626001800431, "Small Island",                     
 INSERT INTO StoreTbl VALUES ( 626001800432, "Sun Sushi Bar & Japanese Cuisine",                             "8920 Reseda Blvd",                                         "(818) 882-1465",       null, null,     6260018004, null) ;  -- wushi
 INSERT INTO StoreTbl VALUES ( 626001800433, "Valley Skate & Surf",                                          "16914 Parthenia St",                                       "(818) 894-3310",       null, null,     6260018004, null) ;
 
-#Claremont
+-- Claremont
 
 INSERT INTO PlazaTbl VALUES ( 6260006001, "Claremont Promenade Shopping Center",    6260006 );
 INSERT INTO PlazaTbl VALUES ( 6260006002, "Claremont Village Square",               6260006 );
@@ -933,7 +928,7 @@ INSERT INTO StoreTbl VALUES ( 6260006005013,   "Sticker World",                 
 INSERT INTO StoreTbl VALUES ( 6260006005014,   "VM Tech",                                                   "14122 Central Ave",                                        "(909) 902-5550",       null, null,     6260006005, null) ;  --     IT Services & Computer Repair
 INSERT INTO StoreTbl VALUES ( 6260006005015,   "Allen’s Boots",                                             "10360 Central Ave",                                        "(909) 624-9514",       null, null,     6260006005, null) ;  --     Shoe Stores
 
-#Cerritos
+-- Cerritos
 INSERT INTO PlazaTbl VALUES ( 6260004001, "Los Cerritos Center",       6260004 );
 INSERT INTO PlazaTbl VALUES ( 6260004002, "Plaza 183",                 6260004 );
 INSERT INTO PlazaTbl VALUES ( 6260004003, "South Street Strip",        6260004 );
@@ -1005,7 +1000,7 @@ INSERT INTO StoreTbl VALUES ( 6260004005008,   "Belly Bombz Kitchen",           
 INSERT INTO StoreTbl VALUES ( 6260004005009,   "Taste Tea Cafe",                                            "18858 Norwalk Blvd",                                       "(562) 865-0654",       null, null,     6260004005, null) ;  --          Cafes, Noodles, Desserts
 INSERT INTO StoreTbl VALUES ( 6260004005010,   "King Shabu Shabu",                                          "11328 South St",                                           "(562) 865-5016",       null, null,     6260004005, null) ;  --          Japanese
 
-#West Covina
+-- West Covina
 
 INSERT INTO PlazaTbl VALUES ( 6260028001, "Claremont Promenade Shopping Center",    6260028 );
 INSERT INTO PlazaTbl VALUES ( 6260028002, "Others",    6260028 );
@@ -1131,7 +1126,7 @@ INSERT INTO StoreTbl VALUES ( 6260028002087,   "WorldTime Watch Service Center",
 INSERT INTO StoreTbl VALUES ( 6260028002088,   "VM Tech",                                                   "14122 Central Ave",                                        "(909) 902-5550",       null, null,     6260028002, null) ;  --     IT Services & Computer Repair
 INSERT INTO StoreTbl VALUES ( 6260028002089,   "Appliance Parts & Service Center",                          "303 E Rowland St",                                         "(626) 331-7255",       null, null,     6260028002, null) ;  --     Appliances, Appliances & Repair
 
-#Ontario
+-- Ontario
 
 INSERT INTO PlazaTbl VALUES ( 6260019001, "Ontario Mills",              6260019 );
 INSERT INTO PlazaTbl VALUES ( 6260019002, "Archibald Town Center",      6260019 );
@@ -1260,7 +1255,7 @@ INSERT INTO StoreTbl VALUES ( 6260019003092,   "Taco Hut",                      
 INSERT INTO StoreTbl VALUES ( 6260019003093,   "The Deli",                                                  "9671 Foothill Blvd",                                       "(909) 989-8122",       null, null,     6260019003, null) ;  --          Delis, Hot Dogs, Sandwiches
 INSERT INTO StoreTbl VALUES ( 6260019003094,   "The Cajun Crab",                                            "400 Auto Center Dr",                                       "(909) 626-7888",       null, null,     6260019003, null) ;  --          Seafood, Cajun/Creole
 
-#Mission Viejo
+-- Mission Viejo
 
 
 INSERT INTO PlazaTbl VALUES ( 6260015001, "Others",              6260015 );
@@ -1365,7 +1360,7 @@ INSERT INTO StoreTbl VALUES ( 6260015001097,   "Bahar Restaurant",              
 INSERT INTO StoreTbl VALUES ( 6260015001098,   "NY Deli Case",                                              "28570 Marguerite Pkwy",                                    "(949) 364-0321",       null, null,     6260015001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260015001099,   "Olamendi’s Express Mission Viejo",                          "27775 Santa Margarita Pkwy",                               "(949) 768-8991",       null, null,     6260015001, null) ;
 
-#Lake Forest
+-- Lake Forest
 
 
 INSERT INTO PlazaTbl VALUES ( 6260012001, "Others",              6260012 );
@@ -1470,7 +1465,7 @@ INSERT INTO StoreTbl VALUES ( 6260012001095,   "South Coast Trophy & Engraving",
 INSERT INTO StoreTbl VALUES ( 6260012001096,   "Amm’s Tailoring & Fashion",                                 "22741 Lambert St",                                         "(949) 707-1900",       null, null,     6260012001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260012001097,   "The Bike Company",                                          "21098 Bake Pkwy",                                          "(949) 470-1099",       null, null,     6260012001, null) ;
 
-#Artesia
+-- Artesia
 
 INSERT INTO PlazaTbl VALUES ( 6260001001, "Pioneer Artesia Center",       6260001 );
 INSERT INTO PlazaTbl VALUES ( 6260001002, "Pioneer Blvd Strip",           6260001 )
@@ -1478,11 +1473,11 @@ INSERT INTO PlazaTbl VALUES ( 6260001003, "Others",                       626000
 INSERT INTO StoreTbl VALUES ( 6260001001001,   "Us Donut",                                                  "11809 Artesia Blvd",                                       "(562) 924-0312",       null, null,     6260001001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260001001002,   "Mabuhay Kitchen",                                           "12233 Artesia Blvd",                                       "(562) 924-4600",       null, null,     6260001001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260001001003,   "Cho Dang Tofu Restaurant",                                  "12245 Artesia Blvd",                                       "(562) 924-6099",       null, null,     6260001001, null) ;  -- rst
-INSERT INTO StoreTbl VALUES ( 6260001001004,   "T Palm Jewelers",                                           "17216 Norwalk Blvd",                                       "(562) 809-8198",       null, 0013,     6260001001, null) ;  jewels
+INSERT INTO StoreTbl VALUES ( 6260001001004,   "T Palm Jewelers",                                           "17216 Norwalk Blvd",                                       "(562) 809-8198",       null, 0013,     6260001001, null) ;  -- jewels
 INSERT INTO StoreTbl VALUES ( 6260001001005,   "Valerio's City Bakery",                                     "17210 Norwalk Blvd",                                       "(562) 402-3244",       null, null,     6260001001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260001001006,   "Red Ribbon Bakeshop",                                       "17202 Norwalk Blvd",                                       "(562) 865-0296",       null, null,     6260001001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260001001007,   "Kape Republik",                                             "17206 Norwalk Blvd",                                       "(562) 865-5000",       null, null,     6260001001, null) ;
-INSERT INTO StoreTbl VALUES ( 6260001001008,   "Polly's Pies Restaurant & Bakery",                          "17198 Norwalk Blvd",                                       "(562) 402-2758",       null, null,     6260001001, null) ;  rst
+INSERT INTO StoreTbl VALUES ( 6260001001008,   "Polly's Pies Restaurant & Bakery",                          "17198 Norwalk Blvd",                                       "(562) 402-2758",       null, null,     6260001001, null) ;  -- rst
 INSERT INTO StoreTbl VALUES ( 6260001001009,   "Falafel Shack",                                             "12206 Artesia Blvd",                                       "(562) 402-7222",       null, null,     6260001001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260001001010,   "Cafe Maji",                                                 "12232 Artesia Blvd",                                       "(562) 281-9511",       null, null,     6260001001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260001001011,   "Bruster's Ice Cream Parlor",                                "12246 Artesia Blvd",                                       "(562) 865-3055",       null, null,     6260001001, null) ;
@@ -1624,7 +1619,7 @@ INSERT INTO StoreTbl VALUES ( 6260001003143,   "Kariya Shabu Shabu & BBQ",      
 INSERT INTO StoreTbl VALUES ( 6260001003144,   "Shahnawaz Halal Tandoori",                                  "18728 Pioneer Blvd",                                       "(562) 402-7443",       null, null,     6260001003, null) ;
 INSERT INTO StoreTbl VALUES ( 6260001003145,   "Blintz Cafe At Quest",                                      "11976 Artesia Blvd",                                       "(562) 246-0217",       null, null,     6260001003, null) ;
 
-#Riverside
+-- Riverside
 
 INSERT INTO PlazaTbl VALUES ( 6260023001, "La Sierra Plaza",    6260023 );
 INSERT INTO PlazaTbl VALUES ( 6260023002, "Westgate Plaza",     6260023 );
@@ -1783,7 +1778,7 @@ INSERT INTO StoreTbl VALUES ( 6260023006141,   "PC House",                      
 INSERT INTO StoreTbl VALUES ( 6260023006142,   "Active IT Solutions",                                       "11810 Pierce St",                                          "(951) 742-8020",       null, null,     6260023006, null) ;
 INSERT INTO StoreTbl VALUES ( 6260023006143,   "Corona Rose Flowers & Gifts",                               "844 W 6th St",                                             "(800) 827-8178",       null, null,     6260023006, null) ;
 
-#Rowland Heightts
+-- Rowland Heightts
 
 INSERT INTO PlazaTbl VALUES ( 6260024001,   "HK2 Food District",                   6260024 ) ;
 INSERT INTO PlazaTbl VALUES ( 6260024002,   "Crystal and Ruby Plaza",              6260024 ) ;
@@ -1952,7 +1947,7 @@ INSERT INTO StoreTbl VALUES ( 6260024011005,   "Discount Cleaners",             
 INSERT INTO StoreTbl VALUES ( 6260024011006,   "Lohas Fresh Mart",                                          "1725 Nogales St #102",                                     "",                     null, null,     6260024011, null) ;
 INSERT INTO StoreTbl VALUES ( 6260024011007,   "Thirsty Cow",                                               "1725 Nogales St",                                          "",                     null, null,     6260024011, null) ;
 
-#Chino Hills -- -----------
+-- Chino Hills -----------
 
 INSERT INTO PlazaTbl VALUES ( 6260005001,   "Payne Ranch Center",                       6260005 ) ;
 INSERT INTO PlazaTbl VALUES ( 6260005002,   "Crossroads Entertainment Center",          6260005 ) ;
@@ -2075,7 +2070,7 @@ INSERT INTO StoreTbl VALUES ( 6260005004044,   "Hime Sushi & Roll",             
 INSERT INTO StoreTbl VALUES ( 6260005004045,   "PapaChino’s Grill & Greens",                                "14501 Ramona Ave",                                         "(909) 393-9904",       null, null,     6260005004, null) ;  -- rst
 INSERT INTO StoreTbl VALUES ( 6260005004046,   "The Pub At Chino Hills",                                    "5771 Pine Ave",                                            "(909) 597-2224",       null, null,     6260005004, null) ;
 
-#Brea
+-- Brea
 
 INSERT INTO PlazaTbl VALUES ( 6260002001,   "Brea Downtown",                      6260002 )
 INSERT INTO PlazaTbl VALUES ( 6260002002,   "Other Local Businesses",             6260002 )
@@ -2238,7 +2233,7 @@ INSERT INTO StoreTbl VALUES ( 6260002003103,   "SUO Boutique",                  
 INSERT INTO StoreTbl VALUES ( 6260002003104,   "Dice House Games",                                          "2493 E Chapman Ave",                                       "(714) 871-6494",       null, null,     6260002003, null) ;
 INSERT INTO StoreTbl VALUES ( 6260002003105,   "Clock Man The",                                             "205 W Commonwealth Ave",                                   "(714) 578-0089",       null, null,     6260002003, null) ;
 
-#Tustin
+-- Tustin
 
 INSERT INTO PlazaTbl VALUES ( 6260027001,   "Local Businesses",  6260027) ;
 INSERT INTO PlazaTbl VALUES ( 6260027002,   "Local Resuraunts",  6260027) ;
@@ -2381,7 +2376,7 @@ INSERT INTO StoreTbl VALUES ( 6260027002052,   "EZ-INK Printing",               
 INSERT INTO StoreTbl VALUES ( 6260027002053,   "Image Grafics",                                             "1380 E Edinger Ave",                                       "(714) 388-4044",       null, null,     6260027002, null) ;
 INSERT INTO StoreTbl VALUES ( 6260027002054,   "OC Business Cards",                                         "151 N Tustin Ave",                                         "(714) 794-9275",       null, null,     6260027002, null) ;
 
-#Orange
+-- Orange
 
 INSERT INTO PlazaTbl VALUES ( 6260020001,   "Local Restaurants", 6260020 );    -- rst
 INSERT INTO PlazaTbl VALUES ( 6260020002,   "Local Businesses",  6260020 );
@@ -2507,13 +2502,13 @@ INSERT INTO StoreTbl VALUES ( 6260020002047,   "Nevada Mineral & Book Company", 
 INSERT INTO StoreTbl VALUES ( 6260020002048,   "Scuba World",                                               "1706 N Tustin St",                                         "(714) 998-6382",       null, null,     6260020002, null) ;
 INSERT INTO StoreTbl VALUES ( 6260020002049,   "K&L Wide Format Digital Printing",                          "1080 N Batavia St",                                        "(714) 313-0164",       null, null,     6260020002, null) ;
 
-#Santa Ana
+-- Santa Ana
 
 INSERT INTO PlazaTbl VALUES ( 6260025001,   "Local Restaurants", 6260025 );    -- rst
 INSERT INTO PlazaTbl VALUES ( 6260025002,   "Local Businesses",  6260025 );
 
 INSERT INTO StoreTbl VALUES ( 6260025001001,   "Benjies",                                                   "1828 N Tustin Ave",                                        "(714) 541-6263",       null, null,     6260025001, null) ;
-INSERT INTO StoreTbl VALUES ( 6260025001002,   "Two Fishermen Grill",                                       "2321 E 4th St Ste G",                                      "(714) 648-0605",       null, null,     6260025001, null) ;  rst
+INSERT INTO StoreTbl VALUES ( 6260025001002,   "Two Fishermen Grill",                                       "2321 E 4th St Ste G",                                      "(714) 648-0605",       null, null,     6260025001, null) ;  -- rst
 INSERT INTO StoreTbl VALUES ( 6260025001003,   "Soltani Restaurant",                                        "610 E 1st St Ste A",                                       "(714) 558-2000",       null, null,     6260025001, null) ;  -- rst
 INSERT INTO StoreTbl VALUES ( 6260025001004,   "C4 Deli",                                                   "200 N Broadway",                                           "(714) 263-1555",       null, null,     6260025001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260025001005,   "Eqeko Peruvian Cuisine",                                    "309 W 3rd St",                                             "(714) 547-7868",       null, null,     6260025001, null) ;
@@ -2543,20 +2538,20 @@ INSERT INTO StoreTbl VALUES ( 6260025001028,   "Antonello Ristorante and Enoteca
 INSERT INTO StoreTbl VALUES ( 6260025001029,   "Crave Restaurant",                                          "410 W 4th St",                                             "(714) 907-0063",       null, null,     6260025001, null) ;  -- rst
 INSERT INTO StoreTbl VALUES ( 6260025001030,   "Chicken Maison",                                            "3332 S Bristol St",                                        "(714) 434-0244",       null, null,     6260025001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260025001031,   "Kebab Place",                                               "306 W 4th St",                                             "(714) 953-8444",       null, null,     6260025001, null) ;
-INSERT INTO StoreTbl VALUES ( 6260025001032,   "Pho Co Ha Noi",                                             "2709 Westminster Ave",                                     "(714) 852-3989",       null, null,     6260025001, null) ;  rst, viet --- x
+INSERT INTO StoreTbl VALUES ( 6260025001032,   "Pho Co Ha Noi",                                             "2709 Westminster Ave",                                     "(714) 852-3989",       null, null,     6260025001, null) ;  -- rst, viet --- x
 INSERT INTO StoreTbl VALUES ( 6260025001033,   "Casa Oaxaca",                                               "3317 W 1st St",                                            "(714) 554-0905",       null, null,     6260025001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260025001034,   "Thai Way",                                                  "648 S Harbor Blvd",                                        "(714) 775-7900",       null, null,     6260025001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260025001035,   "Trieu Chau Restaurant",                                     "4401 W 1st St",                                            "(714) 775-1536",       null, null,     6260025001, null) ;  -- rst
 INSERT INTO StoreTbl VALUES ( 6260025001036,   "Sushi Murasaki",                                            "2901 W MacArthur Blvd",                                    "(714) 241-1000",       null, null,     6260025001, null) ;  -- wushi
-INSERT INTO StoreTbl VALUES ( 6260025001037,   "Pho Tau Bay Ltt Restaurant",                                "3610 W 1st St",                                            "(714) 531-6634",       null, null,     6260025001, null) ;  rst, viet --- x    -- rst
+INSERT INTO StoreTbl VALUES ( 6260025001037,   "Pho Tau Bay Ltt Restaurant",                                "3610 W 1st St",                                            "(714) 531-6634",       null, null,     6260025001, null) ;  -- rst, viet --- x    -- rst
 INSERT INTO StoreTbl VALUES ( 6260025001038,   "Taqueria El Zamorano",                                      "925 W Warner Ave",                                         "(714) 884-4073",       null, null,     6260025001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260025001039,   "Olé Spain Delishop",                                        "136 W Macarthur Bvd",                                      "(714) 966-1087",       null, 0008,     6260025001, null) ;  -- cosm
 INSERT INTO StoreTbl VALUES ( 6260025001040,   "The Olde Ship",                                             "1120 W 17th St",                                           "(714) 550-6700",       null, null,     6260025001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260025001041,   "Taqueria Zamora",                                           "3121 S Main St",                                           "(714) 557-0907",       null, null,     6260025001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260025001042,   "MasalaCraft Indian Cuisine",                                "2 Hutton Center Dr",                                       "(714) 696-6272",       null, null,     6260025001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260025001043,   "La Chiquita Restaurant",                                    "906 E Washington Ave",                                     "(714) 543-8787",       null, null,     6260025001, null) ;  -- rst
-INSERT INTO StoreTbl VALUES ( 6260025001044,   "828 Pho",                                                   "220 W 1st St",                                             "(714) 568-0338",       null, null,     6260025001, null) ;  rst, viet --- x
-INSERT INTO StoreTbl VALUES ( 6260025001045,   "El Pico de Gallo Grill",                                    "901 W 17th St",                                            "(714) 953-7448",       null, null,     6260025001, null) ;  rst
+INSERT INTO StoreTbl VALUES ( 6260025001044,   "828 Pho",                                                   "220 W 1st St",                                             "(714) 568-0338",       null, null,     6260025001, null) ;  -- rst, viet --- x
+INSERT INTO StoreTbl VALUES ( 6260025001045,   "El Pico de Gallo Grill",                                    "901 W 17th St",                                            "(714) 953-7448",       null, null,     6260025001, null) ;  -- rst
 INSERT INTO StoreTbl VALUES ( 6260025001046,   "Cowgirls Cafe",                                             "1720 S Grand Ave",                                         "(714) 542-8877",       null, null,     6260025001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260025001047,   "Colima Mexican & Seafood Restaurant",                       "130 N Fairview St",                                        "(714) 836-1254",       null, null,     6260025001, null) ;  -- rst
 INSERT INTO StoreTbl VALUES ( 6260025001048,   "Clever Leaf Hong Kong BBQ",                                 "3751 S Harbor Blvd",                                       "(714) 540-1788",       null, null,     6260025001, null) ;  -- wbq
@@ -2570,7 +2565,7 @@ INSERT INTO StoreTbl VALUES ( 6260025001055,   "Burritos La Palma - Santa Ana", 
 INSERT INTO StoreTbl VALUES ( 6260025001056,   "Gail’s Grand Ave Lunch Co",                                 "2096 S Grand Ave",                                         "(714) 754-6933",       null, null,     6260025001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260025001057,   "Rockfire Grill",                                            "1945 E17th St",                                            "(714) 564-0545",       null, null,     6260025001, null) ;  -- rst
 
-INSERT INTO StoreTbl VALUES ( 6260025002001,   "South Coast Jeweler",                                       "3723 S Bristol St",                                        "(714) 540-6132",       null, null,     6260025002, null) ;  jewels
+INSERT INTO StoreTbl VALUES ( 6260025002001,   "South Coast Jeweler",                                       "3723 S Bristol St",                                        "(714) 540-6132",       null, null,     6260025002, null) ;  -- jewels
 INSERT INTO StoreTbl VALUES ( 6260025002002,   "Everyday Flowers",                                          "1609 E McFadden Ave",                                      "(714) 714-0306",       null, null,     6260025002, null) ;
 INSERT INTO StoreTbl VALUES ( 6260025002003,   "Samy’s Camera",                                             "3309 S Bristol St",                                        "(714) 557-9400",       null, null,     6260025002, null) ;
 INSERT INTO StoreTbl VALUES ( 6260025002004,   "Orange County Telescope",                                   "2216 N Main St",                                           "(760) 529-1414",       null, null,     6260025002, null) ;
@@ -2630,7 +2625,7 @@ INSERT INTO StoreTbl VALUES ( 6260025002057,   "CNC Coin Vault",                
 INSERT INTO StoreTbl VALUES ( 6260025002058,   "Pacific Coast Art & Frame",                                 "727 N Tustin St",                                          "(714) 744-6011",       null, null,     6260025002, null) ;  -- art
 INSERT INTO StoreTbl VALUES ( 6260025002059,   "Adobe Print",                                               "1921 Carnegie St",                                         "(714) 352-9992",       null, null,     6260025002, null) ;
 
-#LA -- ------------
+-- LA ------------
 
 INSERT INTO PlazaTbl VALUES ( 6260014001,      "Downtown LA",             6260014 );
 INSERT INTO PlazaTbl VALUES ( 6260014002,      "Other Local Restaurants", 6260014 );    -- rst
@@ -2845,7 +2840,7 @@ INSERT INTO StoreTbl VALUES ( 6260014002136,   "Pac 8 Orchids",                 
 INSERT INTO StoreTbl VALUES ( 6260014002137,   "One Hour Photo Avenue",                                     "6115 Santa Monica Blvd",                                   "(323) 465-0422",       null, null,     6260014002, null) ;
 INSERT INTO StoreTbl VALUES ( 6260014002138,   "The Racket Doctor",                                         "3214 Glendale Blvd",                                       "(323) 663-6601",       null, 0014,     6260014002, null) ;  -- med
 
-#CORONA
+-- CORONA
 
 INSERT INTO PlazaTbl VALUES ( 6260007001,   "Others", 6260007 );
 
@@ -3675,7 +3670,7 @@ INSERT INTO StoreTbl VALUES ( 6260007001823,   "Proper Status Hair Salon",      
 INSERT INTO StoreTbl VALUES ( 6260007001824,   "Palomares Extentions",                                      "Rich Springs Way",                                         "(951) 570-7488",       null, null,     6260007001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260007001825,   "Hair Bank",                                                 "27144 Calendula",                                          "(951) 623-3600",       null, null,     6260007001, null) ;
 
-# PASADENA
+--  PASADENA
 
 INSERT INTO PlazaTbl VALUES ( 6260021001,   "Others", 6260021 );
 INSERT INTO StoreTbl VALUES ( 6260021001001,   "HM Warm Spa",                                               "1009 E Green St  Pasadena, CA 91106",                      "(626) 589-9690",       null, null,     6260021001, null) ;  -- cosm
@@ -4296,7 +4291,7 @@ INSERT INTO StoreTbl VALUES ( 6260021001615,   "Blu Elefant Cafe",              
 INSERT INTO StoreTbl VALUES ( 6260021001616,   "Edwin Mills by Equator",                                    "22 Mills Pl",                                              "(626) 564-8656",       null, null,     6260021001, null) ;
 
 
-#LONG BEACH
+-- LONG BEACH
 
 INSERT INTO PlazaTbl VALUES ( 6260013001,   "Others", 6260013 );
 
@@ -4888,7 +4883,7 @@ INSERT INTO StoreTbl VALUES ( 6260013001585,   "A2Z Cell Phone & Computer Repair
 INSERT INTO StoreTbl VALUES ( 6260013001586,   "Morey’s Music Store Inc",                                   "4834 Woodruff Ave  Lakewood, CA 90713",                    "(562) 420-9532",       null, null,     6260013001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260013001587,   "Mondial Tailor & Dress Makers",                             "1700 E Anaheim St  Long Beach, CA 90813",                  "(562) 338-2577",       null, null,     6260013001, null) ;
 
-#SANTA MONICA
+-- SANTA MONICA
 INSERT INTO PlazaTbl VALUES ( 6260026001,   "Others", 6260026 );
 
 INSERT INTO StoreTbl VALUES ( 6260026001001,   "Box Brothers",                                              "2113 Wilshire Blvd",                                       "(310) 453-1532",       null, null,     6260026001, null) ;
@@ -5654,7 +5649,7 @@ INSERT INTO StoreTbl VALUES ( 6260026001761,   "Chipotle Mexican Grill",        
 INSERT INTO StoreTbl VALUES ( 6260026001762,   "Mariscos Camino Real",                                      "31st St & Donald Douglas Loop N",                          "(323) 369-6270",       null, null,     6260026001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260026001763,   "Chez Salim Chicken and Rice Food Truck",                    "2700 Pennsylvania Ave",                                    "(925) 350-2006",       null, null,     6260026001, null) ;
 
-#HUNINGTON BEACH-- beach
+-- HUNINGTON BEACH-- beach
 
 
 INSERT INTO PlazaTbl VALUES ( 6260009001,   "Others", 6260009 );
@@ -6886,7 +6881,7 @@ INSERT INTO StoreTbl VALUES ( 62600090011224,   "Shoreline Hookah Lounge",      
 INSERT INTO StoreTbl VALUES ( 62600090011225,   "Filling Post Pub",                                         "16612 Beach Blvd",                                         "(714) 848-0669",       null, null,     6260009001, null) ;
 INSERT INTO StoreTbl VALUES ( 62600090011226,   "Sultana Ultra Hookah Lounge",                              "18582 Beach Blvd",                                         "(909) 754-5611",       null, null,     6260009001, null) ;
 
-#NEWPORT BEACCH
+-- NEWPORT BEACCH
 
 INSERT INTO PlazaTbl VALUES ( 6260017001,   "Bayside Shopping Center",                    6260017) ;
 INSERT INTO PlazaTbl VALUES ( 6260017002,   "Corona del Mar Plaza",                       6260017) ;
@@ -7162,7 +7157,7 @@ INSERT INTO StoreSellsTbl VALUES (6260024009007, 72054);
 INSERT INTO StoreSellsTbl VALUES (6260005003001, 72054);
 INSERT INTO StoreSellsTbl VALUES (6260005003018, 72054);
 
-- apple pie
+-- apple pie
 
 INSERT INTO StoreSellsTbl VALUES ( 6260010003002, 72007 );
 INSERT INTO StoreSellsTbl VALUES ( 6260028002036, 72007 );
@@ -8011,13 +8006,20 @@ INSERT INTO StoreSellsTbl VALUES ( 62600090010609,72068);
 
 -- craft
 
-INSERT INTO StoreTbl VALUES ( 6260010014002,  72069);
-INSERT INTO StoreTbl VALUES ( 6260027002051,  72069);
-INSERT INTO StoreTbl VALUES ( 6260025001042,  72069);
-INSERT INTO StoreTbl VALUES ( 6260007001470,  72069);
-INSERT INTO StoreTbl VALUES ( 6260021001178,  72069);
-INSERT INTO StoreTbl VALUES ( 6260013001543,  72069);
-INSERT INTO StoreTbl VALUES ( 62600090010588, 72069);
-INSERT INTO StoreTbl VALUES ( 6260017003014,  72069);
+INSERT INTO StoreSellsTbl VALUES ( 6260010014002,  72069);
+INSERT INTO StoreSellsTbl VALUES ( 6260027002051,  72069);
+INSERT INTO StoreSellsTbl VALUES ( 6260025001042,  72069);
+INSERT INTO StoreSellsTbl VALUES ( 6260007001470,  72069);
+INSERT INTO StoreSellsTbl VALUES ( 6260021001178,  72069);
+INSERT INTO StoreSellsTbl VALUES ( 6260013001543,  72069);
+INSERT INTO StoreSellsTbl VALUES ( 62600090010588, 72069);
+INSERT INTO StoreSellsTbl VALUES ( 6260017003014,  72069);
 
 
+
+INSERT INTO AcceptsPaymentTbl VALUES (6260017011034,  1, 0, 0, 0, 0, 0);
+INSERT INTO AcceptsPaymentTbl VALUES (6260017011033,  0, 1, 1, 0, 0, 0);
+INSERT INTO AcceptsPaymentTbl VALUES (6260017011032,  1, 1, 0, 1, 0, 0);
+INSERT INTO AcceptsPaymentTbl VALUES (62600090010669, 1, 1, 0, 1, 0, 0);
+INSERT INTO AcceptsPaymentTbl VALUES (6260017011035,  1, 1, 0, 1, 0, 0);
+INSERT INTO AcceptsPaymentTbl VALUES (6260017003002,  1, 1, 0, 1, 0, 0);
