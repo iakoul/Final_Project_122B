@@ -102,7 +102,7 @@ public class AddToCart extends HttpServlet {
 	    	out.println("</body>\n</html>");
 	    } else {
 	    	out.println("</body>\n</html>");
-	    	response.setHeader("Refresh", "3; URL=./index.html");
+	    	response.setHeader("Refresh", "3; URL=\"" + request.getHeader("referer") + "\"");//./index.html");
 	    }
 	}
 

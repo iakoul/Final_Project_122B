@@ -48,7 +48,7 @@ public class DetailItem extends HttpServlet {
 				+ "</title>\n"
 				+ "</head>\n");
 		out.println("<script language=\"javascript\">\n");
-		out.println("window.onpageshow = function(event) {if (event.persisted) {window.location.reload() }};");
+		out.println("window.onpageshow = function(event) {if (event.persisted) {parent.window.location.reload(true) }};");
 		out.println("</script>\n");
 
 		out.println("<body bgcolor=\"#FDF5E6\">\n");
