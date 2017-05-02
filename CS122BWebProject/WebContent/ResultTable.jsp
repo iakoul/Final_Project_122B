@@ -15,6 +15,7 @@
 	</div>
 	<h3>Results</h3>
 	Results per page: 
+	<a href="./search?business=${param.business}&city=${param.city}&payment=${param.payment}&item=${param.item}&price=${param.price}&results=1&page=1&ascItem=${param.ascItem}&ascType=${param.ascType}&ascPrice=${param.ascPrice}">1</a>
 	<c:forEach begin="1" end="4" var="i">
 		<a href="./search?business=${param.business}&city=${param.city}&payment=${param.payment}&item=${param.item}&price=${param.price}&results=${i*20}&page=1&ascItem=${param.ascItem}&ascType=${param.ascType}&ascPrice=${param.ascPrice}">${i*20}</a> 
 	</c:forEach>
