@@ -108,6 +108,27 @@ public class BrowseStores extends HttpServlet {
 							limit = Integer.parseInt(request.getParameter("show"));
 						}
 						
+						String orderBy;
+						if (request.getParameter("orderby") != null) {
+							orderBy = request.getParameter("orderby");
+						} else {
+							orderBy = "name";
+						}
+						
+						String orderIn;
+						if (request.getParameter("orderin") != null) {
+							orderIn = request.getParameter("orderin");
+						} else {
+							orderIn = "asc";
+						}
+						
+						String pgNum;
+						if (request.getParameter("pg") != null) {
+							pgNum = (String)request.getParameter("pg");
+						} else {
+							pgNum = "1";
+						}
+						
 						out.println("<h1 align=\"center\">Browsing stores starting with letter " + request.getParameter("letter") + "</h1>\n");
 						out.println("<h1 align=\"center\">There are a total of " + storeCount.toString() + " starting with that letter</h1>\n");
 						
@@ -128,11 +149,11 @@ public class BrowseStores extends HttpServlet {
 						out.println("<table style=\"text-align: left; width: 100%; border: 1px solid black;\">\n");
 						out.println("<tr>\n");
 						out.println("<th style=\"border: 1px solid black; text-align: left;\">Business Name <a href=\"./browseStores?letter="
-						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=name\">Asc</a> <a href=\"./browseStores?letter="
-						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=name\">Desc</a> </th>\n");
+						+ request.getParameter("letter") + "&pg=" + pgNum + "&show=" + limit.toString() + "&orderin=asc&orderby=name\">Asc</a> <a href=\"./browseStores?letter="
+						+ request.getParameter("letter") + "&pg=" + pgNum + "&show=" + limit.toString() + "&orderin=desc&orderby=name\">Desc</a> </th>\n");
 						out.println("<th style=\"border: 1px solid black; text-align: left;\">City  <a href=\"./browseStores?letter="
-						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=city\">Asc</a> <a href=\"./browseStores?letter="
-						+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=city\">Desc</a> </th>\n");
+						+ request.getParameter("letter") + "&pg=" + pgNum + "&show=" + limit.toString() + "&orderin=asc&orderby=city\">Asc</a> <a href=\"./browseStores?letter="
+						+ request.getParameter("letter") + "&pg=" + pgNum + "&show=" + limit.toString() + "&orderin=desc&orderby=city\">Desc</a> </th>\n");
 						out.println("<th style=\"border: 1px solid black; text-align: left;\">Visa</th>\n");
 						out.println("<th style=\"border: 1px solid black; text-align: left;\">MasterCard</th>\n");
 						out.println("<th style=\"border: 1px solid black; text-align: left;\">Discover</th>\n");
@@ -178,17 +199,19 @@ public class BrowseStores extends HttpServlet {
 									+ "AND p.cityID = c.cityID "
 									+ "AND s.ownerID = o.ownerID "
 									+ "AND o.primaryLangID = l1.langID "
-									+ "AND o.secondaryLangID = l2.langID ";
-							if (request.getParameter("orderby") == null || request.getParameter("orderby").equals("name")) {
+									+ "AND o.secondaryLangID = l2.langID ";							
+							//if (request.getParameter("orderby") == null || request.getParameter("orderby").equals("name")) {
+							if (orderBy.equals("name")) {
 								prepQuery += "ORDER BY s.storeName";
 							} else {
 								prepQuery += "ORDER BY c.cityName";
 							}
-							if (request.getParameter("orderin") == null || request.getParameter("orderin").equals("asc")) {
+							//if (request.getParameter("orderin") == null || request.getParameter("orderin").equals("asc")) {
+							if (orderIn.equals("asc")) {
 								prepQuery += " ASC ";
 							} else {
 								prepQuery += " DESC ";
-							}
+							}						
 							prepQuery += "LIMIT ? OFFSET ?;";
 							PreparedStatement pstmt = connection.prepareStatement(prepQuery);
 							if (request.getParameter("letter").equals("numbers")) {
@@ -217,8 +240,9 @@ public class BrowseStores extends HttpServlet {
 							}
 							out.println("</div>\n");
 							if (Integer.parseInt(request.getParameter("pg")) > 1) {
-								out.println("<div style=\"text-align: left;\">\n");
-								out.println("<a href=\"./Browse?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) - 1) + "\">Prev</a>\n");
+								out.println("<div style=\"text-align: left; float:left;\">\n");
+								out.println("<a href=\"./browseStores?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) - 1)
+										+ "&show=" + limit.toString() + "&orderin=" + orderIn + "&orderby=" + orderBy + "\">Prev</a>\n");
 								out.println("</div>\n");
 							}
 							Integer pageCount = 1;
@@ -228,8 +252,9 @@ public class BrowseStores extends HttpServlet {
 								pageCount = storeCount/limit;
 							}
 							if (Integer.parseInt(request.getParameter("pg")) < pageCount) {
-								out.println("<div style=\"text-align: right;\">\n");
-								out.println("<a href=\"./Browse?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) + 1) + "\">Next</a>\n");
+								out.println("<div style=\"text-align: right; float:right;\">\n");
+								out.println("<a href=\"./browseStores?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) + 1)
+										+ "&show=" + limit.toString() + "&orderin=" + orderIn + "&orderby=" + orderBy + "\">Next</a>\n");
 								out.println("</div>\n");
 							}
 							if (pageCount == 1) {

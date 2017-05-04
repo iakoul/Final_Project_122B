@@ -104,6 +104,27 @@ public class BrowseItems extends HttpServlet {
 							limit = Integer.parseInt(request.getParameter("show"));
 						}
 						
+						String orderBy;
+						if (request.getParameter("orderby") != null) {
+							orderBy = request.getParameter("orderby");
+						} else {
+							orderBy = "name";
+						}
+						
+						String orderIn;
+						if (request.getParameter("orderin") != null) {
+							orderIn = request.getParameter("orderin");
+						} else {
+							orderIn = "asc";
+						}
+						
+						String pgNum;
+						if (request.getParameter("pg") != null) {
+							pgNum = (String)request.getParameter("pg");
+						} else {
+							pgNum = "1";
+						}
+						
 						out.println("<h1 align=\"center\">Browsing items starting with letter " + request.getParameter("letter") + "</h1>\n");
 						out.println("<h1 align=\"center\">There are a total of " + itemCount.toString() + " starting with that letter</h1>\n");
 						
@@ -124,14 +145,14 @@ public class BrowseItems extends HttpServlet {
 						out.println("<table style=\"text-align: left; width: 100%; border: 1px solid black;\">\n");
 						out.println("<tr>\n");
 						out.println("<th style=\"border: 1px solid black; text-align: left;\">Item Name <a href=\"./browseItems?letter="
-								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=name\">Asc</a> <a href=\"./browseItems?letter="
-								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=name\">Desc</a> </th>\n");
+								+ request.getParameter("letter") + "&pg=" + pgNum + "&show=" + limit.toString() + "&orderin=asc&orderby=name\">Asc</a> <a href=\"./browseItems?letter="
+								+ request.getParameter("letter") + "&pg=" + pgNum + "&show=" + limit.toString() + "&orderin=desc&orderby=name\">Desc</a> </th>\n");
 						out.println("<th style=\"border: 1px solid black; text-align: left;\">Item Type  <a href=\"./browseItems?letter="
-								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=type\">Asc</a> <a href=\"./browseItems?letter="
-								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=type\">Desc</a> </th>\n");
+								+ request.getParameter("letter") + "&pg=" + pgNum + "&show=" + limit.toString() + "&orderin=asc&orderby=type\">Asc</a> <a href=\"./browseItems?letter="
+								+ request.getParameter("letter") + "&pg=" + pgNum + "&show=" + limit.toString() + "&orderin=desc&orderby=type\">Desc</a> </th>\n");
 						out.println("<th style=\"border: 1px solid black; text-align: left;\">Item Price  <a href=\"./browseItems?letter="
-								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=asc&orderby=price\">Asc</a> <a href=\"./browseItems?letter="
-								+ request.getParameter("letter") + "&pg=1&show=" + limit.toString() + "&orderin=desc&orderby=price\">Desc</a> </th>\n");
+								+ request.getParameter("letter") + "&pg=" + pgNum + "&show=" + limit.toString() + "&orderin=asc&orderby=price\">Asc</a> <a href=\"./browseItems?letter="
+								+ request.getParameter("letter") + "&pg=" + pgNum + "&show=" + limit.toString() + "&orderin=desc&orderby=price\">Desc</a> </th>\n");
 						out.println("</tr>");
 						
 						
@@ -150,14 +171,17 @@ public class BrowseItems extends HttpServlet {
 							} else {
 								prepQuery += "m.merchName REGEXP ? ";
 							}
-							if (request.getParameter("orderby") == null || request.getParameter("orderby").equals("name")) {
+							//if (request.getParameter("orderby") == null || request.getParameter("orderby").equals("name")) {
+							if (orderBy.equals("name")) {
 								prepQuery += "ORDER BY m.merchName";
-							} else if (request.getParameter("orderby").equals("type")){
+							//} else if (request.getParameter("orderby").equals("type")){
+							} else if (orderBy.equals("type")) {
 								prepQuery += "ORDER BY m.merchType";
 							} else {
 								prepQuery += "ORDER BY m.merchPrice";
 							}
-							if (request.getParameter("orderin") == null || request.getParameter("orderin").equals("asc")) {
+							//if (request.getParameter("orderin") == null || request.getParameter("orderin").equals("asc")) {
+							if (orderIn.equals("asc")) {
 								prepQuery += " ASC ";
 							} else {
 								prepQuery += " DESC ";
@@ -183,8 +207,9 @@ public class BrowseItems extends HttpServlet {
 							}
 							out.println("</div>\n");
 							if (Integer.parseInt(request.getParameter("pg")) > 1) {
-								out.println("<div style=\"text-align: left;\">\n");
-								out.println("<a href=\"./Browse?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) - 1) + "\">Prev</a>\n");
+								out.println("<div style=\"text-align: left; float:left;\">\n");
+								out.println("<a href=\"./browseItems?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) - 1)
+										+ "&show=" + limit.toString() + "&orderin=" + orderIn + "&orderby=" + orderBy + "\">Prev</a>\n");
 								out.println("</div>\n");
 							}
 							Integer pageCount = 1;
@@ -194,8 +219,9 @@ public class BrowseItems extends HttpServlet {
 								pageCount = itemCount/limit;
 							}
 							if (Integer.parseInt(request.getParameter("pg")) < pageCount) {
-								out.println("<div style=\"text-align: right;\">\n");
-								out.println("<a href=\"./Browse?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) + 1) + "\">Next</a>\n");
+								out.println("<div style=\"text-align: right; float:right;\">\n");
+								out.println("<a href=\"./browseItems?letter=" + request.getParameter("letter") + "&pg=" + (Integer.parseInt(request.getParameter("pg")) + 1)
+										+ "&show=" + limit.toString() + "&orderin=" + orderIn + "&orderby=" + orderBy + "\">Next</a>\n");
 								out.println("</div>\n");
 							}
 							if (pageCount == 1) {
