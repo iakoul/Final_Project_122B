@@ -42,8 +42,8 @@ public class MainPage extends HttpServlet {
 	    	HashMap<ArrayList<String>, Integer> cart = (HashMap<ArrayList<String>, Integer>)session.getAttribute("cart");
 	    	itemsInCart = cart.size();
 	    }
-	    out.println("<div align=\"right\"><a href=\"./shoppingCart\">Cart(" + itemsInCart + ")</a></div>");
 	    if (session.getAttribute("loggedIn") != null && (Boolean)session.getAttribute("loggedIn")) {
+	    	out.println("<div align=\"right\"><a href=\"./shoppingCart\">Cart(" + itemsInCart + ")</a></div>");
 			out.println("<h1 align=\"center\">Welcome, " + session.getAttribute("username") + " to Übel Mart Search</h1>\n");
 			out.println("<div style=\"padding-left: 5%; padding-top: 5%;\">\n");
 			out.println("<div style=\"text-align: center;\">");

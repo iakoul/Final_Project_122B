@@ -78,13 +78,14 @@ public class Login extends HttpServlet {
 						if (BCrypt.checkpw(password, results.getString(3))) {
 							out.println("<h1 align=\"center\">Welcome, " + results.getString(1));
 							loggedIn = true;
+							session.setAttribute("loggedIn", loggedIn);
 							if (results.getBoolean(2)) {
 								out.println("(A)");
 								session.setAttribute("isAdmin", true);
 							}
 							out.println("</h1>\n");
-							response.setHeader("Refresh", "3; URL=./mainPage");
 							out.println("</body>\n</html>");
+							response.setHeader("Refresh", "3; URL=./mainPage");
 						} else {
 							out.println("<h1>Incorrect username or password</h1>\n");
 							loggedIn = false;
