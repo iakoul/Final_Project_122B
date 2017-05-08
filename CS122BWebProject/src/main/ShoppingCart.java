@@ -81,6 +81,9 @@ public class ShoppingCart extends HttpServlet {
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
 		
 		if (session.getAttribute("loggedIn") != null && (Boolean)session.getAttribute("loggedIn")) {
+			if (session.getAttribute("isAdmin") != null && (Boolean)session.getAttribute("isAdmin")) {
+	    		out.println("<div align=\"right\"><a href=\"./adminConsole\">Admin</a></div>");
+	    	}
 			//Incorporate mySQL driver
 			try {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();

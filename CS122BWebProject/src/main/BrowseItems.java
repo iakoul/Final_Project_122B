@@ -54,14 +54,18 @@ public class BrowseItems extends HttpServlet {
 		out.println("</script>\n");
 	    
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
-	    Integer itemsInCart = 0;
-	    if ((HashMap<ArrayList<String>, Integer>)session.getAttribute("cart") != null) {
-	    	HashMap<ArrayList<String>, Integer> cart = (HashMap<ArrayList<String>, Integer>)session.getAttribute("cart");
-	    	itemsInCart = cart.size();
-	    }
-	    out.println("<div align=\"right\"><a href=\"./shoppingCart\">Cart(" + itemsInCart + ")</a></div>");
+	    
 	    try {
-	    	if ((Boolean)session.getAttribute("loggedIn")) { //throws null pointer exception
+	    	if (session.getAttribute("loggedIn") != null && (Boolean)session.getAttribute("loggedIn")) { //throws null pointer exception
+	    		Integer itemsInCart = 0;
+	    	    if ((HashMap<ArrayList<String>, Integer>)session.getAttribute("cart") != null) {
+	    	    	HashMap<ArrayList<String>, Integer> cart = (HashMap<ArrayList<String>, Integer>)session.getAttribute("cart");
+	    	    	itemsInCart = cart.size();
+	    	    }
+	    	    out.println("<div align=\"right\"><a href=\"./shoppingCart\">Cart(" + itemsInCart + ")</a></div>");
+	    	    if (session.getAttribute("isAdmin") != null && (Boolean)session.getAttribute("isAdmin")) {
+		    		out.println("<div align=\"right\"><a href=\"./adminConsole\">Admin</a></div>");
+		    	}
 				//Incorporate mySQL driver
 				try {
 					Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -161,10 +165,12 @@ public class BrowseItems extends HttpServlet {
 							String prepQuery = "SELECT DISTINCT "
 									+ "m.merchID, "
 									+ "m.merchName, "
-									+ "m.merchType, "
+									+ "s.storeType, "
 									+ "m.merchPrice "
 									+ "FROM "
 									+ "`MerchandiseTbl` m "
+									+ "LEFT JOIN "
+									+ "StoreTypeTbl AS s ON s.typeID = m.merchType "
 									+ "WHERE ";
 							if (request.getParameter("letter").equals("others")) {
 								prepQuery += "m.merchName NOT REGEXP ? ";
@@ -176,7 +182,7 @@ public class BrowseItems extends HttpServlet {
 								prepQuery += "ORDER BY m.merchName";
 							//} else if (request.getParameter("orderby").equals("type")){
 							} else if (orderBy.equals("type")) {
-								prepQuery += "ORDER BY m.merchType";
+								prepQuery += "ORDER BY s.storeType";
 							} else {
 								prepQuery += "ORDER BY m.merchPrice";
 							}
