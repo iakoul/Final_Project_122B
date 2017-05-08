@@ -969,6 +969,11 @@ INSERT INTO StoreTypeTbl VALUES (32, "Mail");
 INSERT INTO StoreTypeTbl VALUES (33, "Photography");
 INSERT INTO StoreTypeTbl VALUES (34, "Donuts");
 
+-- pies, digital magic, sweets, snacks, travel goods,
+-- topwear, bbq, stationary, ice cream, chocolates, 
+-- underwear, pasterie, swimwears, 
+
+
 INSERT INTO MerchandiseTbl VALUES (72001, "[1] Quantum Leap        ",   23,  "0.99");
 INSERT INTO MerchandiseTbl VALUES (72002, "!@#$% Time Portal       ",   23,  "1.50");
 INSERT INTO MerchandiseTbl VALUES (72003, "32 GB Flash Drive       ",   15,  "7.99");
@@ -5589,7 +5594,7 @@ INSERT INTO StoreTbl VALUES ( 6260026001176,   "Mike’s Shoe Repair",          
 INSERT INTO StoreTbl VALUES ( 6260026001177,   "Staples",                                                   "1610 Wilshire Blvd",                                       "(310) 828-7779",       null, null,     6260026001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260026001178,   "Hallmark Cleaners",                                         "1907 Wilshire Blvd",                                       "(310) 453-3773",       null, null,     6260026001, null) ;  -- cleaners
 INSERT INTO StoreTbl VALUES ( 6260026001179,   "US Post Office",                                            "2720 Neilson Way",                                         "(310) 576-6544",       null, null,     6260026001, null) ;
-INSERT INTO StoreTbl VALUES ( 6260026001180,   "Brentwood Royal Cleaners",                                  "Santa Monica, CA 90402",                                   "(310) 451-3663",       null, null,     6260026001, null) ;  -- cleaners
+INSERT INTO StoreTbl VALUES ( 6260026001180,   "Brentwood Royal Cleaners",                                  "Santa Monica, CA 90402",                                   "(310) 451-3663",       null, null,     6260026001, null) ;  -- cleaners -- no website, bad facebook
 INSERT INTO StoreTbl VALUES ( 6260026001181,   "Brown’s Cleaners",                                          "1223 Montana Ave",                                         "(310) 451-8531",       null, null,     6260026001, null) ;  -- cleaners
 INSERT INTO StoreTbl VALUES ( 6260026001182,   "Maya Shoes",                                                "1708 Ocean Park Blvd",                                     "(310) 452-1113",       null, null,     6260026001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260026001183,   "Shortline Intercom Repair Service",                         "Los Angeles, CA 90403",                                    "(310) 395-3468",       null, null,     6260026001, null) ;  -- repair
