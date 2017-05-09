@@ -115,7 +115,7 @@ public class AdminConsole extends HttpServlet {
 					+ "Type\n"
 					+ "<br><input type=\"text\" name=\"type\" value=\"\"/><br>\n"
 					+ "Store\n"
-					+ "<br><input type=\"text\" name=\"store\" value=\"\"/><br>\n"
+					+ "<br><input type=\"text\" name=\"storeid\" value=\"\"/><br>\n"
 					+ "<br><input type=\"radio\" name=\"addorrem\" value=\"add\" checked/>Add to Store<br>\n"
 					+ "<br><input type=\"radio\" name=\"addorrem\" value=\"remove\"/>Remove From Store<br>\n"
 					+ "<br><input type=\"submit\" value=\"Add or Update\"><br>\n"
