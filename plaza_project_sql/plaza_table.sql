@@ -1,6 +1,7 @@
 CREATE DATABASE IF NOT EXISTS `storemarketing` DEFAULT CHARACTER SET latin1;
 USE `storemarketing`;
 
+DROP TABLE IF EXISTS `ItemsSoldTbl`;
 DROP TABLE IF EXISTS `StoreSellsTbl`;
 DROP TABLE IF EXISTS `MerchandiseTbl`;
 DROP TABLE IF EXISTS `CreditCardsTbl`;
@@ -19,25 +20,11 @@ CREATE TABLE `StoreTypeTbl` (
     PRIMARY KEY (`typeID`)
 ) AUTO_INCREMENT=0 ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
-CREATE TABLE `LanguageTbl` (
-    `langID` INTEGER NOT NULL AUTO_INCREMENT,
-    `languageSpoken` CHAR(100) NOT NULL,
-    PRIMARY KEY (`langID`)
-) AUTO_INCREMENT=0 ENGINE=INNODB DEFAULT CHARSET=LATIN1;
-
 CREATE TABLE `OwnerTbl` (
     `ownerID` INTEGER NOT NULL AUTO_INCREMENT,
     `name` CHAR(50) NOT NULL,
     `phoneNum` CHAR(20) NOT NULL,
-	`primaryLangID` INTEGER,
-	`secondaryLangID` INTEGER,
-    PRIMARY KEY (`ownerID`),
-	FOREIGN KEY (`primaryLangID`)
-        REFERENCES `LanguageTbl` (`langID`)
-        ON DELETE CASCADE ON UPDATE CASCADE,
-	FOREIGN KEY (`secondaryLangID`)
-        REFERENCES `LanguageTbl` (`langID`)
-        ON DELETE CASCADE ON UPDATE CASCADE
+    PRIMARY KEY (`ownerID`)
 ) AUTO_INCREMENT=0 ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
 CREATE TABLE `CityTbl` (
@@ -127,4 +114,22 @@ CREATE TABLE `StoreSellsTbl` (
     FOREIGN KEY (`merchID`)
         REFERENCES `MerchandiseTbl` (`merchID`)
         ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
+
+CREATE TABLE `ItemsSoldTbl` (
+	`username` CHAR(20) NOT NULL,
+	`dateSold` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	`CCID` CHAR(20) NOT NULL,
+	`merchID` INTEGER NOT NULL,
+	`storeID` BIGINT NOT NULL,
+	`qty` INTEGER NOT NULL,
+	PRIMARY KEY (`username`, `dateSold`, `CCID`, `merchID`, `storeID`, `qty`),
+	FOREIGN KEY (`username`)
+		REFERENCES `UsersTbl` (`username`),
+	FOREIGN KEY (`CCID`)
+		REFERENCES `CreditCardsTbl` (`CCID`),
+	FOREIGN KEY (`merchID`)
+		REFERENCES `MerchandiseTbl` (`merchID`),
+	FOREIGN KEY (`storeID`)
+		REFERENCES `StoreTbl` (`storeID`)
 ) ENGINE=INNODB DEFAULT CHARSET=LATIN1;

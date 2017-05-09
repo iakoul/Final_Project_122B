@@ -6,38 +6,49 @@ Website will support uploading the following by XML
 -Items
 
 
-<owners>
-	<owner owner-id="123"> id is optional
-		<owner-name>john smith</owner-name>
-		<phone-number>123-456-7890</phone-number>
-		<primary-language>2</primary-language>
-		<secondary-language>3</secondary-language>
-	</owner>
-</owners>
-
+<store-types>
+	<store-type type-id="1234">"Restaurant"</store-type>
+</store-types>
 
 <items>
 	<item item-id="1234">
-		<item-name>sandwich</item-name>
-		<item-type>443</item-type>
-		<item-price>123.45</item-price>
+		<item-name>"sandwich"</item-name>
+		<item-type>"443"</item-type>
+		<item-price>"123.45"</item-price>
+		<item-pic>"pics/pic01.jpg"</item-pic>
 	</item>
 </items>
 
 
 <stores>
 	<store store-id="1234">
-		<store-name>sandwich store</store-name>
-		<address>123 somewhere</address>
-		<store-phone-number>234-567-8910</store-phone-number>
-		<year-opened>1983</year-opened>
-		<type-id>123</type-id>
-		<plaza-id>11</plaza-id>
-		<owner-id>24</owner-id>
+		<store-name>"sandwich store"</store-name>
+		<address>"123 somewhere"</address>
+		<store-phone-number>"234-567-8910"</store-phone-number>
+		<year-opened>"1983"</year-opened>
+		<type-id>"123"</type-id>
+		<plaza-id>"11"</plaza-id>
+		<owner-id>"24"</owner-id>
 	</store>
 </stores>
 
 
+<store-sells>
+	<store-sell>
+		<store-id>"1234"</store-id>
+		<item-id>"1234"</item-id>
+	</store-sell>
+</store-sells>
+
+DEPRECATED
+---------------------------------------------------
+<owners>
+	<owner owner-id="1234"> id is optional
+		<owner-name>"john smith"</owner-name>
+		<phone-number>"123-456-7890"</phone-number>
+	</owner>
+</owners>
+---------------------------------------------------
 
 Generate XML with item names being:
 
@@ -46,3 +57,17 @@ and so on for stores and owners
 
 
 For the id's, generate unique numbers for them and then use those to link the items and owners to the stores randomly or sequentially.
+
+
+make a pool of:
+-store types
+	-add to it as you generate items
+-store id's
+	-add to it as you generate stores
+-item id's
+	-add to it as you generate items
+
+-When generating stores and items, draw the store type from the store type pool (can be randomly)
+-When generating store-sells (to link stores and items), draw from store and item pools
+
+This will ensure that the data generated will link with each other properly
