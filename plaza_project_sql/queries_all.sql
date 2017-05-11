@@ -1013,7 +1013,7 @@ INSERT INTO MerchandiseTbl VALUES (72042, "Oompa Loompa Dolls      ",   null, "9
 INSERT INTO MerchandiseTbl VALUES (72043, "Oranges                 ",   null, "992354.62",    null);
 INSERT INTO MerchandiseTbl VALUES (72044, "Oreos                   ",   null, "23432.53",     null);
 INSERT INTO MerchandiseTbl VALUES (72045, "Pen                     ",   null, "543245.34",    null);
-INSERT INTO MerchandiseTbl VALUES (72046, "Paprica                 ",   null, "5423.99",      null);
+INSERT INTO MerchandiseTbl VALUES (72046, "Paprika                 ",   null, "5423.99",      null);
 INSERT INTO MerchandiseTbl VALUES (72047, "Perfume                 ",   null, "3449.99",      null);
 INSERT INTO MerchandiseTbl VALUES (72048, "Poke                    ",   null, "5432.99",      null);
 INSERT INTO MerchandiseTbl VALUES (72049, "Quiches                 ",   null, "534253.99",    null);
@@ -1038,7 +1038,7 @@ INSERT INTO MerchandiseTbl VALUES (72068, "Xylophone               ",   null, "9
 INSERT INTO MerchandiseTbl VALUES (72069, "Yarn                    ",   null, "92349.99",     null);
 INSERT INTO MerchandiseTbl VALUES (72070, "Yoyo                    ",   null, "99.99",        null);
 INSERT INTO MerchandiseTbl VALUES (72071, "Zepplin Toy             ",   null, "234299.99",    null);
-INSERT INTO MerchandiseTbl VALUES (72072, "Zuccini                 ",   null, "92349.99",     null);
+INSERT INTO MerchandiseTbl VALUES (72072, "Zucchini                 ",   null, "92349.99",     null);
 
 
 INSERT INTO CityTbl VALUES (6260001 , "Artesia");
