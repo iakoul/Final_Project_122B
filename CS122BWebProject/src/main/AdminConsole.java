@@ -52,7 +52,7 @@ public class AdminConsole extends HttpServlet {
 	    		+ "</head>\n");
 
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
-		if (session.getAttribute("loggedIn") != null && (Boolean)session.getAttribute("loggedIn")) {
+		if (session.getAttribute("loggedIn") != null && (Boolean)session.getAttribute("loggedIn") && session.getAttribute("isAdmin") != null && (Boolean)session.getAttribute("isAdmin")) {
 		    Integer itemsInCart = 0;
 		    if ((HashMap<ArrayList<String>, Integer>)session.getAttribute("cart") != null) {
 		    	HashMap<ArrayList<String>, Integer> cart = (HashMap<ArrayList<String>, Integer>)session.getAttribute("cart");
@@ -103,24 +103,95 @@ public class AdminConsole extends HttpServlet {
 			}
 			out.println("</div>\n");
 			
-			out.println("<div style=\"float:right; border-style:dashed;\">");
-			out.println("<p style=\"text-align:center;\"><b>Add New Item or Update Existing Item</b></p>\n");
-			out.println("<form id=\"form\" action=\"./adminUpdate\" method=\"get\">\n"
+			out.println("<div style=\"float:right; border-style:dashed; margin-left: 100px;\">");
+			out.println("<p style=\"text-align:center;\"><b>Insert New Item</b></p>\n");
+			out.println("<form id=\"add_item\" action=\"./adminUpdate\" method=\"get\">\n"
 					+ "Item Name\n"
-					+ "<br><input type=\"text\" name=\"itemname\" value=\"\"/><br>\n"
+					+ "<br><input type=\"text\" name=\"item-name\" value=\"\"/><br>\n"
 					+ "Item ID\n"
 					+ "<br><input type=\"text\" name=\"itemid\" value=\"\"/><br>\n"
 					+ "Price\n"
-					+ "<br><input type=\"text\" name=\"price\" value=\"\"/><br>\n"
+					+ "<br><input type=\"text\" name=\"item-price\" value=\"\"/><br>\n"
 					+ "Type\n"
-					+ "<br><input type=\"text\" name=\"type\" value=\"\"/><br>\n"
-					+ "Store\n"
+					+ "<br><input type=\"text\" name=\"item-type\" value=\"\"/><br>\n"
+					+ "Picture URL\n"
+					+ "<br><input type=\"text\" name=\"item-pic\" value=\"\"/><br>\n"
+					+ "Store ID\n"
 					+ "<br><input type=\"text\" name=\"storeid\" value=\"\"/><br>\n"
-					+ "<br><input type=\"radio\" name=\"addorrem\" value=\"add\" checked/>Add to Store<br>\n"
-					+ "<br><input type=\"radio\" name=\"addorrem\" value=\"remove\"/>Remove From Store<br>\n"
-					+ "<br><input type=\"submit\" value=\"Add or Update\"><br>\n"
+					+ "<input type=\"hidden\" name=\"add-item\" value=\"true\"/>\n"
+					+ "<br><input type=\"submit\" value=\"Insert Item\"><br>\n"
 					+ "</form>");
 			out.println("</div>");
+			
+			out.println("<div style=\"float:right; border-style: dashed; margin: auto;\">\n"
+					+ "	<p style=\"text-align: center;\"><b>Add Store</b></p>\n"
+					+ "	<form id=\"add_store\" action=\"./adminUpdate\" method=\"GET\">\n"
+					+ "		<div style=\"float: left; padding: 5px;\">\n"
+					+ "			Store ID*\n"
+					+ "			<br><input type=\"text\" name=\"storeid\" value=\"\"><br>\n"
+					+ "			<div style=\"border-style: solid; padding: 5px;\">\n"
+					+ "				<p>Only if adding new store</p>\n"
+					+ "				Store Name\n"
+					+ "				<br><input type=\"text\" name=\"store-name\" value=\"\"><br>\n"
+					+ "				Store Address\n"
+					+ "				<br><input type=\"text\" name=\"address\" value=\"\"><br>\n"
+					+ "				Store Phone Number\n"
+					+ "				<br><input type=\"text\" name=\"store-phone\" value=\"\"><br>\n"
+					+ "				Year Opened\n"
+					+ "				<br><input type=\"text\" name=\"store-year\" value=\"\"><br>\n"
+					+ "				Store Type ID\n"
+					+ "				<br><input type=\"text\" name=\"store-typeid\" value=\"\"><br>\n"
+					+ "				<div style=\"border-style: solid; padding: 5px;\">\n"
+					+ "					<p>Only if adding new store type</p>\n"
+					+ "					Store Type Name\n"
+					+ "					<br><input type=\"text\" name=\"store-type-name\" value=\"\"><br>\n"
+					+ "				</div>\n"
+					+ "				Plaza ID\n"
+					+ "				<br><input type=\"text\" name=\"plazaid\" value=\"\"><br>\n"
+					+ "				<div style=\"border-style: solid; padding: 5px;\">\n"
+					+ "					<p>Only if new plaza</p>\n"
+					+ "					Plaza Name\n"
+					+ "					<br><input type=\"text\" name=\"plaza-name\" value=\"\"><br>\n"
+					+ "				</div>\n"
+					+ "			</div>\n"
+					+ "		</div>\n"
+					+ "		<div style=\"float: right; padding: 5px;\">\n"
+					+ "			<div style=\"border-style: solid; padding: 5px;\">\n"
+					+ "				City ID\n"
+					+ "				<br><input type=\"text\" name=\"cityid\" value=\"\"><br>\n"
+					+ "				<div style=\"border-style: solid; padding: 5px;\">\n"
+					+ "					<p>Only if new city</p>\n"
+					+ "					City Name\n"
+					+ "					<br><input type=\"text\" name=\"city-name\" value=\"\"><br>\n"
+					+ "				</div>\n"
+					+ "			</div>\n"
+					+ "			Item ID*\n"
+					+ "			<br><input type=\"text\" name=\"itemid\" value=\"\"><br>\n"
+					+ "			<div style=\"border-style: solid; padding: 5px;\">\n"
+					+ "				<p>Only if new item</p>\n"
+					+ "				Item Name\n"
+					+ "				<br><input type=\"text\" name=\"item-name\" value=\"\"><br>\n"
+					+ "				Item Type ID\n"
+					+ "				<br><input type=\"text\" name=\"item-typeid\" value=\"\"><br>\n"
+					+ "				<div style=\"border-style: solid; padding: 5px;\">\n"
+					+ "					<p>Only if new type</p>\n"
+					+ "					Item Type Name\n"
+					+ "					<br><input type=\"text\" name=\"item-type-name\" value=\"\"><br>\n"
+					+ "				</div>\n"
+					+ "				Item Price\n"
+					+ "				<br><input type=\"text\" name=\"item-price\" value=\"\"><br>\n"
+					+ "				Item Pic URL\n"
+					+ "				<br><input type=\"text\" name=\"item-pic\" value=\"\"><br>\n"
+					+ "			</div>\n"
+					+ "		</div>\n"
+					+ "		<div style=\"clear: both;\">\n"
+					+ "			<input type=\"hidden\" name=\"add-city\" value=\"true\">\n"
+					+ "			<br><input type=\"submit\" value=\"Add City\"><br>\n"
+					+ "		</div>\n"
+					+ "	</form>\n"
+					+ "</div>");
+			
+			
 			
 			out.println("</body>\n</html>");
 		} else {

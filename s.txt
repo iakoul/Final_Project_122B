@@ -1,0 +1,64 @@
+<div style="float:right; border-style: dashed;">
+	<p style="text-align: center;"><b>Add Store</b></p>
+	<form id="add_store" action="./adminAddCity" method="GET">
+		<div style="float: left; padding: 5px;">
+			Store ID
+			<br><input type="text" name="storeid" value=""><br>
+			<div style="border-style: solid; padding: 5px;">
+				<p>Only if adding new store</p>
+				Store Name
+				<br><input type="text" name="store-name" value=""><br>
+				Store Address
+				<br><input type="text" name="address" value=""><br>
+				Store Phone Number
+				<br><input type="text" name="store-phone" value=""><br>
+				Year Opened
+				<br><input type="text" name="store-year" value=""><br>
+				Store Type ID
+				<br><input type="text" name="store-typeid" value=""><br>
+				<div style="border-style: solid; padding: 5px;">
+					<p>Only if adding new store type</p>
+					Store Type Name
+					<br><input type="text" name="store-type-name" value=""><br>
+				</div>
+				Plaza ID
+				<br><input type="text" name="plazaid" value=""><br>
+				<div style="border-style: solid; padding: 5px;">
+					<p>Only if new plaza</p>
+					Plaza Name
+					<br><input type="text" name="plaza-name" value=""><br>
+				</div>
+			</div>
+		</div>
+		<div style="float: right; padding: 5px;">
+			City ID
+			<br><input type="text" name="cityid" value=""><br>
+			<div style="border-style: solid; padding: 5px;">
+				<p>Only if new city</p>
+				City Name
+				<br><input type="text" name="city-name" value=""><br>
+			</div>
+			Item ID
+			<br><input type="text" name="item-id" value=""><br>
+			<div style="border-style: solid; padding: 5px;">
+				<p>Only if new item</p>
+				Item Name
+				<br><input type="text" name="item-name" value=""><br>
+				Item Type ID
+				<br><input type="text" name="item-typeid" value=""><br>
+				<div style="border-style: solid; padding: 5px;">
+					<p>Only if new type</p>
+					Item Type Name
+					<br><input type="text" name="item-type-name" value=""><br>
+				</div>
+				Item Price
+				<br><input type="text" name="item-name" value=""><br>
+				Item Pic URL
+				<br><input type="text" name="item-name" value=""><br>
+			</div>
+		</div>
+		<div style="clear: both;">
+			<br><input type="submit" value="Add City"><br>
+		</div>
+	</form>
+</div>

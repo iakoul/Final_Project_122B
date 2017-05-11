@@ -34,7 +34,7 @@ CREATE TABLE `CityTbl` (
 ) AUTO_INCREMENT=0 ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
 CREATE TABLE `PlazaTbl` (
-    `plazaID` DOUBLE NOT NULL AUTO_INCREMENT,
+    `plazaID` BIGINT NOT NULL AUTO_INCREMENT,
     `plazaName` CHAR(100) NOT NULL,
     `cityID` INTEGER NOT NULL,
     PRIMARY KEY (`plazaID`),
@@ -50,8 +50,8 @@ CREATE TABLE `StoreTbl` (
     `phoneNum` CHAR(20),
     `yearOpened` INTEGER,
 	`typeID` INTEGER,
-    `plazaID` DOUBLE,
-    `ownerID` INTEGER,
+    `plazaID` BIGINT,
+    `ownerID` INTEGER DEFAULT 0,
     PRIMARY KEY (`storeID`),
     FOREIGN KEY (`typeID`) 
         REFERENCES `StoreTypeTbl` (`typeID`)
