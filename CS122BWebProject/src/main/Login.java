@@ -55,6 +55,22 @@ public class Login extends HttpServlet {
 		
 		if (loggedIn == null || loggedIn == false) {
 			//check if username and password are correct
+			
+			out.println("test");
+			
+			String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+			System.out.println("gRecaptchaResponse=" + gRecaptchaResponse);
+			// Verify CAPTCHA.
+			boolean valid = VerifyUtils.verify(gRecaptchaResponse);
+			if (!valid) {
+			    //errorString = "Captcha invalid!";
+				out.println("<p>Incorrect captcha</p>");
+				out.println("</body>\n</html>");
+				response.setHeader("Refresh", "3; URL=./index.html");
+			    return;
+			}
+			
+			
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			String firstName = null;
