@@ -1,212 +1,212 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <input>
     <store-types>
-         <store-type type-id="300">   "EgzEfTD4Lp"    </store-type>
-         <store-type type-id="301">   "GDWgVCW8Z0"    </store-type>
-         <store-type type-id="302">   "po14FycK1i"    </store-type>
-         <store-type type-id="303">   "5imVa1rQ6w"    </store-type>
-         <store-type type-id="304">   "817ZHMP5h0"    </store-type>
-         <store-type type-id="305">   "DL5OFXm86V"    </store-type>
-         <store-type type-id="306">   "7ZDUfCb888"    </store-type>
-         <store-type type-id="307">   "p1V6hZVUhW"    </store-type>
-         <store-type type-id="308">   "2gd2Gsn1c7"    </store-type>
-         <store-type type-id="309">   "09QL022636"    </store-type>
-         <store-type type-id="310">   "F8i3Ukmw7t"    </store-type>
-         <store-type type-id="311">   "HNW9f86kKw"    </store-type>
-         <store-type type-id="312">   "t6pziZ534I"    </store-type>
-         <store-type type-id="313">   "5CLx7V0RUz"    </store-type>
-         <store-type type-id="314">   "k0IhKP3KIf"    </store-type>
-         <store-type type-id="315">   "KYfet4ieU2"    </store-type>
-         <store-type type-id="316">   "Deh56w5rfK"    </store-type>
-         <store-type type-id="317">   "460VaZDNA9"    </store-type>
-         <store-type type-id="318">   "0eZ8Vi5ZP1"    </store-type>
-         <store-type type-id="319">   "IM8t54IIsn"    </store-type>
-         <store-type type-id="320">   "FyPC4327WI"    </store-type>
-         <store-type type-id="321">   "20SY8ytE2X"    </store-type>
-         <store-type type-id="322">   "lPN8roGi45"    </store-type>
-         <store-type type-id="323">   "1iTc29P46P"    </store-type>
-         <store-type type-id="324">   "uP8a8RWU6D"    </store-type>
-         <store-type type-id="325">   "3fn098J7AM"    </store-type>
-         <store-type type-id="326">   "Mz4sKGU567"    </store-type>
-         <store-type type-id="327">   "pKf5EW20s4"    </store-type>
-         <store-type type-id="328">   "wbP3W09qYK"    </store-type>
-         <store-type type-id="329">   "R8Vt003CYG"    </store-type>
-         <store-type type-id="330">   "Z9w7Ej4KL5"    </store-type>
-         <store-type type-id="331">   "3M91K06eNK"    </store-type>
-         <store-type type-id="332">   "i05GXjx08h"    </store-type>
-         <store-type type-id="333">   "K8QZMJ73g1"    </store-type>
-         <store-type type-id="334">   "4XvIA6K9bz"    </store-type>
-         <store-type type-id="335">   "j6pPhkc4pL"    </store-type>
-         <store-type type-id="336">   "9yMMrEPp7u"    </store-type>
-         <store-type type-id="337">   "yEjfOQfA39"    </store-type>
-         <store-type type-id="338">   "5Mg5CHy649"    </store-type>
-         <store-type type-id="339">   "Laj095P2Jq"    </store-type>
+         <store-type type-id="300">   "F70C74k5mU"    </store-type>
+         <store-type type-id="301">   "t0TvG9HB67"    </store-type>
+         <store-type type-id="302">   "I93Bu744u9"    </store-type>
+         <store-type type-id="303">   "GosJka2HyF"    </store-type>
+         <store-type type-id="304">   "P0p3oFPSu8"    </store-type>
+         <store-type type-id="305">   "3yNz7gq546"    </store-type>
+         <store-type type-id="306">   "s68c8LMu36"    </store-type>
+         <store-type type-id="307">   "1FD8Cj7fLK"    </store-type>
+         <store-type type-id="308">   "97efwtqpIo"    </store-type>
+         <store-type type-id="309">   "6eTbLVTlMX"    </store-type>
+         <store-type type-id="310">   "wH2xN6cxwh"    </store-type>
+         <store-type type-id="311">   "EFxdX6sA3k"    </store-type>
+         <store-type type-id="312">   "ayE0j83RH1"    </store-type>
+         <store-type type-id="313">   "7Toc6xZQLV"    </store-type>
+         <store-type type-id="314">   "ih5oI6bs9I"    </store-type>
+         <store-type type-id="315">   "3RK6V9L54A"    </store-type>
+         <store-type type-id="316">   "j92PfRHsI6"    </store-type>
+         <store-type type-id="317">   "0ixJ3dm56j"    </store-type>
+         <store-type type-id="318">   "f94nCwPkbh"    </store-type>
+         <store-type type-id="319">   "DBhJ92pn1R"    </store-type>
+         <store-type type-id="320">   "5qiYdLO354"    </store-type>
+         <store-type type-id="321">   "eNr3Sb0UA5"    </store-type>
+         <store-type type-id="322">   "F67h9QNLG2"    </store-type>
+         <store-type type-id="323">   "f92uu0vXDp"    </store-type>
+         <store-type type-id="324">   "zXlWOV85J5"    </store-type>
+         <store-type type-id="325">   "VaWy1ZYr8K"    </store-type>
+         <store-type type-id="326">   "V9031z75j6"    </store-type>
+         <store-type type-id="327">   "P9ca6124Pj"    </store-type>
+         <store-type type-id="328">   "EXXY8CMySt"    </store-type>
+         <store-type type-id="329">   "iUWnKgP713"    </store-type>
+         <store-type type-id="330">   "I1P31Y1PvP"    </store-type>
+         <store-type type-id="331">   "Pzvr4c6710"    </store-type>
+         <store-type type-id="332">   "5aZ1VZ2w2b"    </store-type>
+         <store-type type-id="333">   "I2w8xHFS4J"    </store-type>
+         <store-type type-id="334">   "t8PL0MmPqg"    </store-type>
+         <store-type type-id="335">   "sICcySU4UN"    </store-type>
+         <store-type type-id="336">   "34yYF53JYf"    </store-type>
+         <store-type type-id="337">   "wD6DgU81pH"    </store-type>
+         <store-type type-id="338">   "7N62gv3L7A"    </store-type>
+         <store-type type-id="339">   "oD7FA46g8C"    </store-type>
     </store-types>
 
     <items>
          <item item-id="8000">
-              <item-name>              An Item A 30s516LTt4               </itemID>
-              <item-type>              1116                               </itemType>
-              <item-price>             $99.82                             </itemPrice>
-              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </itemPic>
+              <item-name>              QTD Circular Thing Lik0n9dK7s      </item-name>
+              <item-type>              1328                               </item-type>
+              <item-price>             $41.36                             </item-price>
+              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </item-pic>
          </item>
          <item item-id="8001">
-              <item-name>              An Item A j44UR7W2nZ               </itemID>
-              <item-type>              1092                               </itemType>
-              <item-price>             $96.54                             </itemPrice>
-              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </itemPic>
+              <item-name>              Generic Boxy Item zZ9V07N1xO       </item-name>
+              <item-type>              1302                               </item-type>
+              <item-price>             $63.76                             </item-price>
+              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </item-pic>
          </item>
          <item item-id="8002">
-              <item-name>              An Item A wT2XyJBRcb               </itemID>
-              <item-type>              1110                               </itemType>
-              <item-price>             $16.57                             </itemPrice>
-              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </itemPic>
+              <item-name>              QTD Circular Thing 3MH8432GVU      </item-name>
+              <item-type>              1390                               </item-type>
+              <item-price>             $32.96                             </item-price>
+              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </item-pic>
          </item>
          <item item-id="8003">
-              <item-name>              QTD Circular Thing vsZX68b2VV      </itemID>
-              <item-type>              1233                               </itemType>
-              <item-price>             $13.63                             </itemPrice>
-              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </itemPic>
+              <item-name>              QTD Circular Thing 3Mv316A5U9      </item-name>
+              <item-type>              1221                               </item-type>
+              <item-price>             $24.30                             </item-price>
+              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </item-pic>
          </item>
          <item item-id="8004">
-              <item-name>              Generic Boxy Item 1mB72n1G1B       </itemID>
-              <item-type>              1286                               </itemType>
-              <item-price>             $92.02                             </itemPrice>
-              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </itemPic>
+              <item-name>              Generic Boxy Item sLX8V22623       </item-name>
+              <item-type>              1390                               </item-type>
+              <item-price>             $66.59                             </item-price>
+              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </item-pic>
          </item>
          <item item-id="8005">
-              <item-name>              An Item A KZZAKq5cf3               </itemID>
-              <item-type>              1140                               </itemType>
-              <item-price>             $91.43                             </itemPrice>
-              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </itemPic>
+              <item-name>              An Item A 5NP2o6kCpK               </item-name>
+              <item-type>              1092                               </item-type>
+              <item-price>             $22.64                             </item-price>
+              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </item-pic>
          </item>
          <item item-id="8006">
-              <item-name>              An Item A a7j2Wj4DKi               </itemID>
-              <item-type>              1354                               </itemType>
-              <item-price>             $49.69                             </itemPrice>
-              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </itemPic>
+              <item-name>              Generic Boxy Item fJGFm7RDNZ       </item-name>
+              <item-type>              1303                               </item-type>
+              <item-price>             $7.38                              </item-price>
+              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </item-pic>
          </item>
          <item item-id="8007">
-              <item-name>              An Item A lpX7S8Q8A0               </itemID>
-              <item-type>              1122                               </itemType>
-              <item-price>             $96.91                             </itemPrice>
-              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </itemPic>
+              <item-name>              An Item A BzBUxNM8gn               </item-name>
+              <item-type>              1088                               </item-type>
+              <item-price>             $60.82                             </item-price>
+              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </item-pic>
          </item>
          <item item-id="8008">
-              <item-name>              QTD Circular Thing W9l9VO1jI5      </itemID>
-              <item-type>              1160                               </itemType>
-              <item-price>             $30.63                             </itemPrice>
-              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </itemPic>
+              <item-name>              An Item A 0Xduw7p585               </item-name>
+              <item-type>              1098                               </item-type>
+              <item-price>             $31.75                             </item-price>
+              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </item-pic>
          </item>
          <item item-id="8009">
-              <item-name>              Generic Boxy Item 6k0LP79dx2       </itemID>
-              <item-type>              1020                               </itemType>
-              <item-price>             $60.47                             </itemPrice>
-              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </itemPic>
+              <item-name>              An Item A q0XGVp0oN7               </item-name>
+              <item-type>              1314                               </item-type>
+              <item-price>             $12.54                             </item-price>
+              <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </item-pic>
          </item>
     </items>
 
     <stores>
          <store store-id="12000">
-              <store-name>             Generic Store iKx4on1180                          </store-name>
-              <address>                5161 F4589rk2mx Street                            </address>
-              <store-phone-number>     1(438)-713-4026                                   </store-phone-number>
-              <year-opened>            1936                                              </year-opened>
-              <type-id>                333                                               </type-id>
-              <plaza-id>               12063                                             </plaza-id>
-              <owner-id>               9048                                              </owner-id>
+              <store-name>             Generic Seller 33sBbejRn0                         </store-name>
+              <address>                5088 Y2p4r32Qos Way                               </address>
+              <store-phone-number>     1(595)-887-9423                                   </store-phone-number>
+              <year-opened>            1952                                              </year-opened>
+              <type-id>                312                                               </type-id>
+              <plaza-id>               12016                                             </plaza-id>
+              <owner-id>               9002                                              </owner-id>
          </store>
          <store store-id="12001">
-              <store-name>             Generic Seller MBcaH03r7M                         </store-name>
-              <address>                99 8Ce836EMrj Boulevard                           </address>
-              <store-phone-number>     1(344)-211-6648                                   </store-phone-number>
-              <year-opened>            1953                                              </year-opened>
-              <type-id>                307                                               </type-id>
-              <plaza-id>               12096                                             </plaza-id>
-              <owner-id>               9069                                              </owner-id>
+              <store-name>             Generic Seller 102ZhWNK7A                         </store-name>
+              <address>                786 0I7He1vS40 Avenue                             </address>
+              <store-phone-number>     1(537)-869-2245                                   </store-phone-number>
+              <year-opened>            1997                                              </year-opened>
+              <type-id>                319                                               </type-id>
+              <plaza-id>               12056                                             </plaza-id>
+              <owner-id>               9096                                              </owner-id>
          </store>
          <store store-id="12002">
-              <store-name>             Generic Store X7RvSjmPTJ                          </store-name>
-              <address>                2641 ez8r4Ukw96 Way                               </address>
-              <store-phone-number>     1(095)-724-1857                                   </store-phone-number>
-              <year-opened>            1937                                              </year-opened>
-              <type-id>                310                                               </type-id>
-              <plaza-id>               12087                                             </plaza-id>
-              <owner-id>               9087                                              </owner-id>
+              <store-name>             Generic Store vAfk15bU3d                          </store-name>
+              <address>                6491 8n802fB4Bn Avenue                            </address>
+              <store-phone-number>     1(087)-991-0649                                   </store-phone-number>
+              <year-opened>            1992                                              </year-opened>
+              <type-id>                307                                               </type-id>
+              <plaza-id>               12022                                             </plaza-id>
+              <owner-id>               9065                                              </owner-id>
          </store>
          <store store-id="12003">
-              <store-name>             Generic Warehouse YTbUl2XniD                      </store-name>
-              <address>                4065 4I4j16iM90 Avenue                            </address>
-              <store-phone-number>     1(917)-865-3086                                   </store-phone-number>
-              <year-opened>            1985                                              </year-opened>
-              <type-id>                339                                               </type-id>
-              <plaza-id>               12028                                             </plaza-id>
-              <owner-id>               9084                                              </owner-id>
+              <store-name>             Generic Warehouse qbqRN9Uj8h                      </store-name>
+              <address>                6899 0UNylkOFWc Avenue                            </address>
+              <store-phone-number>     1(984)-733-9445                                   </store-phone-number>
+              <year-opened>            1931                                              </year-opened>
+              <type-id>                307                                               </type-id>
+              <plaza-id>               12034                                             </plaza-id>
+              <owner-id>               9058                                              </owner-id>
          </store>
          <store store-id="12004">
-              <store-name>             Generic Warehouse djqG7B5Q9N                      </store-name>
-              <address>                4 a58lIvdd1L Avenue                               </address>
-              <store-phone-number>     1(315)-623-4764                                   </store-phone-number>
-              <year-opened>            1939                                              </year-opened>
-              <type-id>                338                                               </type-id>
-              <plaza-id>               12022                                             </plaza-id>
-              <owner-id>               9057                                              </owner-id>
+              <store-name>             Generic Seller 785OKg32FB                         </store-name>
+              <address>                3186 iVH03l92Po Avenue                            </address>
+              <store-phone-number>     1(440)-981-0333                                   </store-phone-number>
+              <year-opened>            1988                                              </year-opened>
+              <type-id>                302                                               </type-id>
+              <plaza-id>               12054                                             </plaza-id>
+              <owner-id>               9061                                              </owner-id>
          </store>
          <store store-id="12005">
-              <store-name>             Generic Store fa639pbH5p                          </store-name>
-              <address>                379 uUuZB6Po42 Avenue                             </address>
-              <store-phone-number>     1(233)-539-5205                                   </store-phone-number>
-              <year-opened>            1961                                              </year-opened>
-              <type-id>                317                                               </type-id>
-              <plaza-id>               12047                                             </plaza-id>
-              <owner-id>               9025                                              </owner-id>
-         </store>
-         <store store-id="12006">
-              <store-name>             Generic Store eDa5flPO5u                          </store-name>
-              <address>                4668 m2E69xO0PH Street                            </address>
-              <store-phone-number>     1(548)-964-2749                                   </store-phone-number>
-              <year-opened>            1963                                              </year-opened>
-              <type-id>                339                                               </type-id>
-              <plaza-id>               12045                                             </plaza-id>
-              <owner-id>               9015                                              </owner-id>
-         </store>
-         <store store-id="12007">
-              <store-name>             Generic Store s7q586GH2u                          </store-name>
-              <address>                8661 56BLlIiDYU Boulevard                         </address>
-              <store-phone-number>     1(190)-772-2138                                   </store-phone-number>
-              <year-opened>            1956                                              </year-opened>
-              <type-id>                308                                               </type-id>
-              <plaza-id>               12046                                             </plaza-id>
-              <owner-id>               9025                                              </owner-id>
-         </store>
-         <store store-id="12008">
-              <store-name>             Generic Seller KB0s9TEyc6                         </store-name>
-              <address>                899 tj70i92i42 Avenue                             </address>
-              <store-phone-number>     1(208)-342-9801                                   </store-phone-number>
-              <year-opened>            1971                                              </year-opened>
-              <type-id>                318                                               </type-id>
-              <plaza-id>               12051                                             </plaza-id>
+              <store-name>             Generic Seller Tl5Ds5MwsL                         </store-name>
+              <address>                474 YwbVV3Qnwt Avenue                             </address>
+              <store-phone-number>     1(898)-350-3664                                   </store-phone-number>
+              <year-opened>            1930                                              </year-opened>
+              <type-id>                311                                               </type-id>
+              <plaza-id>               12089                                             </plaza-id>
               <owner-id>               9091                                              </owner-id>
          </store>
-         <store store-id="12009">
-              <store-name>             Generic Seller 3Jor2lkRE5                         </store-name>
-              <address>                2922 1TZh5Zi714 Avenue                            </address>
-              <store-phone-number>     1(142)-686-5529                                   </store-phone-number>
-              <year-opened>            1934                                              </year-opened>
+         <store store-id="12006">
+              <store-name>             Generic Seller z0Z1LbUFyg                         </store-name>
+              <address>                4312 lvFZksES46 Street                            </address>
+              <store-phone-number>     1(588)-181-0794                                   </store-phone-number>
+              <year-opened>            1971                                              </year-opened>
+              <type-id>                330                                               </type-id>
+              <plaza-id>               12048                                             </plaza-id>
+              <owner-id>               9018                                              </owner-id>
+         </store>
+         <store store-id="12007">
+              <store-name>             Generic Seller Q6eT6cF96o                         </store-name>
+              <address>                4675 jeFu790D52 Way                               </address>
+              <store-phone-number>     1(846)-626-9017                                   </store-phone-number>
+              <year-opened>            1930                                              </year-opened>
+              <type-id>                339                                               </type-id>
+              <plaza-id>               12091                                             </plaza-id>
+              <owner-id>               9082                                              </owner-id>
+         </store>
+         <store store-id="12008">
+              <store-name>             Generic Store V85r5coB54                          </store-name>
+              <address>                8346 98VHGQ5FWR Street                            </address>
+              <store-phone-number>     1(873)-084-4810                                   </store-phone-number>
+              <year-opened>            2013                                              </year-opened>
               <type-id>                334                                               </type-id>
-              <plaza-id>               12077                                             </plaza-id>
-              <owner-id>               9098                                              </owner-id>
+              <plaza-id>               12037                                             </plaza-id>
+              <owner-id>               9045                                              </owner-id>
+         </store>
+         <store store-id="12009">
+              <store-name>             Generic Store K537c5OrWd                          </store-name>
+              <address>                6652 kz9e9lf5tF Avenue                            </address>
+              <store-phone-number>     1(711)-283-0552                                   </store-phone-number>
+              <year-opened>            1985                                              </year-opened>
+              <type-id>                301                                               </type-id>
+              <plaza-id>               12043                                             </plaza-id>
+              <owner-id>               9007                                              </owner-id>
          </store>
     </stores>
 
     <store-sells>
         <store-sell>
               <store-id>  12000     </store-id>
-              <item-id>   8003      </item-id>
+              <item-id>   8009      </item-id>
         </store-sell>
         <store-sell>
               <store-id>  12000     </store-id>
-              <item-id>   8000      </item-id>
+              <item-id>   8001      </item-id>
         </store-sell>
         <store-sell>
               <store-id>  12001     </store-id>
@@ -214,7 +214,7 @@
         </store-sell>
         <store-sell>
               <store-id>  12001     </store-id>
-              <item-id>   8008      </item-id>
+              <item-id>   8005      </item-id>
         </store-sell>
         <store-sell>
               <store-id>  12002     </store-id>
@@ -222,31 +222,31 @@
         </store-sell>
         <store-sell>
               <store-id>  12002     </store-id>
-              <item-id>   8002      </item-id>
+              <item-id>   8001      </item-id>
+        </store-sell>
+        <store-sell>
+              <store-id>  12003     </store-id>
+              <item-id>   8000      </item-id>
         </store-sell>
         <store-sell>
               <store-id>  12003     </store-id>
               <item-id>   8006      </item-id>
         </store-sell>
         <store-sell>
-              <store-id>  12003     </store-id>
-              <item-id>   8000      </item-id>
+              <store-id>  12004     </store-id>
+              <item-id>   8006      </item-id>
         </store-sell>
         <store-sell>
               <store-id>  12004     </store-id>
               <item-id>   8002      </item-id>
         </store-sell>
         <store-sell>
-              <store-id>  12004     </store-id>
-              <item-id>   8003      </item-id>
+              <store-id>  12005     </store-id>
+              <item-id>   8002      </item-id>
         </store-sell>
         <store-sell>
               <store-id>  12005     </store-id>
-              <item-id>   8003      </item-id>
-        </store-sell>
-        <store-sell>
-              <store-id>  12005     </store-id>
-              <item-id>   8008      </item-id>
+              <item-id>   8005      </item-id>
         </store-sell>
         <store-sell>
               <store-id>  12006     </store-id>
@@ -254,31 +254,31 @@
         </store-sell>
         <store-sell>
               <store-id>  12006     </store-id>
-              <item-id>   8009      </item-id>
+              <item-id>   8003      </item-id>
         </store-sell>
         <store-sell>
               <store-id>  12007     </store-id>
-              <item-id>   8001      </item-id>
+              <item-id>   8005      </item-id>
         </store-sell>
         <store-sell>
               <store-id>  12007     </store-id>
-              <item-id>   8007      </item-id>
+              <item-id>   8000      </item-id>
         </store-sell>
         <store-sell>
               <store-id>  12008     </store-id>
-              <item-id>   8004      </item-id>
+              <item-id>   8005      </item-id>
         </store-sell>
         <store-sell>
               <store-id>  12008     </store-id>
               <item-id>   8007      </item-id>
-        </store-sell>
-        <store-sell>
-              <store-id>  12009     </store-id>
-              <item-id>   8002      </item-id>
         </store-sell>
         <store-sell>
               <store-id>  12009     </store-id>
               <item-id>   8000      </item-id>
+        </store-sell>
+        <store-sell>
+              <store-id>  12009     </store-id>
+              <item-id>   8005      </item-id>
         </store-sell>
     </store-sells>
 
