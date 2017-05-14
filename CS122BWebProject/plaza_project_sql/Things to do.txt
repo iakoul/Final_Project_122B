@@ -1,0 +1,17 @@
+-add to cart from results page
+-images for each item
+-show item id's
+-need a genre page equivalent browse by type
+-improve overall design user friendly
+-show like page
+
+
+
+items sold
+
+-username
+-date
+-cc num
+-item id
+-store id
+-qty

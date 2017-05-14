@@ -1,0 +1,6 @@
+XML Parser
+
+Use Java SAX Parser
+-count current element
+-if connection dies midway through insert, start at latest unfinished element on next attempt
+-optional fields
