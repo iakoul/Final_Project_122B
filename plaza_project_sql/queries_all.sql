@@ -941,7 +941,7 @@ INSERT INTO StoreTypeTbl VALUES (09, "Education");
 INSERT INTO StoreTypeTbl VALUES (10, "Groceries");
 INSERT INTO StoreTypeTbl VALUES (11, "Gym");
 INSERT INTO StoreTypeTbl VALUES (12, "Home improve");
-INSERT INTO StoreTypeTbl VALUES (13, "Jewlry");
+INSERT INTO StoreTypeTbl VALUES (13, "Jewelry");
 INSERT INTO StoreTypeTbl VALUES (14, "Medical,");
 INSERT INTO StoreTypeTbl VALUES (15, "Office supplies");
 INSERT INTO StoreTypeTbl VALUES (16, "Printing");
@@ -955,7 +955,7 @@ INSERT INTO StoreTypeTbl VALUES (23, "Toys");
 INSERT INTO StoreTypeTbl VALUES (24, "Trucking");
 INSERT INTO StoreTypeTbl VALUES (25, "Vet");
 INSERT INTO StoreTypeTbl VALUES (26, "Zpecialz"); -- this honestly could be called "Others" but that's basically what it is
-INSERT INTO StoreTypeTbl VALUES (27, "Karoke");
+INSERT INTO StoreTypeTbl VALUES (27, "Karaoke");
 INSERT INTO StoreTypeTbl VALUES (28, "Juice and Smoothie Bars");
 INSERT INTO StoreTypeTbl VALUES (29, "Franchises");
 INSERT INTO StoreTypeTbl VALUES (30, "Crafts");
@@ -963,6 +963,7 @@ INSERT INTO StoreTypeTbl VALUES (31, "Flowers");
 INSERT INTO StoreTypeTbl VALUES (32, "Mail");
 INSERT INTO StoreTypeTbl VALUES (33, "Photography");
 INSERT INTO StoreTypeTbl VALUES (34, "Donuts");
+INSERT INTO StoreTypeTbl VALUES (35, "Generic");
 
 -- pies, digital magic, sweets, snacks, travel goods,
 -- topwear, bbq, stationary, ice cream, chocolates, 
@@ -978,8 +979,8 @@ INSERT INTO MerchandiseTbl VALUES (72007, "Apple Pie               ",     01, "4
 INSERT INTO MerchandiseTbl VALUES (72008, "Bannana Sundae          ",     01, "98765.45",     null);
 INSERT INTO MerchandiseTbl VALUES (72009, "Bikini                  ",     15, "1234.56",      null);
 INSERT INTO MerchandiseTbl VALUES (72010, "Bra                     ",     12, "199.99",       null);
-INSERT INTO MerchandiseTbl VALUES (72011, "Brazillian Wax          ",     40, "299.99",       null);
-INSERT INTO MerchandiseTbl VALUES (72012, "Bugolgi                 ",   null, "399.99",       null);
+INSERT INTO MerchandiseTbl VALUES (72011, "Brazillian Wax          ",     01, "299.99",       null);
+INSERT INTO MerchandiseTbl VALUES (72012, "Bugolgi                 ",     35, "399.99",       null);
 INSERT INTO MerchandiseTbl VALUES (72013, "Candy                   ",   null, "499.99",       null);
 INSERT INTO MerchandiseTbl VALUES (72014, "Cardigan                ",   null, "599.99",       null);
 INSERT INTO MerchandiseTbl VALUES (72015, "Chocolate Chip Cookie   ",   null, "799.99",       null);
