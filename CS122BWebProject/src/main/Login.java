@@ -52,14 +52,12 @@ public class Login extends HttpServlet {
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
 		
 		Boolean loggedIn = (Boolean)session.getAttribute("loggedIn");
-		
+
 		if (loggedIn == null || loggedIn == false) {
-			//check if username and password are correct
 			
-			out.println("test");
 			
 			String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
-			System.out.println("gRecaptchaResponse=" + gRecaptchaResponse);
+			//System.out.println("gRecaptchaResponse=" + gRecaptchaResponse);
 			// Verify CAPTCHA.
 			boolean valid = VerifyUtils.verify(gRecaptchaResponse);
 			if (!valid) {
@@ -70,7 +68,7 @@ public class Login extends HttpServlet {
 			    return;
 			}
 			
-			
+			//check if username and password are correct
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			String firstName = null;
