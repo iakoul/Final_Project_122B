@@ -1,8 +1,6 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
-// import java.util.HashMap;
-// import java.util.Set;
 import java.util.List;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -19,7 +17,7 @@ import java.sql.*;
  */
 
 public class SearchResult extends HttpServlet {
-	private static final int DEFAULT_LIMIT = 1;
+	public static final int DEFAULT_LIMIT = 20;
 	private final String JOIN_STORE_TABLE = "JOIN StoreSellsTbl sells ON m.merchID = sells.merchID JOIN StoreTbl s ON sells.storeID = s.storeID ";
 
 	public static boolean isStringEmpty(String s) {
@@ -29,13 +27,10 @@ public class SearchResult extends HttpServlet {
 		return false;
 	}
 
-	private String createQuery(String business, String city, String payment, String item, double price, int results, int page, int ascItem, int ascType, int ascPrice) {
+	private String createQuery(String business, String city, String payment, String item, double price) {
 		String query = "SELECT m.merchID, m.merchName, m.merchType, m.merchPrice ";
 		String from = "FROM MerchandiseTbl m ";
 		String where = "";
-		String limit = "LIMIT ? ";
-		String orderBy = "ORDER BY ";
-		String offset = "OFFSET ? ";
 
 		boolean joinedStoreTable = false;
 		// check fields to fill out query
@@ -86,6 +81,20 @@ public class SearchResult extends HttpServlet {
 					break;
 			}
 		}
+
+		// put clauses of query together
+		query += from;
+		if(!isStringEmpty(where)) {
+			query += "WHERE";
+			query += where;
+		}
+		return query;
+	}
+
+	private String createOrderByLimitOffset(int ascItem, int ascType, int ascPrice) {
+		String query = "";
+		String orderBy = "ORDER BY ";
+
 		if((ascItem != -1) || (ascType != -1) || (ascPrice != -1)) {
 			boolean addedOrderClause = false;
 			if(ascItem == 1) {
@@ -110,19 +119,10 @@ public class SearchResult extends HttpServlet {
 			else if(ascPrice == 0) {
 				orderBy += (addedOrderClause ? ", " : "") + "m.merchPrice DESC ";
 			}
-		}
-
-		// put clauses of query together
-		query += from;
-		if(!isStringEmpty(where)) {
-			query += "WHERE";
-			query += where;
-		}
-		if((ascItem != -1) || (ascType != -1) || (ascPrice != -1)) {
 			query += orderBy;
 		}
-		query += limit;
-		query += offset;
+		query += "LIMIT ? ";
+		query += "OFFSET ? ";
 
 		return query;
 	}
@@ -132,7 +132,7 @@ public class SearchResult extends HttpServlet {
 		// to test
 		PrintWriter out = response.getWriter();
 
-		// get parameters
+		// get parameters for search
 		String business = request.getParameter("business");
 		String city = request.getParameter("city");
 		String payment = request.getParameter("payment");
@@ -143,6 +143,10 @@ public class SearchResult extends HttpServlet {
 		int ascItem = isStringEmpty(request.getParameter("ascItem")) ? -1 : Integer.parseInt(request.getParameter("ascItem"));
 		int ascType = isStringEmpty(request.getParameter("ascType")) ? -1 : Integer.parseInt(request.getParameter("ascType"));
 		int ascPrice = isStringEmpty(request.getParameter("ascPrice")) ? -1 : Integer.parseInt(request.getParameter("ascPrice"));
+
+		// get parameters for browse
+		String startingLetter = request.getParameter("start");
+		String type = request.getParameter("type");
 
 
 		Connection connection = null;
@@ -161,28 +165,67 @@ public class SearchResult extends HttpServlet {
 			// Connect to mySQL
 			connection = DriverManager.getConnection(url, user, pass);
 
-			String query = createQuery(business, city, payment, item, price, results, page, ascItem, ascType, ascPrice);
-			
-			
-			// prepare sql statement
-			statement = connection.prepareStatement(query);
-			int index = 1;
-			if(!isStringEmpty(item)) {
-				statement.setNString(index++, "%"+item+"%");
+			String query;
+			// create the ORDER BY, LIMIT, and OFFSET clause to add to the query
+			String orderByLimitOffsetClause = createOrderByLimitOffset(ascItem, ascType, ascPrice);
+			int index = 1;	// index used to add arguments
+			// browse by letter
+			if(!SearchResult.isStringEmpty(startingLetter)) {
+				query = "SELECT m.merchID, m.merchName, m.merchType, m.merchPrice FROM MerchandiseTbl m WHERE m.merchName ";
+				if(startingLetter.equals("num")) {
+					query += "REGEXP '^[0-9].*' ";
+				}
+				else if(startingLetter.equals("Other")) {
+					query += "REGEXP '^[^0-9a-z].*' ";
+				}
+				else {
+					query += "LIKE ? ";
+				}
+
+				query += orderByLimitOffsetClause;
+				
+				statement = connection.prepareStatement(query);
+
+				// add argument for browsing by letter
+				if(!startingLetter.equals("num") && !startingLetter.equals("Other")) {
+					statement.setNString(index++, startingLetter + "%");
+				}
 			}
-			if(price >= 0.01) {
-				BigDecimal value = new BigDecimal(price);
-				statement.setBigDecimal(index++, value);
+			// browse by item type
+			else if(!SearchResult.isStringEmpty(type)) {
+				query = "SELECT DISTINCT m.merchID, m.merchName, m.merchType, m.merchPrice FROM StoreTypeTbl st JOIN StoreTbl s ON st.typeID = s.typeID JOIN StoreSellsTbl ss ON ss.storeID = s.storeID JOIN MerchandiseTbl m on ss.merchID = m.merchID WHERE st.storeType = ? ";
+				query += orderByLimitOffsetClause;
+				
+				statement = connection.prepareStatement(query);
+				// add argument for browsing by type
+				statement.setNString(index++, type);
 			}
-			if(!isStringEmpty(business)) {
-				statement.setNString(index++, "%"+business+"%");
+			// search
+			else {
+				query = createQuery(business, city, payment, item, price);
+				query += orderByLimitOffsetClause;
+
+				statement = connection.prepareStatement(query);
+
+				// add search arguments
+				if(!isStringEmpty(item)) {
+					statement.setNString(index++, "%"+item+"%");
+				}
+				if(price >= 0.01) {
+					BigDecimal value = new BigDecimal(price);
+					statement.setBigDecimal(index++, value);
+				}
+				if(!isStringEmpty(business)) {
+					statement.setNString(index++, "%"+business+"%");
+				}
+				if(!isStringEmpty(city)) {
+					statement.setNString(index++, "%"+city+"%");
+				}
 			}
-			if(!isStringEmpty(city)) {
-				statement.setNString(index++, "%"+city+"%");
-			}
+
+			// add arguments for number of results
 			statement.setInt(index++, results);
 			statement.setInt(index++, (page-1)*results);
-
 
 			// execute query
 			result = statement.executeQuery();
@@ -199,11 +242,6 @@ public class SearchResult extends HttpServlet {
 				searchResult.add(newItem);
 			}
 
-			// put result in session
-			// HttpSession session = request.getSession();
-			// session.setAttribute("items", searchResult);
-
-			// Set<Integer> resultStoreIds = searchResult.keySet();
 			request.setAttribute("items", searchResult);
 
 			RequestDispatcher rd = request.getRequestDispatcher("ResultTable.jsp");

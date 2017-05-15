@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>City Details</title>
+	<title>Main</title>
 	<link href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/basicStyle.css">
 	<script src="css/bootstrap-3.3.7-dist/js/jquery-3.2.1.min.js"></script>
@@ -13,27 +13,17 @@
 	<c:choose>
 	<c:when test="${loggedIn}">
 		<jsp:include page="header.jsp" />
+		<c:if test="${not empty name}">
+			<h3>Welcome, ${name}!</h3>
+		</c:if>
 		<div class="mainContent">
-			<h3>${city.name}</h3><br/>
-
-			<table class="table">
-				<thead>
-		    		<tr>
-					    <th>Plazas</th>
-		    		</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="plaza" items="${plazas}">
-						<tr>
-							<td><a href="./plaza?id=${plaza.id}">${plaza.name}</a></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
+			<div>
+				<jsp:include page="Browse.jsp" />
+		    </div>
+	    </div>
 	</c:when>
 	<c:otherwise>
-		<c:redirect url="./Login.jsp" />
+		<c:redirect url="./Login.jsp"/>
 	</c:otherwise>
 	</c:choose>
 </body>
