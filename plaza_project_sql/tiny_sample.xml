@@ -42,82 +42,82 @@
 
     <items>
          <item item-id="8000">
-              <item-name>              Generic Boxy Item LO18VAe9km       </item-name>
-              <item-type>              5570                               </item-type>
-              <item-price>             $89.76                             </item-price>
+              <item-name>              QTD Circular Thing 5Gwe0F91Jl      </item-name>
+              <item-type>              49                                 </item-type>
+              <item-price>             $89.09                             </item-price>
               <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </item-pic>
          </item>
          <item item-id="8001">
-              <item-name>              QTD Circular Thing yOvgmW903b      </item-name>
-              <item-type>              5555                               </item-type>
-              <item-price>             $3.62                              </item-price>
+              <item-name>              Generic Boxy Item I52p3n81s4       </item-name>
+              <item-type>              65                                 </item-type>
+              <item-price>             $47.47                             </item-price>
               <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </item-pic>
          </item>
          <item item-id="8002">
-              <item-name>              QTD Circular Thing M01QA123T4      </item-name>
-              <item-type>              5585                               </item-type>
-              <item-price>             $73.13                             </item-price>
+              <item-name>              An Item A 7evl6Mar3R               </item-name>
+              <item-type>              41                                 </item-type>
+              <item-price>             $51.12                             </item-price>
               <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </item-pic>
          </item>
          <item item-id="8003">
-              <item-name>              QTD Circular Thing f66iY6VB93      </item-name>
-              <item-type>              5606                               </item-type>
-              <item-price>             $62.64                             </item-price>
+              <item-name>              Generic Boxy Item 5UMc507mEw       </item-name>
+              <item-type>              60                                 </item-type>
+              <item-price>             $42.52                             </item-price>
               <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </item-pic>
          </item>
          <item item-id="8004">
-              <item-name>              An Item A 8Uo776nJ84               </item-name>
-              <item-type>              5581                               </item-type>
-              <item-price>             $22.45                             </item-price>
+              <item-name>              QTD Circular Thing 58piN7VDxs      </item-name>
+              <item-type>              51                                 </item-type>
+              <item-price>             $57.63                             </item-price>
               <item-pic>               7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png            </item-pic>
          </item>
     </items>
 
     <stores>
          <store store-id="80">
-              <store-name>             Generic Store vIlz11B6Lh      </store-name>
-              <address>                356 1rC60z6ZJf Boulevard      </address>
-              <store-phone-number>     1(341)-150-7709               </store-phone-number>
-              <year-opened>            1980                          </year-opened>
-              <type-id>                46                            </type-id>
-              <plaza-id>               6260010009                    </plaza-id>
+              <store-name>             Generic Warehouse 4DrcviF6Yr  </store-name>
+              <address>                7989 Kuz5Lgqy7p Aveneue       </address>
+              <store-phone-number>     1(932)-746-7799               </store-phone-number>
+              <year-opened>            1949                          </year-opened>
+              <type-id>                44                            </type-id>
+              <plaza-id>               6260004002                    </plaza-id>
               <owner-id>               517                           </owner-id>
          </store>
          <store store-id="81">
-              <store-name>             Generic Store Z095siQ015      </store-name>
-              <address>                7965 9n6i47Ge0e Way           </address>
-              <store-phone-number>     1(122)-599-6596               </store-phone-number>
-              <year-opened>            1959                          </year-opened>
-              <type-id>                62                            </type-id>
-              <plaza-id>               6260010010                    </plaza-id>
-              <owner-id>               556                           </owner-id>
-         </store>
-         <store store-id="82">
-              <store-name>             Generic Store YZbCW1t212      </store-name>
-              <address>                5034 txECtUjRwh Street        </address>
-              <store-phone-number>     1(779)-680-2680               </store-phone-number>
-              <year-opened>            1988                          </year-opened>
-              <type-id>                38                            </type-id>
-              <plaza-id>               6260002002                    </plaza-id>
+              <store-name>             Generic Seller 9g7cSX704b     </store-name>
+              <address>                7071 DRYfX0XK2s Boulevard     </address>
+              <store-phone-number>     1(068)-786-8588               </store-phone-number>
+              <year-opened>            1998                          </year-opened>
+              <type-id>                48                            </type-id>
+              <plaza-id>               6260010016                    </plaza-id>
               <owner-id>               570                           </owner-id>
          </store>
+         <store store-id="82">
+              <store-name>             Generic Warehouse 23U0G6cn0x  </store-name>
+              <address>                7986 xj8W8L3EgN Boulevard     </address>
+              <store-phone-number>     1(410)-881-4293               </store-phone-number>
+              <year-opened>            1967                          </year-opened>
+              <type-id>                61                            </type-id>
+              <plaza-id>               6260005002                    </plaza-id>
+              <owner-id>               500                           </owner-id>
+         </store>
          <store store-id="83">
-              <store-name>             Generic Warehouse ql8sSq835K  </store-name>
-              <address>                3664 sz3QxKw0w3 Aveneue       </address>
-              <store-phone-number>     1(541)-874-8341               </store-phone-number>
-              <year-opened>            1943                          </year-opened>
-              <type-id>                70                            </type-id>
-              <plaza-id>               6260024002                    </plaza-id>
-              <owner-id>               571                           </owner-id>
+              <store-name>             Generic Store seP92i54Lz      </store-name>
+              <address>                5425 Nc0Ay3Kk0Y Boulevard     </address>
+              <store-phone-number>     1(497)-715-2124               </store-phone-number>
+              <year-opened>            1927                          </year-opened>
+              <type-id>                65                            </type-id>
+              <plaza-id>               6260002001                    </plaza-id>
+              <owner-id>               566                           </owner-id>
          </store>
          <store store-id="84">
-              <store-name>             Generic Seller 72zvuOjvu3     </store-name>
-              <address>                5450 wPfhEErgtn Boulevard     </address>
-              <store-phone-number>     1(147)-463-0887               </store-phone-number>
-              <year-opened>            1943                          </year-opened>
-              <type-id>                67                            </type-id>
-              <plaza-id>               6260010016                    </plaza-id>
-              <owner-id>               538                           </owner-id>
+              <store-name>             Generic Store A5Te19o827      </store-name>
+              <address>                7292 flCoc5l04D Boulevard     </address>
+              <store-phone-number>     1(542)-465-8584               </store-phone-number>
+              <year-opened>            1979                          </year-opened>
+              <type-id>                62                            </type-id>
+              <plaza-id>               6260024001                    </plaza-id>
+              <owner-id>               520                           </owner-id>
          </store>
     </stores>
 
@@ -128,39 +128,39 @@
         </store-sell>
         <store-sell>
               <store-id>  517       </store-id>
-              <item-id>   8004      </item-id>
-        </store-sell>
-        <store-sell>
-              <store-id>  556       </store-id>
-              <item-id>   8000      </item-id>
-        </store-sell>
-        <store-sell>
-              <store-id>  556       </store-id>
-              <item-id>   8001      </item-id>
-        </store-sell>
-        <store-sell>
-              <store-id>  570       </store-id>
               <item-id>   8000      </item-id>
         </store-sell>
         <store-sell>
               <store-id>  570       </store-id>
-              <item-id>   8002      </item-id>
-        </store-sell>
-        <store-sell>
-              <store-id>  571       </store-id>
-              <item-id>   8002      </item-id>
-        </store-sell>
-        <store-sell>
-              <store-id>  571       </store-id>
               <item-id>   8003      </item-id>
         </store-sell>
         <store-sell>
-              <store-id>  538       </store-id>
+              <store-id>  570       </store-id>
               <item-id>   8000      </item-id>
         </store-sell>
         <store-sell>
-              <store-id>  538       </store-id>
+              <store-id>  500       </store-id>
+              <item-id>   8001      </item-id>
+        </store-sell>
+        <store-sell>
+              <store-id>  500       </store-id>
               <item-id>   8002      </item-id>
+        </store-sell>
+        <store-sell>
+              <store-id>  566       </store-id>
+              <item-id>   8002      </item-id>
+        </store-sell>
+        <store-sell>
+              <store-id>  566       </store-id>
+              <item-id>   8004      </item-id>
+        </store-sell>
+        <store-sell>
+              <store-id>  520       </store-id>
+              <item-id>   8002      </item-id>
+        </store-sell>
+        <store-sell>
+              <store-id>  520       </store-id>
+              <item-id>   8000      </item-id>
         </store-sell>
     </store-sells>
 
