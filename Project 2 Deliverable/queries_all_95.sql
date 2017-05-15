@@ -1,3 +1,5 @@
+USE `storemarketing`;
+
 INSERT INTO UsersTbl VALUES ("Alex", "Alex", "Bustelo", "$2a$12$/7soAd89PYtEdXkH5nu2LecLPc4FfX449Fa8fkG8GXq/0EyAgQWai", 0);
 INSERT INTO UsersTbl VALUES ("admin", "Administrator", "McAdministratorson", "$2a$12$nWDKDrqsGbjfrMPc9pcDY.wUEl5QKLcSnopZ3.0GHtM9mvLt8DmCq", 1);
 
@@ -434,7 +436,7 @@ INSERT INTO StoreTypeTbl VALUES (22, "Tailoring");
 INSERT INTO StoreTypeTbl VALUES (23, "Toys");
 INSERT INTO StoreTypeTbl VALUES (24, "Trucking");
 INSERT INTO StoreTypeTbl VALUES (25, "Vet");
-INSERT INTO StoreTypeTbl VALUES (26, "Zpecialz"); --- this honestly could be called "Others" but that's basically what it is
+INSERT INTO StoreTypeTbl VALUES (26, "Zpecialz"); -- this honestly could be called "Others" but that's basically what it is
 INSERT INTO StoreTypeTbl VALUES (27, "Karoke");
 INSERT INTO StoreTypeTbl VALUES (28, "Juice and Smoothie Bars");
 INSERT INTO StoreTypeTbl VALUES (29, "Franchises");
@@ -4962,11 +4964,11 @@ INSERT INTO StoreTbl VALUES ( 6260026001073,   "Check Plus Computer",           
 INSERT INTO StoreTbl VALUES ( 6260026001074,   "Extra Space Storage",                                       "1707 Cloverfield Blvd",                                    "(310) 979-0137",       null, null,     6260026001, null) ;  -- cosm-- storage
 INSERT INTO StoreTbl VALUES ( 6260026001075,   "That British Place",                                        "1551 16th St",                                             "(310) 880-7941",       null, null,     6260026001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260026001076,   "Rich Sheet Metal Works",                                    "1725 Colorado Ave",                                        "(310) 829-2478",       null, null,     6260026001, null) ;
-INSERT INTO StoreTbl VALUES ( 6260026001077,   "FedEx Office Ship Center",                                  "925 Wilshire Blvd",                                        "(310) 394-2947",       null, null,     6260026001, null) ;   --- office supply no
+INSERT INTO StoreTbl VALUES ( 6260026001077,   "FedEx Office Ship Center",                                  "925 Wilshire Blvd",                                        "(310) 394-2947",       null, null,     6260026001, null) ;   -- office supply no
 INSERT INTO StoreTbl VALUES ( 6260026001078,   "Montana Mail",                                              "1112 Montana Ave",                                         "(310) 394-6909",       null, null,     6260026001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260026001079,   "Los Angeles TV Installation",                               "1234 6th St",                                              "(310) 289-4449",       null, null,     6260026001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260026001080,   "Lime Studios",                                              "1528 20th St",                                             "(310) 829-5463",       null, null,     6260026001, null) ;
-INSERT INTO StoreTbl VALUES ( 6260026001082,   "Beacon Mortuary - Funerals and Cremation Los Angeles",       "616 Alta Ave",                                             "(424) 324-9474",       null, null,    6260026001, null)   ;
+INSERT INTO StoreTbl VALUES ( 6260026001082,   "Beacon Mortuary - Funerals and Cremation Los Angeles",       "616 Alta Ave",                                             "(424) 324-9474",       null, null,    6260026001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260026001083,   "iMusic Academy",                                            "2425 Olympic Blvd",                                        "(888) 263-2702",       null, null,     6260026001, null) ;
 INSERT INTO StoreTbl VALUES ( 6260026001084,   "Montana Dry Cleaners",                                      "1112 Montana Ave",                                         "(310) 458-6679",       null, null,     6260026001, null) ;  -- cleaners
 INSERT INTO StoreTbl VALUES ( 6260026001085,   "Almost Holden Collection",                                  "2821 Ocean Park Blvd",                                     "(424) 238-8881",       null, null,     6260026001, null) ;

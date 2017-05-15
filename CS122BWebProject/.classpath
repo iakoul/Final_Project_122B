@@ -28,5 +28,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="D:/Dropbox/Documents/Programming/workspace/TomcatFormReCaptcha/WebContent/WEB-INF/lib/javax.json-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="D:/Dropbox/Documents/Programming/workspace/TomcatFormReCaptcha/WebContent/WEB-INF/lib/recaptcha4j-0.0.7.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

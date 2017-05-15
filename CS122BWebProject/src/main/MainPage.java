@@ -31,7 +31,7 @@ public class MainPage extends HttpServlet {
 	    		+ "<html>\n"
 	    		+ "<head>\n"
 	    		+ "<title>"
-	    		+ "Welcome"
+	    		+ "Welcome to Übel Mart"
 	    		+ "</title>\n"
 	    		+ "</head>\n");
 
@@ -42,9 +42,12 @@ public class MainPage extends HttpServlet {
 	    	HashMap<ArrayList<String>, Integer> cart = (HashMap<ArrayList<String>, Integer>)session.getAttribute("cart");
 	    	itemsInCart = cart.size();
 	    }
-	    out.println("<div align=\"right\"><a href=\"./shoppingCart\">Cart(" + itemsInCart + ")</a></div>");
 	    if (session.getAttribute("loggedIn") != null && (Boolean)session.getAttribute("loggedIn")) {
-			out.println("<h1 align=\"center\">Welcome, " + session.getAttribute("username") + " to Mega Marketplace Search</h1>\n");
+	    	out.println("<div align=\"right\"><a href=\"./shoppingCart\">Cart(" + itemsInCart + ")</a></div>");
+	    	if (session.getAttribute("isAdmin") != null && (Boolean)session.getAttribute("isAdmin")) {
+	    		out.println("<div align=\"right\"><a href=\"./adminConsole\">Admin</a></div>");
+	    	}
+			out.println("<h1 align=\"center\">Welcome, " + session.getAttribute("username") + " to Übel Mart Search</h1>\n");
 			out.println("<div style=\"padding-left: 5%; padding-top: 5%;\">\n");
 			out.println("<div style=\"text-align: center;\">");
 			out.println("<a href=\"./AdvancedSearch.jsp\">Advanced Search</a><br>\n");

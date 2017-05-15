@@ -75,12 +75,15 @@ public class ShoppingCart extends HttpServlet {
 	    		+ "</head>\n");
 	    
 	    out.println("<script language=\"javascript\">\n");
-		out.println("window.onpageshow = function(event) {if (event.persisted) {window.location.reload() }};");
+		out.println("window.onpageshow = function(event) {if (event.persisted) {parent.window.location.reload(true) }};");
 		out.println("</script>\n");
 
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
 		
 		if (session.getAttribute("loggedIn") != null && (Boolean)session.getAttribute("loggedIn")) {
+			if (session.getAttribute("isAdmin") != null && (Boolean)session.getAttribute("isAdmin")) {
+	    		out.println("<div align=\"right\"><a href=\"./adminConsole\">Admin</a></div>");
+	    	}
 			//Incorporate mySQL driver
 			try {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();

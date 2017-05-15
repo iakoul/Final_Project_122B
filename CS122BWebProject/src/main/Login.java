@@ -3,6 +3,8 @@ package main;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -50,11 +52,27 @@ public class Login extends HttpServlet {
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
 		
 		Boolean loggedIn = (Boolean)session.getAttribute("loggedIn");
-		
+
 		if (loggedIn == null || loggedIn == false) {
+			
+			
+			String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+			//System.out.println("gRecaptchaResponse=" + gRecaptchaResponse);
+			// Verify CAPTCHA.
+			boolean valid = VerifyUtils.verify(gRecaptchaResponse);
+			if (!valid) {
+			    //errorString = "Captcha invalid!";
+				out.println("<p>Incorrect captcha</p>");
+				out.println("</body>\n</html>");
+				response.setHeader("Refresh", "3; URL=./index.html");
+			    return;
+			}
+			
 			//check if username and password are correct
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
+			String firstName = null;
+			String lastName = null;
 			//String salt = BCrypt.gensalt(12); //workload = 12
 			//String hashed_password = BCrypt.hashpw(password, salt);
 
@@ -70,7 +88,7 @@ public class Login extends HttpServlet {
 			try {
 				connection = DriverManager.getConnection("jdbc:mysql:///storemarketing?autoReconnect=true&useSSL=false","root","mysqlpass");
 				try {
-					String prepQuery = "SELECT u.username, u.isAdmin, u.hashPW FROM UsersTbl u WHERE u.username = ?";
+					String prepQuery = "SELECT u.username, u.isAdmin, u.hashPW, u.firstName, u.lastName FROM UsersTbl u WHERE u.username = ?";
 					PreparedStatement pstmt = connection.prepareStatement(prepQuery);
 					pstmt.setString(1, username);
 					ResultSet results = pstmt.executeQuery();
@@ -78,13 +96,16 @@ public class Login extends HttpServlet {
 						if (BCrypt.checkpw(password, results.getString(3))) {
 							out.println("<h1 align=\"center\">Welcome, " + results.getString(1));
 							loggedIn = true;
+							session.setAttribute("loggedIn", loggedIn);
 							if (results.getBoolean(2)) {
 								out.println("(A)");
 								session.setAttribute("isAdmin", true);
 							}
 							out.println("</h1>\n");
-							response.setHeader("Refresh", "3; URL=./mainPage");
 							out.println("</body>\n</html>");
+							firstName = results.getString(4);
+							lastName = results.getString(5);
+							response.setHeader("Refresh", "3; URL=./mainPage");
 						} else {
 							out.println("<h1>Incorrect username or password</h1>\n");
 							loggedIn = false;
@@ -102,6 +123,10 @@ public class Login extends HttpServlet {
 				}
 			    session.setAttribute("loggedIn", loggedIn);
 			    session.setAttribute("username", username);
+			    session.setAttribute("firstname", firstName);
+			    session.setAttribute("lastname", lastName);
+			    HashMap<ArrayList<String>, Integer> cart = new HashMap<ArrayList<String>, Integer>();
+			    session.setAttribute("cart", cart);
 			} catch (SQLException e) {
 				out.println("Connection failed " + e.getMessage());
 			}

@@ -39,8 +39,8 @@ public class StoreResult extends HttpServlet {
 			connection = DriverManager.getConnection(url, user, pass);
 
 			// query to get store info
-			String storeQuery = "SELECT s.storeID, s.storeName, s.address, s.phoneNum, s.yearOpened, s.typeID, s.plazaID, p.plazaName " +
-								"FROM StoreTbl s JOIN PlazaTbl p ON s.plazaID = p.plazaID " +
+			String storeQuery = "SELECT s.storeID, s.storeName, s.address, s.phoneNum, s.yearOpened, s.typeID, s.plazaID, p.plazaName, p.cityID, c.cityName " +
+								"FROM StoreTbl s JOIN PlazaTbl p ON s.plazaID = p.plazaID JOIN CityTbl c ON p.cityID = c.cityID " +
 								"WHERE s.storeID = ? ";
 
 			statement = connection.prepareStatement(storeQuery);
@@ -55,7 +55,10 @@ public class StoreResult extends HttpServlet {
 				int typeId = result.getInt("s.typeId");
 				double plazaId = result.getDouble("s.plazaID");
 				String plazaName = result.getString("p.plazaName");
-				Business business = new Business(storeId, storeName, storeAddress, phoneNumber, yearOpened, typeId, new Plaza(plazaId, plazaName));
+				int cityId = result.getInt("p.cityID");
+				String cityName = result.getString("c.cityName");
+				Plaza plaza = new Plaza(plazaId, plazaName, new City(cityId, cityName));
+				Business business = new Business(storeId, storeName, storeAddress, phoneNumber, yearOpened, typeId, plaza);
 				request.setAttribute("business", business);
 			}
 

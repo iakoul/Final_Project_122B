@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -55,6 +56,9 @@ public class Checkout extends HttpServlet {
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
 		
 		if (session.getAttribute("loggedIn") != null && (Boolean)session.getAttribute("loggedIn")) {
+			if (session.getAttribute("isAdmin") != null && (Boolean)session.getAttribute("isAdmin")) {
+	    		out.println("<div align=\"right\"><a href=\"./adminConsole\">Admin</a></div>");
+	    	}
 			//Incorporate mySQL driver
 			try {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -82,10 +86,34 @@ public class Checkout extends HttpServlet {
 					if (results.getString(2).equals(request.getParameter("firstname")) 
 							&& results.getString(3).equals(request.getParameter("lastname")) 
 							&& results.getString(4).equals(request.getParameter("expdate"))) {
-						out.println("<p>Purchase complete. Thank you for shopping with us. You will now be redirected. <p>");
-						out.println("</body>\n</html>");
 						HashMap<ArrayList<String>, Integer> cart = (HashMap<ArrayList<String>, Integer>)session.getAttribute("cart");
+						Iterator it = cart.entrySet().iterator();
+					    while (it.hasNext()) {
+					        HashMap.Entry pair = (HashMap.Entry)it.next();
+					        prepQuery = "INSERT "
+									+ "INTO "
+									+ "ItemsSoldTbl "
+									+ "VALUES ("
+									+ "?, " //username
+									+ "null, " //date time, defaults to current time
+									+ "?, " //ccid
+									+ "?, " //merchID
+									+ "?, " //storeID
+									+ "?" //qty
+									+ ");";
+							pstmt = connection.prepareStatement(prepQuery);
+							pstmt.setString(1, session.getAttribute("username").toString());
+							pstmt.setString(2, request.getParameter("ccnum").toString());
+							ArrayList<String> key = (ArrayList<String>)pair.getKey();
+							pstmt.setString(3, key.get(1).toString());
+							pstmt.setString(4, key.get(0).toString());
+							pstmt.setString(5, pair.getValue().toString());
+							pstmt.executeUpdate();
+					        it.remove(); // avoids a ConcurrentModificationException
+					    }
+						out.println("<p>Purchase complete. Thank you for shopping with us. You will now be redirected. <p>");
 						cart.clear();
+						out.println("</body>\n</html>");
 						response.setHeader("Refresh", "3; URL=./mainPage");
 					} else {
 						out.println("<p>Sorry, your credit card was declined. You will be returned to the shopping cart.</p>");
@@ -98,7 +126,7 @@ public class Checkout extends HttpServlet {
 					response.setHeader("Refresh", "3; URL=./shoppingCart");
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				out.println(e.getMessage());
 			}
 		}
 		
