@@ -149,7 +149,7 @@ public class SMHandler extends DefaultHandler {
 			try {
 				writer = new PrintWriter(sqlFile, "UTF-8");
 				writerExists = true;
-				writer.println("USE `storemarketing`;");
+				writer.println("USE \"storemarketing\";");
 			} catch (FileNotFoundException e) {
 				System.out.println(e.getMessage());
 			} catch (UnsupportedEncodingException e) {
@@ -158,7 +158,7 @@ public class SMHandler extends DefaultHandler {
 		}
 		
 		if (qname.equals("item")) {
-			this.query = "INSERT INTO MerchandiseTbl VALUES (" + this.sItem_id + ", " + this.sItem_name + ", " + this.sItem_type + ", " + this.sItem_price + ", " + this.sItem_pic + ");";
+			this.query = "INSERT INTO MerchandiseTbl VALUES (\"" + this.sItem_id + "\", \"" + this.sItem_name + "\", \"" + this.sItem_type + "\", \"" + this.sItem_price + "\", \"" + this.sItem_pic + "\");";
 			this.sItem_id = "null";
 			this.sItem_name = "null";
 			this.sItem_type = "null";
@@ -168,8 +168,8 @@ public class SMHandler extends DefaultHandler {
 			System.out.println(this.query);
 			this.item = false;
 		} else if (qname.equals("store")) {
-			this.query = "INSERT INTO StoreTbl VALUES (" + this.sStore_id + ", " + this.sStore_name + ", " + this.sAddress + ", " + this.sStorePhone
-					+ ", " + this.sYear + ", " + this.sStoreType_id + ", " + this.sPlaza_id + ", " + this.sOwner_id + ");";
+			this.query = "INSERT INTO StoreTbl VALUES (\"" + this.sStore_id + "\", \"" + this.sStore_name + "\", \"" + this.sAddress + "\", \"" + this.sStorePhone
+					+ "\", \"" + this.sYear + "\", \"" + this.sStoreType_id + "\", \"" + this.sPlaza_id + "\", \"" + this.sOwner_id + "\");";
 			this.sStore_id = "null";
 			this.sStore_name = "null";
 			this.sAddress = "null";
@@ -182,14 +182,14 @@ public class SMHandler extends DefaultHandler {
 			System.out.println(this.query);
 			this.store = false;
 		} else if (qname.equals("store-sell")) {
-			this.query = "INSERT INTO StoreSellsTbl VALUES (" + this.sSellStore_id + ", " + this.sSellItem_id + ");";
+			this.query = "INSERT INTO StoreSellsTbl VALUES (\"" + this.sSellStore_id + "\", \"" + this.sSellItem_id + "\");";
 			this.sSellItem_id = "1";
 			this.sSellStore_id = "1";
 			writer.println(this.query);
 			System.out.println(this.query);
 			this.store_sell = false;
 		} else if (qname.equals("store-type")) {
-			this.query = "INSERT INTO StoreTypeTbl VALUES (" + this.sType_id + ", " + this.sType + ");";
+			this.query = "INSERT INTO StoreTypeTbl VALUES (\"" + this.sType_id + "\", \"" + this.sType + "\");";
 			this.sType_id = "null";
 			this.sType = "null";
 			writer.println(this.query);
