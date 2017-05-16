@@ -3,6 +3,7 @@ USE `storemarketing`;
 
 DROP TABLE IF EXISTS `ItemsSoldTbl`;
 DROP TABLE IF EXISTS `StoreSellsTbl`;
+DROP TABLE IF EXISTS `MerchandiseTypeTbl`;
 DROP TABLE IF EXISTS `MerchandiseTbl`;
 DROP TABLE IF EXISTS `CreditCardsTbl`;
 DROP TABLE IF EXISTS `UsersTbl`;
