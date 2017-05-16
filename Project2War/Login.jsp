@@ -6,6 +6,7 @@
 	<title>Login</title>
 	<link href="css/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/basicStyle.css">
+	<script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 	<c:choose>
@@ -24,6 +25,7 @@
 		    		<label>Password</label>
 		    		<input type="password" class="form-control" id="password" name="password" placeholder="Password">
 				</div>
+				<div class="g-recaptcha" data-sitekey="6LfkZSEUAAAAAJ1eB5CQ1XWc-FrXt59rM-gDOIZa"></div>
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</form>
 			${error}

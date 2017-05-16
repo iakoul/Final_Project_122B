@@ -10,6 +10,10 @@
       Store Marketing Application
     </description>
 
+    <welcome-file-list>
+        <welcome-file>Login.jsp</welcome-file>
+    </welcome-file-list>
+
 
   <!-- Define servlets that are included in the example application -->
     <servlet>
@@ -44,6 +48,18 @@
       <servlet-name>addToCart</servlet-name>
       <servlet-class>AddToCart</servlet-class>
     </servlet>
+    <servlet>
+      <servlet-name>employeeLogin</servlet-name>
+      <servlet-class>EmployeeLogin</servlet-class>
+    </servlet>
+    <servlet>
+      <servlet-name>insertItem</servlet-name>
+      <servlet-class>InsertItem</servlet-class>
+    </servlet>
+    <servlet>
+      <servlet-name>metadataResult</servlet-name>
+      <servlet-class>MetadataResult</servlet-class>
+    </servlet>
 
 
     <servlet-mapping>
@@ -77,6 +93,18 @@
     <servlet-mapping>
       <servlet-name>addToCart</servlet-name>
       <url-pattern>/addToCart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>employeeLogin</servlet-name>
+      <url-pattern>/employeeLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>insertItem</servlet-name>
+      <url-pattern>/insertItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>metadataResult</servlet-name>
+      <url-pattern>/metadata</url-pattern>
     </servlet-mapping>
 
 

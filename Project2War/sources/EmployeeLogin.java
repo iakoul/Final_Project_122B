@@ -1,8 +1,5 @@
 import java.io.IOException;
 import java.io.PrintWriter;
-// import java.math.BigDecimal;
-// import java.util.List;
-// import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,10 +10,10 @@ import javax.servlet.RequestDispatcher;
 import java.sql.*;
 
 /*
- * Checks login info
+ * Checks login info for employee
  */
 
-public class Login extends HttpServlet {
+public class EmployeeLogin extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String username = request.getParameter("username");
@@ -26,7 +23,7 @@ public class Login extends HttpServlet {
 		// boolean valid = VerifyUtils.verify(gRecaptchaResponse);
 		// if (!valid) {
 		// 	request.setAttribute("error", "Invalid reCaptcha. Please try again.");
-		// 	RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+		// 	RequestDispatcher rd = request.getRequestDispatcher("EmployeeLogin.jsp");
 		// 	rd.forward(request, response);
 		// 	return;
 		// }
@@ -37,44 +34,43 @@ public class Login extends HttpServlet {
 
 		HttpSession session = request.getSession(true);
 		Boolean loggedIn = (Boolean)session.getAttribute("loggedIn");
+		Boolean isEmployee = (Boolean)session.getAttribute("isEmployee");
 
 		PrintWriter out = response.getWriter();
 
-		if(loggedIn == null || loggedIn == false) {
+		if((loggedIn == null || loggedIn == false) && (isEmployee == null || isEmployee == false)) {
 			try {
-			// Database connection info
-			String user = "mytestuser";
-        	String pass = "mypassword";
-        	String url = "jdbc:mysql://localhost:3306/storemarketing";
+				// Database connection info
+				String user = "mytestuser";
+	        	String pass = "mypassword";
+	        	String url = "jdbc:mysql://localhost:3306/storemarketing";
 
-			// Load driver
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+				// Load driver
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-			// Connect to mySQL
-			connection = DriverManager.getConnection(url, user, pass);
+				// Connect to mySQL
+				connection = DriverManager.getConnection(url, user, pass);
 
-			String loginQuery = "SELECT u.firstName FROM UsersTbl u WHERE u.username = ? AND u.hashPW = ? ";
-			statement = connection.prepareStatement(loginQuery);
-			statement.setString(1, username);
-			statement.setString(2, password);
-			result = statement.executeQuery();
+				String loginQuery = "SELECT email, password FROM Employees WHERE email = ? AND password = ? ";
+				statement = connection.prepareStatement(loginQuery);
+				statement.setString(1, username);
+				statement.setString(2, password);
+				result = statement.executeQuery();
 
-			if(result.next()) {
-				String firstName = result.getString("u.firstName");
-				session.setAttribute("name", firstName);
-				session.setAttribute("loggedIn", new Boolean(true));
-				session.setAttribute("username", username);
-				// redirect to main page
-				RequestDispatcher rd = request.getRequestDispatcher("Main.jsp");
-				rd.forward(request, response);
-			}
-			else {
-				// TODO: change to give error message with ajax
-				// response.sendRedirect("Login.jsp");
-				request.setAttribute("error", "Invalid username password combination. Please try again.");
-				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-				rd.forward(request, response);
-			}
+				if(result.next()) {
+					session.setAttribute("loggedIn", new Boolean(true));
+					session.setAttribute("isEmployee", new Boolean(true));
+					// redirect to dashboard
+					RequestDispatcher rd = request.getRequestDispatcher("Dashboard.jsp");
+					rd.forward(request, response);
+				}
+				else {
+					// TODO: change to give error message with ajax
+					// response.sendRedirect("EmployeeLogin.jsp");
+					request.setAttribute("error", "Invalid username password combination. Please try again.");
+					RequestDispatcher rd = request.getRequestDispatcher("EmployeeLogin.jsp");
+					rd.forward(request, response);
+				}
 
 			}
 			catch(Exception e) {
@@ -102,7 +98,7 @@ public class Login extends HttpServlet {
 			}
 		}
 		else {
-			response.sendRedirect("Main.jsp");
+			response.sendRedirect("Dashboard.jsp");
 		}
 	}
 
