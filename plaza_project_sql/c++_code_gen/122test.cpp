@@ -98,7 +98,7 @@ void print_test(std::vector<Store> &stores, std::vector<Item> &items){ //TODO co
         std::cout << "        <store-type type-id=\"" << std::left << std::setw(7) << std::to_string(store_type_id_offset + i) + "\">" << std::left << std::setw(30) <<  store_type_name[i]  << "</store-type>\n";
     std::cout << "    </store-types>" << std::endl << std::endl;
 
-    std::string itemPic         = "7272 http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png"; //TODO
+    std::string itemPic         = "http://393i3j34.33oods.urltxt/picthisthat.sandwich.vox.spam.png"; //TODO
 
 
 //NOTE
@@ -144,7 +144,7 @@ void print_test(std::vector<Store> &stores, std::vector<Item> &items){ //TODO co
             //For all items in that store
             for (auto e : store_instance_i->item_ids_sold){
                 std::cout << "        "     <<  "<store-sell>\n";
-                std::cout << "              "   << std::left << std::setw(12) << "<store-id>" << std::left << std::setw(10)  <<  store_instance_i->owner_id     << "</store-id>\n";
+                std::cout << "              "   << std::left << std::setw(12) << "<store-id>" << std::left << std::setw(10)  <<  store_instance_i->store_id     << "</store-id>\n";
                 std::cout << "              "   << std::left << std::setw(12) << "<item-id>"  << std::left << std::setw(10)  <<  std::to_string(e)              << "</item-id>\n";          
                 std::cout << "        "     <<  "</store-sell>\n";
             }

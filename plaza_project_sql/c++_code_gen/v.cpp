@@ -37,10 +37,10 @@
 typedef unsigned short us;
 
 //Both
-size_t number_of_items_generated = 5;
-size_t number_of_stores = 5;
+size_t number_of_items_generated = 10000;
+size_t number_of_stores = 10000;
 
-size_t number_of_items_associated = 2;
+size_t number_of_items_associated = 50;
 
 //Items
 size_t item_offset = 8000;
@@ -255,7 +255,7 @@ std::string generate_plaza_id(size_t plaza_id_offset, size_t number_of_plazas){
 //Generate Item Price
 std::string generate_item_price(){
 
-    std::string item_price = "$";
+    std::string item_price = ""; //"$"
 
     item_price += std::to_string(rand() % 100) + ".";
     item_price += std::to_string(7200 + rand() % 100).substr(2,2);
