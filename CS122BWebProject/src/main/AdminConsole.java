@@ -185,8 +185,8 @@ public class AdminConsole extends HttpServlet {
 					+ "			</div>\n"
 					+ "		</div>\n"
 					+ "		<div style=\"clear: both;\">\n"
-					+ "			<input type=\"hidden\" name=\"add-city\" value=\"true\">\n"
-					+ "			<br><input type=\"submit\" value=\"Add City\"><br>\n"
+					+ "			<input type=\"hidden\" name=\"add-store\" value=\"true\">\n"
+					+ "			<br><input type=\"submit\" value=\"Add Store\"><br>\n"
 					+ "		</div>\n"
 					+ "	</form>\n"
 					+ "</div>");

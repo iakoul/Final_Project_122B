@@ -1,0 +1,6 @@
+Adding a Store
+-Fill out each of the store fields.
+-Store Type: If your new store has a store type that is not in the database, then fill out the Store Type ID and Name fields. Otherwise, just put in the Store Type ID of the desired type.
+-Plaza: If your new store is in a plaza that is not in the database, then fill out the Plaza ID and Name fields. Otherwise, just put in the Plaza ID.
+-City: If your new store is in a city that is not in the database, then fill out the City ID and Name fields. Otherwise, just put in the City ID.
+-Item: If your new store sells an item that is not in the databse, then fill out the Item fields. Otherwise, just put the Item ID.

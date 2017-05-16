@@ -13,6 +13,14 @@ DROP TABLE IF EXISTS `PlazaTbl`;
 DROP TABLE IF EXISTS `CityTbl`;
 DROP TABLE IF EXISTS `OwnerTbl`;
 DROP TABLE IF EXISTS `StoreTypeTbl`;
+DROP TABLE IF EXISTS `Employees`;
+
+CREATE TABLE `Employees` (
+    `email` VARCHAR(50) NOT NULL,
+    `password` VARCHAR(20) NOT NULL,
+    `fullname` VARCHAR(100),
+    PRIMARY KEY (`email`)
+) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
 CREATE TABLE `StoreTypeTbl` (    
     `typeID` INTEGER NOT NULL AUTO_INCREMENT,
@@ -49,7 +57,7 @@ CREATE TABLE `StoreTbl` (
     `address` CHAR(100) NOT NULL,
     `phoneNum` CHAR(20),
     `yearOpened` INTEGER,
-	`typeID` INTEGER,
+    `typeID` INTEGER,
     `plazaID` BIGINT,
     `ownerID` INTEGER DEFAULT 0,
     PRIMARY KEY (`storeID`),
@@ -67,11 +75,11 @@ CREATE TABLE `StoreTbl` (
 CREATE TABLE `AcceptsPaymentTbl` (
     `storeID` BIGINT NOT NULL,
     `acceptsVisa` BOOLEAN NOT NULL,
-	`acceptsMasterCard` BOOLEAN NOT NULL,
-	`acceptsDiscover` BOOLEAN NOT NULL,
-	`acceptsAmEx` BOOLEAN NOT NULL,
-	`acceptsPaypal` BOOLEAN NOT NULL,
-	`acceptsVenmo` BOOLEAN NOT NULL,
+    `acceptsMasterCard` BOOLEAN NOT NULL,
+    `acceptsDiscover` BOOLEAN NOT NULL,
+    `acceptsAmEx` BOOLEAN NOT NULL,
+    `acceptsPaypal` BOOLEAN NOT NULL,
+    `acceptsVenmo` BOOLEAN NOT NULL,
     PRIMARY KEY (`storeID`),
     FOREIGN KEY (`storeID`)
         REFERENCES `StoreTbl` (`storeID`)
@@ -79,32 +87,32 @@ CREATE TABLE `AcceptsPaymentTbl` (
 ) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
 CREATE TABLE `UsersTbl` (
-	`username` CHAR(20) NOT NULL,
-	`firstName` CHAR(100) NOT NULL DEFAULT '',
-	`lastName` CHAR(100) NOT NULL DEFAULT '',
+    `username` CHAR(20) NOT NULL,
+    `firstName` CHAR(100) NOT NULL DEFAULT '',
+    `lastName` CHAR(100) NOT NULL DEFAULT '',
     `hashPW` CHAR(60) NOT NULL,
     `isAdmin` BOOL NOT NULL DEFAULT 0,
     PRIMARY KEY (`username`)
 ) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
 CREATE TABLE `CreditCardsTbl` (
-	`CCID` CHAR(20) NOT NULL,
-	`firstName` CHAR(50) NOT NULL DEFAULT '',
-	`lastName` CHAR(50) NOT NULL DEFAULT '',
-	`expiration` DATE NOT NULL,
-	PRIMARY KEY (`CCID`)
+    `CCID` CHAR(20) NOT NULL,
+    `firstName` CHAR(50) NOT NULL DEFAULT '',
+    `lastName` CHAR(50) NOT NULL DEFAULT '',
+    `expiration` DATE NOT NULL,
+    PRIMARY KEY (`CCID`)
 ) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
 CREATE TABLE `MerchandiseTbl` (
-	`merchID` INTEGER NOT NULL AUTO_INCREMENT,
-	`merchName` CHAR(100) NOT NULL DEFAULT '',
-	`merchType` INTEGER DEFAULT 35,
-	`merchPrice` DECIMAL(10,2) NOT NULL,
-	`merchPic` VARCHAR(100) DEFAULT '',
-	PRIMARY KEY (`merchID`),
-	FOREIGN KEY (`merchType`)
-		REFERENCES `StoreTypeTbl` (`typeID`)
-		ON DELETE CASCADE ON UPDATE CASCADE
+    `merchID` INTEGER NOT NULL AUTO_INCREMENT,
+    `merchName` CHAR(100) NOT NULL DEFAULT '',
+    `merchType` INTEGER DEFAULT 35,
+    `merchPrice` DECIMAL(10,2) NOT NULL,
+    `merchPic` VARCHAR(100) DEFAULT '',
+    PRIMARY KEY (`merchID`),
+    FOREIGN KEY (`merchType`)
+        REFERENCES `StoreTypeTbl` (`typeID`)
+        ON DELETE CASCADE ON UPDATE CASCADE
 ) AUTO_INCREMENT=0 ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
 CREATE TABLE `MerchandiseTypeTbl` (
@@ -115,10 +123,10 @@ CREATE TABLE `MerchandiseTypeTbl` (
 
 
 CREATE TABLE `StoreSellsTbl` (
-	`storeID` BIGINT NOT NULL,
-	`merchID` INTEGER NOT NULL,
-	PRIMARY KEY (`storeID`, `merchID`),
-	    FOREIGN KEY (`storeID`)
+    `storeID` BIGINT NOT NULL,
+    `merchID` INTEGER NOT NULL,
+    PRIMARY KEY (`storeID`, `merchID`),
+        FOREIGN KEY (`storeID`)
         REFERENCES `StoreTbl` (`storeID`)
         ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (`merchID`)
@@ -127,19 +135,19 @@ CREATE TABLE `StoreSellsTbl` (
 ) ENGINE=INNODB DEFAULT CHARSET=LATIN1;
 
 CREATE TABLE `ItemsSoldTbl` (
-	`username` CHAR(20) NOT NULL,
-	`dateSold` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	`CCID` CHAR(20) NOT NULL,
-	`merchID` INTEGER NOT NULL,
-	`storeID` BIGINT NOT NULL,
-	`qty` INTEGER NOT NULL,
-	PRIMARY KEY (`username`, `dateSold`, `CCID`, `merchID`, `storeID`, `qty`),
-	FOREIGN KEY (`username`)
-		REFERENCES `UsersTbl` (`username`),
-	FOREIGN KEY (`CCID`)
-		REFERENCES `CreditCardsTbl` (`CCID`),
-	FOREIGN KEY (`merchID`)
-		REFERENCES `MerchandiseTbl` (`merchID`),
-	FOREIGN KEY (`storeID`)
-		REFERENCES `StoreTbl` (`storeID`)
+    `username` CHAR(20) NOT NULL,
+    `dateSold` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    `CCID` CHAR(20) NOT NULL,
+    `merchID` INTEGER NOT NULL,
+    `storeID` BIGINT NOT NULL,
+    `qty` INTEGER NOT NULL,
+    PRIMARY KEY (`username`, `dateSold`, `CCID`, `merchID`, `storeID`, `qty`),
+    FOREIGN KEY (`username`)
+        REFERENCES `UsersTbl` (`username`),
+    FOREIGN KEY (`CCID`)
+        REFERENCES `CreditCardsTbl` (`CCID`),
+    FOREIGN KEY (`merchID`)
+        REFERENCES `MerchandiseTbl` (`merchID`),
+    FOREIGN KEY (`storeID`)
+        REFERENCES `StoreTbl` (`storeID`)
 ) ENGINE=INNODB DEFAULT CHARSET=LATIN1;

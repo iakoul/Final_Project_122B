@@ -2,7 +2,11 @@ USE `storemarketing`;
 
 INSERT INTO UsersTbl VALUES ("Alex", "Alex", "Bustelo", "$2a$12$/7soAd89PYtEdXkH5nu2LecLPc4FfX449Fa8fkG8GXq/0EyAgQWai", 0);
 INSERT INTO UsersTbl VALUES ("admin", "Administrator", "McAdministratorson", "$2a$12$nWDKDrqsGbjfrMPc9pcDY.wUEl5QKLcSnopZ3.0GHtM9mvLt8DmCq", 1);
+INSERT INTO UsersTbl VALUES ("administrator", "Administrator", "McAdministratorson", "admin", 1);
 INSERT INTO UsersTbl VALUES ("classta@email.edu", "TA", "CS122B", "$2a$12$LZk0WrBPi1ICg0c2/CQ9LeERuflWohrL3G.4dhJMQbEwUdttFpd/W",1);
+
+INSERT INTO Employees VALUES ("admin", "admin", "Administrator McAdministratorson");
+INSERT INTO Employees VALUES ("classta@mail.edu", "classta", "TA CS122B");
 
 INSERT INTO CreditCardsTbl VALUES('123456789', 'Alex', 'Bustelo', '2011/11/01');
 INSERT INTO CreditCardsTbl VALUES('490001', 'James', 'Brown', '2007/09/20');

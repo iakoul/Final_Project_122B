@@ -219,10 +219,22 @@ public class SMHandler extends DefaultHandler {
 			}
 			if (this.item_type) {
 				this.sItem_type = new String(ch, start, length);
+				try {
+					Integer.parseInt(this.sItem_type.trim());
+				} catch (Exception e) {
+					System.out.println("Item Type ID: " + this.sItem_type + " is not a valid input.");
+					this.sItem_type = "1";
+				}
 				this.item_type = false;
 			}
 			if (this.item_price) {
 				this.sItem_price = new String(ch, start, length);
+				try {
+					Integer.parseInt(this.sItem_price.trim());
+				} catch (Exception e) {
+					System.out.println("Price: " + this.sItem_price + " is not a valid input.");
+					this.sItem_price = "1.00";
+				}
 				this.item_price = false;
 			}
 			if (this.item_pic) {
@@ -244,27 +256,63 @@ public class SMHandler extends DefaultHandler {
 			}
 			if (this.store_year) {
 				this.sYear = new String(ch, start, length);
+				try {
+					Integer.parseInt(this.sYear.trim());
+				} catch (Exception e) {
+					System.out.println("Store Year: " + this.sYear + " is not a valid input.");
+					this.sYear = "1999";
+				}
 				this.store_year = false;
 			}
 			if (this.store_type_id) {
 				this.sStoreType_id = new String(ch, start, length);
+				try {
+					Integer.parseInt(this.sStoreType_id.trim());
+				} catch (Exception e) {
+					System.out.println("Store Type ID: " + this.sStoreType_id + " is not a valid input.");
+					this.sStoreType_id = "1";
+				}
 				this.store_type_id = false;
 			}
 			if (this.plaza_id) {
 				this.sPlaza_id = new String(ch, start, length);
+				try {
+					Integer.parseInt(this.sPlaza_id.trim());
+				} catch (Exception e) {
+					System.out.println("Plaza ID: " + this.sPlaza_id + " is not a valid input.");
+					this.sPlaza_id = "1";
+				}
 				this.plaza_id = false;
 			}
 			if (this.owner_id) {
 				this.sOwner_id = new String(ch, start, length);
+				try {
+					Integer.parseInt(this.sOwner_id.trim());
+				} catch (Exception e) {
+					System.out.println("Owner ID: " + this.sOwner_id + " is not a valid input.");
+					this.sOwner_id = "1";
+				}
 				this.owner_id = false;
 			}
 		} else if (this.store_sells) {
 			if (this.store_sell_store_id) {
 				this.sSellStore_id = new String(ch, start, length);
+				try {
+					Integer.parseInt(this.sSellStore_id.trim());
+				} catch (Exception e) {
+					System.out.println("StoreSells Store ID: " + this.sSellStore_id + " is not a valid input.");
+					this.sSellStore_id = "1";
+				}
 				this.store_sell_store_id = false;
 			}
 			if (this.store_sell_item_id) {
 				this.sSellItem_id = new String(ch, start, length);
+				try {
+					Integer.parseInt(this.sSellItem_id.trim());
+				} catch (Exception e) {
+					System.out.println("StoreSells Item ID: " + this.sSellItem_id + " is not a valid input.");
+					this.sSellItem_id = "1";
+				}
 				this.store_sell_item_id = false;
 			}
 		} else if (this.types) {
