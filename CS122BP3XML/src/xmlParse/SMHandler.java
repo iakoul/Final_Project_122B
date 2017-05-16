@@ -149,7 +149,7 @@ public class SMHandler extends DefaultHandler {
 			try {
 				writer = new PrintWriter(sqlFile, "UTF-8");
 				writerExists = true;
-				writer.println("USE \"storemarketing\";");
+				writer.println("USE `storemarketing`;");
 			} catch (FileNotFoundException e) {
 				System.out.println(e.getMessage());
 			} catch (UnsupportedEncodingException e) {
@@ -277,7 +277,7 @@ public class SMHandler extends DefaultHandler {
 			if (this.plaza_id) {
 				this.sPlaza_id = new String(ch, start, length);
 				try {
-					Integer.parseInt(this.sPlaza_id.trim());
+					Double.parseDouble(this.sPlaza_id.trim());
 				} catch (Exception e) {
 					System.out.println("Plaza ID: " + this.sPlaza_id + " is not a valid input.");
 					this.sPlaza_id = "1";

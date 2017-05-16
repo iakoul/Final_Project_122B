@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="CS122BWebProjectTina">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="servlet-api.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/D:/Dropbox/Documents/Programming/workspace/CS122BWebProjectTina/WebContent/WEB-INF/lib/servlet-api.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jstl-1.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/D:/Dropbox/Documents/Programming/workspace/CS122BWebProjectTina/WebContent/WEB-INF/lib/jstl-1.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="mysql-connector-java-5.1.38.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/D:/Dropbox/Documents/Programming/workspace/CS122BWebProjectTina/WebContent/WEB-INF/lib/mysql-connector-java-5.1.38.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="javax.json-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/D:/Dropbox/Documents/Programming/workspace/CS122BWebProjectTina/WebContent/WEB-INF/lib/javax.json-1.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="recaptcha4j-0.0.7.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/D:/Dropbox/Documents/Programming/workspace/CS122BWebProjectTina/WebContent/WEB-INF/lib/recaptcha4j-0.0.7.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="CS122BWebProjectTina"/>
+        <property name="java-output-path" value="/CS122BWebProjectTina/build/classes"/>
+    </wb-module>
+</project-modules>
