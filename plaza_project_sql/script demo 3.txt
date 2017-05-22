@@ -1,0 +1,41 @@
+add star = add item
+add movie = add store
+add genre = add store type
+
+
+
+
+
+add item:
+
+
+Item ID: 99
+Item Name: TestItem
+Item type: 1
+Item price: 15.99
+Item picture: test.com/pic.jpg
+store ID: 626001800102
+
+
+add store:
+
+Store ID: 1
+	Existing store id: 626001800102
+Store name: TestStore
+Address: 123 somewhere
+Phone num: 1234567890
+Year: 2005
+Store type: 71
+	Existing store type: 1
+Store type name: computer
+Plaza ID: 1
+	Existing plaza ID: 6260001001
+Plaza Name: TestPlaza
+City ID: 1
+	Existing City ID: 6260001
+City name: TestCity
+Item ID: 1
+	Existing item id: 72001
+Item type name: TestItem
+Item price: 15.99
+Item pic: test.com/pic.jpg
