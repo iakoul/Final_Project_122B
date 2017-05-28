@@ -1,0 +1,128 @@
+<html>
+	<head>
+		<style>
+			body {
+				background-color: #45f78c;
+			}
+			
+			#div1 {
+				position: absolute;
+				border-style: solid;
+				width: 400px;
+				height: 200px;
+				display: none;
+				background-color: #4286f4;
+				text-align: center;
+				z-index: 2;
+			}
+			
+			#div2 {
+				background-color: #c9a05a;
+				text-align: center;
+				width: 80%;
+				height: 50%;
+				border-style: solid;
+				margin: 5% 0% 10% 10%;
+			}
+		</style>
+	</head>
+	
+	<title>Testing Page</title>
+	
+	<body>
+		
+		<div id="parent" style="border-style: solid;">
+			 <table style="width:100%">
+			  <tr>
+			    <th>Firstname</th>
+			    <th>Lastname</th>
+			    <th>Age</th>
+			  </tr>
+			  <tr id="1">
+			    <td>Jill</td>
+			    <td>Smith</td>
+			    <td>50</td>
+			  </tr>
+			  <tr id="2">
+			    <td>Eve</td>
+			    <td>Jackson</td>
+			    <td>94</td>
+			  </tr>
+			</table>
+		</div>
+		
+		<div id="div1" onmouseover="hoverdiv(event, this.id)" onmouseout="hoverleave(this.id)">This is a box.</div>
+		
+		<div id="div2" onmouseover="hoverdiv(event, 'div1')" onmouseout="hoverleave('div1')">Hover over me</div>
+		
+		<script>
+			function populateHoverbox(divid){
+				var ajaxRequest;  // The variable that makes Ajax possible!
+				try{
+				
+				   // Opera 8.0+, Firefox, Safari
+				   ajaxRequest = new XMLHttpRequest();
+				}catch (e){
+				   
+				   // Internet Explorer Browsers
+				   try{
+				      ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+				   }catch (e) {
+				      
+				      try{
+				         ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+				      }catch (e){
+						// Something went wrong
+				        alert("Your browser broke!");
+				        return false;
+						}
+					}
+				}
+			   
+				// Create a function that will receive data
+				// sent from the server and will update
+				// div section in the same page.
+				ajaxRequest.onreadystatechange = function(){
+					if(ajaxRequest.readyState == 4){
+						var ajaxDisplay = document.getElementById(divid);
+						ajaxDisplay.innerHTML = ajaxRequest.responseText;
+					}
+				}
+				
+				//ajaxRequest.open("GET", "ajax-example.php" + queryString, true);
+				ajaxRequest.open("GET", "./test", true);
+				ajaxRequest.send(null); 
+			}
+		
+			function hoverdiv(e, divid){
+				var posx = 0;
+				var posy = 0;
+				if (!e) var e = window.event;
+				if (e.pageX || e.pageY)
+				{
+					posx = e.pageX;
+					posy = e.pageY;
+				}
+				else if (e.clientX || e.clientY)
+				{
+					posx = e.clientX;
+					posy = e.clientY;
+				}
+				
+				populateHoverbox(divid);
+			 
+				document.getElementById(divid).innerHTML = 'Mouse position is: X='+posx+' Y='+posy;
+				document.getElementById(divid).style.left = posx;
+				document.getElementById(divid).style.top = posy;
+				document.getElementById(divid).style.display='block';
+			}
+			
+			function hoverleave(divid) {
+				document.getElementById(divid).style.display = 'none';
+			}
+		
+		</script>
+		
+	</body>
+
+</html>

@@ -1,0 +1,12 @@
+out.println("<form action=\"./addToCart\">\n"
+	+ "	<div>\n"
+	+ "		<div class=\"form-group\" align=\"left\">\n"
+	+ "			<input class=\"form-control\" type=\"number\" id=\"quantity\" name=\"qty\" value=\"1\">\n"
+	+ "		</div>\n"
+	+ "		<input type=\"hidden\" name=\"storeid\" value=\"${business.id}\">\n"
+	+ "		<input type=\"hidden\" name=\"itemid\" value=\"${item.id}\">\n"
+	+ "		<div align=\"right\">\n"
+	+ "			<button type=\"submit\" class=\"btn btn-primary\">Add to cart</button>\n"
+	+ "		</div>\n"
+	+ "	</div>\n"
+	+ "</form>");
