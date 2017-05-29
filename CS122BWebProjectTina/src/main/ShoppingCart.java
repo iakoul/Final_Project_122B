@@ -81,6 +81,10 @@ public class ShoppingCart extends HttpServlet {
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
 		
 		if (session.getAttribute("loggedIn") != null && (Boolean)session.getAttribute("loggedIn")) {
+			if (session.getAttribute("cart") == null) {
+				HashMap<ArrayList<String>, Integer> cart = new HashMap<ArrayList<String>, Integer>();
+				session.setAttribute("cart", cart);
+			}
 			if (session.getAttribute("isAdmin") != null && (Boolean)session.getAttribute("isAdmin")) {
 	    		//out.println("<div align=\"right\"><a href=\"./adminConsole\">Admin</a></div>");
 	    	}
