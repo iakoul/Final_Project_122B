@@ -30,47 +30,66 @@ public class Autosuggest extends HttpServlet {
 		HttpSession session = request.getSession(true);
 	    response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
-	    out.println("<!DOCTYPE HTML>\n"
-	    		+ "<html>\n"
-	    		+ "<head>\n"
-	    		+ "<title>"
-	    		+ "Performing Updates"
-	    		+ "</title>\n"
-	    		+ "</head>\n");
-	    
-	    out.println("<body>");
-	    out.println(request.getParameter("query") + "<br>");
 	    
 		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			connection = DriverManager.getConnection("jdbc:mysql:///storemarketing?autoReconnect=true&useSSL=false","root","mysqlpass");
-			
-			String prepQuery = "SELECT merchName FROM MerchandiseTbl WHERE ";
-			
 			String terms[] = request.getParameter("query").split("\u0020");
-		    
-		    for (int i = 0; i < terms.length; ++i){
-		    	prepQuery += "merchName LIKE ?";
-		    	if (i != terms.length - 1){
-		    		prepQuery += " AND ";
-		    	}
-		    }
-		    prepQuery += ";";
-			
-			PreparedStatement pstmt = connection.prepareStatement(prepQuery);
-			
-			for (int i = 1; i < terms.length + 1; ++i){
-		    	pstmt.setString(i, "%" + terms[i - 1] + "%");
-		    }
-			out.println(pstmt.toString() + "<br>");
-			ResultSet results = pstmt.executeQuery();
-			
-			while(results.next()){
-				out.println(results.getString(1) + "<br>");
+			if (terms.length > 0 && !terms[0].equals("")) {
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+				connection = DriverManager.getConnection("jdbc:mysql:///storemarketing?autoReconnect=true&useSSL=false","root","mysqlpass");
+				
+				String searchType = request.getParameter("searchtype");
+				String table = "";
+				String column = "";
+				switch (searchType) {
+					case "item":
+						table = "MerchandiseTbl";
+						column = "merchName";
+						break;
+					case "itemSearch":
+						table = "MerchandiseTbl";
+						column = "merchName";
+						break;
+					case "price":
+						table = "MerchandiseTbl";
+						column = "merchPrice";
+						break;
+					case "business":
+						table = "StoreTbl";
+						column = "storeName";
+						break;
+					case "city":
+						table = "CityTbl";
+						column = "cityName";
+						break;
+				}
+				
+				String prepQuery = "SELECT " + column + " FROM " + table + " WHERE ";
+				
+			    
+			    for (int i = 0; i < terms.length; ++i){
+			    	prepQuery += column + " LIKE ?";
+			    	if (i != terms.length - 1){
+			    		prepQuery += " AND ";
+			    	}
+			    }
+			    prepQuery += ";";
+				
+				PreparedStatement pstmt = connection.prepareStatement(prepQuery);
+				
+				for (int i = 1; i < terms.length + 1; ++i){
+			    	pstmt.setString(i, "%" + terms[i - 1] + "%");
+			    }
+				ResultSet results = pstmt.executeQuery();
+				
+				String output = "[ ";
+				
+				while(results.next()){
+					output += "\"" + results.getString(1)+"\", ";
+				}
+				if (!output.equals("[ ")) {
+					out.println(output.substring(0, output.length() - 2) + " ]");
+				}
 			}
-			
-			
-			out.println("</body></html>");
 			
 		} catch (final Exception e) {
 			out.println("mySQL driver was not loaded");

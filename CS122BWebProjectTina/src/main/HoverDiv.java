@@ -59,7 +59,7 @@ public class HoverDiv extends HttpServlet {
 			ResultSet results = pstmt.executeQuery();
 			
 			while(results.next()) {
-				out.print("Merch Pic = <img style=\"pointer-events:none;\" src=\"" + results.getString(4) + "\"><br>"
+				out.print("Merch Pic = <img style=\"pointer-events:none; max-width: 50px; height: auto;\" src=\"" + results.getString(4) + "\"><br>"
 						+ "Merch ID = " + results.getString(1) + "<br>"
 						+ "Merch Name = " + results.getString(2) + "<br>"
 						+ "Merch Price = $" + results.getString(3) + "<br>"
@@ -69,7 +69,7 @@ public class HoverDiv extends HttpServlet {
 						+ "		<input type=\"hidden\" name=\"qty\" value=\"1\">\n"
 						+ "		<input type=\"hidden\" name=\"storeid\" value=\"" + results.getString(6) + "\">\n"
 						+ "		<input type=\"hidden\" name=\"itemid\" value=\"" + results.getString(1) + "\">\n"
-						+ "		<button type=\"submit\" class=\"btn btn-primary\">Add to cart</button>\n"
+						+ "		<button type=\"submit\" class=\"btn btn-primary\">Purchase from Top Seller</button>\n"
 						+ "</form>");
 			}
 			

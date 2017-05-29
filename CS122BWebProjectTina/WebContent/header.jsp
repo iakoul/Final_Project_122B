@@ -1,6 +1,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+	#suggestDiv {
+		position: absolute;
+		border-style: solid;
+		width: 400px;
+		height: 200px;
+		display: none;
+		background-color: #a9a9a9;
+		text-align: left;
+		z-index: 2;
+	}
+</style>
 
-
+<script src="autosuggestscripts.js"></script>
+<div id="suggestDiv"></div>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -35,9 +48,9 @@
 
 
 
-      <form class="navbar-form navbar-left" action="./search">
+      <form id="searchForm" class="navbar-form navbar-left" action="./search">
         <div class="form-group">
-          <input type="text" class="form-control" name="item" placeholder="Search item">
+          <input id="itemSearch" type="text" class="form-control" name="item" placeholder="Search item" oninput="OnInput(event)" onpropertychange="OnPropChanged(event)">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>

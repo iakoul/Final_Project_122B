@@ -12,27 +12,27 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<div class="mainContent">
-		<form action="./search">
+		<form action="./search" id="advSearchForm">
 			<h3>Advanced Search</h3>
 
 			<div class="form-group">
 				<label for="item-input">Item</label>
-	    		<input class="form-control" id="item" name="item" placeholder="Enter item">
+	    		<input class="form-control" id="item" name="item" placeholder="Enter item" oninput="OnInput(event)" onpropertychange="OnPropChanged(event)">
 			</div>
 
 			<div class="form-group">
 				<label for="max-price-input">Max Price</label>
-				<input class="form-control" type="number" id="price" name="price">
+				<input class="form-control" type="number" step="0.01" id="price" name="price" oninput="OnInput(event)" onpropertychange="OnPropChanged(event)">
 			</div>
 
 			<div class="form-group">
 				<label for="business-name-input">Business</label>
-	    		<input class="form-control" id="business" name="business" placeholder="Enter business name">
+	    		<input class="form-control" id="business" name="business" placeholder="Enter business name" oninput="OnInput(event)" onpropertychange="OnPropChanged(event)">
 			</div>
 
 			<div class="form-group">
 				<label for="city-name-input">City</label>
-	    		<input class="form-control" id="city" name="city" placeholder="Enter city name">
+	    		<input class="form-control" id="city" name="city" placeholder="Enter city name" oninput="OnInput(event)" onpropertychange="OnPropChanged(event)">
 			</div>
 
 			<div class="form-group">
