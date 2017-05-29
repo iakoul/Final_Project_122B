@@ -77,7 +77,11 @@ public class Autosuggest extends HttpServlet {
 				PreparedStatement pstmt = connection.prepareStatement(prepQuery);
 				
 				for (int i = 1; i < terms.length + 1; ++i){
-			    	pstmt.setString(i, "%" + terms[i - 1] + "%");
+					if (i == terms.length + 1) {
+						pstmt.setString(i, terms[i - 1] + "%");
+					} else {
+						pstmt.setString(i, "%" + terms[i - 1] + "%");
+					}
 			    }
 				ResultSet results = pstmt.executeQuery();
 				
