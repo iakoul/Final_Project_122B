@@ -24,7 +24,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="./Main.jsp">Ubel Mart</a>
+      <a class="navbar-brand" href="./Main.jsp">Übel Mart</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
