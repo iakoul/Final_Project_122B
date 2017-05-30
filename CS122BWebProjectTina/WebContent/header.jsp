@@ -50,7 +50,7 @@
 
       <form id="searchForm" class="navbar-form navbar-left" action="./search">
         <div class="form-group">
-          <input id="itemSearch" type="text" class="form-control" name="item" placeholder="Search item" oninput="OnInput(event)" onpropertychange="OnPropChanged(event)">
+          <input id="itemSearch" type="text" class="form-control" name="item" placeholder="Search item" autocomplete="off" oninput="OnInput(event)" onpropertychange="OnPropChanged(event)">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>

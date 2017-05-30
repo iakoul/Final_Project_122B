@@ -6,6 +6,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -76,15 +80,36 @@ public class Autosuggest extends HttpServlet {
 					
 					PreparedStatement pstmt = connection.prepareStatement(prepQuery);
 					
+					List<String> termList = Arrays.asList(terms); 
+					
+					if (termList.size() > 1) {
+						for (int i = 0; i < termList.size(); ++i) {
+							if (termList.get(i).length() < 3) {
+								termList.set(i, "");
+							}
+						}
+					}
+					
+					Vector<String> newTermList = new Vector<String>();
+					
+					for (int i = 0; i < termList.size(); ++i) {
+						if (!termList.get(i).equals("")) {
+							newTermList.add(termList.get(i));
+						}
+					}
+					
 					String searchTerms = "";
 					
-					for (int i = 0; i < terms.length; ++i){
-				    	if (i != terms.length - 1){
-				    		searchTerms += "+" + terms[i] + " ";
-				    	} else {
-				    		searchTerms += "+" + terms[i] + "*";
-				    	}
-				    }
+					for (int i = 0; i < newTermList.size(); ++i) {
+						if (i != newTermList.size() - 1) {
+							searchTerms += "+" + newTermList.get(i) + " ";
+						} else {
+							if (newTermList.size() == 1) {
+								searchTerms += "+";
+							}
+							searchTerms += newTermList.get(i) + "*";
+						}
+					}
 					
 					pstmt.setString(1, searchTerms);
 					ResultSet results = pstmt.executeQuery();
