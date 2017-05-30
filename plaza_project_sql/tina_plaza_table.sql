@@ -109,6 +109,7 @@ CREATE TABLE `MerchandiseTbl` (
     `merchType` INTEGER DEFAULT 35,
     `merchPrice` DECIMAL(10,2) NOT NULL,
     `merchPic` VARCHAR(100) DEFAULT '',
+	FULLTEXT(`merchName`),
     PRIMARY KEY (`merchID`),
     FOREIGN KEY (`merchType`)
         REFERENCES `StoreTypeTbl` (`typeID`)

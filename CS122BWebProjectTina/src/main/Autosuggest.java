@@ -40,12 +40,14 @@ public class Autosuggest extends HttpServlet {
 				String searchType = request.getParameter("searchtype");
 				String table = "";
 				String column = "";
+				boolean fulltext = false;
 				switch (searchType) {
-					case "item":
+					case "itemSearch":
 						table = "MerchandiseTbl";
 						column = "merchName";
+						fulltext = true;
 						break;
-					case "itemSearch":
+					case "item":
 						table = "MerchandiseTbl";
 						column = "merchName";
 						break;
@@ -66,38 +68,72 @@ public class Autosuggest extends HttpServlet {
 						column = "merchName";
 						break;
 				}
-				
-				String prepQuery = "SELECT " + column + " FROM " + table + " WHERE ";
-				
-			    
-			    for (int i = 0; i < terms.length; ++i){
-			    	prepQuery += column + " LIKE ?";
-			    	if (i != terms.length - 1){
-			    		prepQuery += " AND ";
-			    	}
-			    }
-			    prepQuery += " LIMIT 10;";
-				
-				PreparedStatement pstmt = connection.prepareStatement(prepQuery);
-				
-				for (int i = 1; i < terms.length + 1; ++i){
-					if (terms.length > 1 && i == terms.length) {
-						pstmt.setString(i, terms[i - 1] + "%");
-					} else {
-						pstmt.setString(i, "%" + terms[i - 1] + "%");
+				if (fulltext) {
+					
+					//select merchName from merchandisetbl where match(`merchName`) AGAINST ('+qtd a8rh*' IN BOOLEAN MODE) LIMIT 10;
+					
+					String prepQuery = "SELECT " + column + " FROM " + table + " WHERE MATCH(`" + column + "`) AGAINST (? IN BOOLEAN MODE) LIMIT 10;";
+					
+					PreparedStatement pstmt = connection.prepareStatement(prepQuery);
+					
+					String searchTerms = "";
+					
+					for (int i = 0; i < terms.length; ++i){
+				    	if (i != terms.length - 1){
+				    		searchTerms += "+" + terms[i] + " ";
+				    	} else {
+				    		searchTerms += "+" + terms[i] + "*";
+				    	}
+				    }
+					
+					pstmt.setString(1, searchTerms);
+					ResultSet results = pstmt.executeQuery();
+					
+					String output = "[ ";
+					
+					while(results.next()){
+						output += "\"" + results.getString(1) + "\", ";
 					}
-			    }
-				ResultSet results = pstmt.executeQuery();
-				
-				String output = "[ ";
-				
-				while(results.next()){
-					output += "\"" + results.getString(1) + "\", ";
-				}
-				if (!output.equals("[ ")) {
-					out.println(output.substring(0, output.length() - 2) + " ]");
+					if (!output.equals("[ ")) {
+						out.println(output.substring(0, output.length() - 2) + " ]");
+					} else {
+						out.println(output + "]");
+					}
+					
+					
 				} else {
-					out.println(output + "]");
+					String prepQuery = "SELECT " + column + " FROM " + table + " WHERE ";
+					
+				    
+				    for (int i = 0; i < terms.length; ++i){
+				    	prepQuery += column + " LIKE ?";
+				    	if (i != terms.length - 1){
+				    		prepQuery += " AND ";
+				    	}
+				    }
+				    prepQuery += " LIMIT 10;";
+					
+					PreparedStatement pstmt = connection.prepareStatement(prepQuery);
+					
+					for (int i = 1; i < terms.length + 1; ++i){
+						if (terms.length > 1 && i == terms.length) {
+							pstmt.setString(i, terms[i - 1] + "%");
+						} else {
+							pstmt.setString(i, "%" + terms[i - 1] + "%");
+						}
+				    }
+					ResultSet results = pstmt.executeQuery();
+					
+					String output = "[ ";
+					
+					while(results.next()){
+						output += "\"" + results.getString(1) + "\", ";
+					}
+					if (!output.equals("[ ")) {
+						out.println(output.substring(0, output.length() - 2) + " ]");
+					} else {
+						out.println(output + "]");
+					}
 				}
 			} else if (terms[0].equals("")) {
 				out.println("[]");
