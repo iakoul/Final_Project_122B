@@ -61,6 +61,10 @@ public class Autosuggest extends HttpServlet {
 						table = "CityTbl";
 						column = "cityName";
 						break;
+					default:
+						table = "MerchandiseTbl";
+						column = "merchName";
+						break;
 				}
 				
 				String prepQuery = "SELECT " + column + " FROM " + table + " WHERE ";
