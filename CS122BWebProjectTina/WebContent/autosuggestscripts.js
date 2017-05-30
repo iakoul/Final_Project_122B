@@ -52,9 +52,7 @@ function OnInput(event) {
 		if(ajaxRequest.readyState == 4){
 			var ajaxDisplay = document.getElementById('suggestDiv');
 			ajaxDisplay.style.display = "block";
-			//ajaxDisplay.style.top = document.getElementById('searchForm').getBoundingClientRect().bottom + 'px';
 			ajaxDisplay.style.top = event.target.getBoundingClientRect().bottom + 'px';
-			//ajaxDisplay.style.left = document.getElementById('searchForm').getBoundingClientRect().left + 'px';
 			ajaxDisplay.style.left = event.target.getBoundingClientRect().left + 'px';
 			
 			var response = ajaxRequest.responseText
@@ -64,10 +62,6 @@ function OnInput(event) {
 			var items = JSON.parse(response);
 			
 			var results = items.length;
-			
-			if (items.length > 10) {
-				results = 10;
-			}
 			
 			for(var i = 0; i < results; i++) {
 			   insideHTML += '<div id="result' + i + event.target.id + '">' + items[i] + '</div>';

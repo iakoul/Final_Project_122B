@@ -76,12 +76,12 @@ public class Autosuggest extends HttpServlet {
 			    		prepQuery += " AND ";
 			    	}
 			    }
-			    prepQuery += ";";
+			    prepQuery += " LIMIT 10;";
 				
 				PreparedStatement pstmt = connection.prepareStatement(prepQuery);
 				
 				for (int i = 1; i < terms.length + 1; ++i){
-					if (i == terms.length + 1) {
+					if (terms.length > 1 && i == terms.length) {
 						pstmt.setString(i, terms[i - 1] + "%");
 					} else {
 						pstmt.setString(i, "%" + terms[i - 1] + "%");
@@ -92,11 +92,15 @@ public class Autosuggest extends HttpServlet {
 				String output = "[ ";
 				
 				while(results.next()){
-					output += "\"" + results.getString(1)+"\", ";
+					output += "\"" + results.getString(1) + "\", ";
 				}
 				if (!output.equals("[ ")) {
 					out.println(output.substring(0, output.length() - 2) + " ]");
+				} else {
+					out.println(output + "]");
 				}
+			} else if (terms[0].equals("")) {
+				out.println("[]");
 			}
 			
 		} catch (final Exception e) {
