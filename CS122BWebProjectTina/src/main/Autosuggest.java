@@ -48,7 +48,7 @@ public class Autosuggest extends HttpServlet {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
 				
-				System.out.println("SearchType: " + request.getParameter("searchtype") + " query: " + (request.getParameter("query") != null ? request.getParameter("query") : "null"));
+				//System.out.println("SearchType: " + request.getParameter("searchtype") + " query: " + (request.getParameter("query") != null ? request.getParameter("query") : "null"));
 				
 				String searchType = request.getParameter("searchtype");
 				String table = "";
