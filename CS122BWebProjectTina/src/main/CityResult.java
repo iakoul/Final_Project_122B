@@ -1,3 +1,5 @@
+package main;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -13,14 +15,14 @@ import java.sql.*;
  * Queries plaza by id and sends response to display
  */
 
-public class PlazaResult extends HttpServlet {
+public class CityResult extends HttpServlet {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		double id = SearchResult.isStringEmpty(request.getParameter("id")) ? -1 : Double.parseDouble(request.getParameter("id"));
+		int id = SearchResult.isStringEmpty(request.getParameter("id")) ? -1 : Integer.parseInt(request.getParameter("id"));
 
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -35,26 +37,25 @@ public class PlazaResult extends HttpServlet {
 			// Connect to mySQL
 			connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
 
-			// query to get plaza info
-			String plazaQuery = "SELECT p.plazaName, c.cityID, c.cityName " +
-								"FROM PlazaTbl p JOIN CityTbl c ON p.cityID = c.cityID " +
-								"WHERE p.plazaID = ? ";
+			// query to get city info
+			String plazaQuery = "SELECT c.cityName " +
+								"FROM CityTbl c " +
+								"WHERE c.cityID = ? ";
 
 			statement = connection.prepareStatement(plazaQuery);
-			statement.setDouble(1, id);
+			statement.setInt(1, id);
 			result = statement.executeQuery();
-			if(result.next()) {
-				String plazaName = result.getString("p.plazaName");
-				int cityId = result.getInt("c.cityID");
-				String cityName = result.getString("c.cityName");
-				Plaza plaza = new Plaza(id, plazaName, new City(cityId, cityName));
-				request.setAttribute("plaza", plaza);
-			}
 
-			// query to get stores at plaza
-			String storeQuery = "SELECT s.storeID, s.storeName, s.address, s.phoneNum " +
-							"FROM StoreTbl s " +
-							"WHERE s.plazaID = ? ";
+			if(result.next()) {
+				String cityName = result.getString("c.cityName");
+				City city = new City(id, cityName);
+				request.setAttribute("city", city);
+			}
+			
+			// query to get plazas in city
+			String storeQuery = "SELECT p.plazaID, p.plazaName " +
+							"FROM PlazaTbl p " +
+							"WHERE p.cityID = ? ";
 
 			statement = connection.prepareStatement(storeQuery);
 			statement.setDouble(1, id);
@@ -63,21 +64,18 @@ public class PlazaResult extends HttpServlet {
 			result = statement.executeQuery();
 
 			// create with result of query
-			List<Business> businessList = new ArrayList<Business>();
+			List<Plaza> plazaList = new ArrayList<Plaza>();
 			
 			while(result.next()) {
-				long storeId = result.getLong("s.storeID");
-				String storeName = result.getString("s.storeName");
-				String address = result.getString("s.address");
-				String phoneNumber = result.getString("s.phoneNum");
-				Business business = new Business(storeId, storeName, address, phoneNumber);
-				businessList.add(business);
+				double plazaId = result.getDouble("p.plazaID");
+				String plazaName = result.getString("p.plazaName");
+				Plaza plaza = new Plaza(plazaId, plazaName);
+				plazaList.add(plaza);
 			}
 
-			request.setAttribute("businesses", businessList);
-			RequestDispatcher rd = request.getRequestDispatcher("ShowPlaza.jsp");
+			request.setAttribute("plazas", plazaList);
+			RequestDispatcher rd = request.getRequestDispatcher("ShowCity.jsp");
 			rd.forward(request, response);
-
 		}
 		catch(Exception e) {
 			out.println(e.getMessage());

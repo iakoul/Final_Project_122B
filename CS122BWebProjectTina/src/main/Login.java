@@ -1,4 +1,4 @@
-
+package main;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -61,14 +61,14 @@ public class Login extends HttpServlet {
 		// Connect to mySQL
 		connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
 
-		String loginQuery = "SELECT u.firstName FROM UsersTbl u WHERE u.username = ? AND u.hashPW = ? ";
-		//String loginQuery = "SELECT u.firstName, u.hashPW FROM UsersTbl u WHERE u.username = ?";
+		//String loginQuery = "SELECT u.firstName FROM UsersTbl u WHERE u.username = ? AND u.hashPW = ? ";
+		String loginQuery = "SELECT u.firstName, u.hashPW FROM UsersTbl u WHERE u.username = ?";
 		statement = connection.prepareStatement(loginQuery);
 		statement.setString(1, username);
-		statement.setString(2, password);
+		//statement.setString(2, password);
 		result = statement.executeQuery();
 
-		if(result.next()/*  && BCrypt.checkpw(password, result.getString("u.hashPW")) */) {
+		if(result.next() && BCrypt.checkpw(password, result.getString("u.hashPW"))) {
 			String firstName = result.getString("u.firstName");
 			if(!isAndroid) {
 				session.setAttribute("name", firstName);

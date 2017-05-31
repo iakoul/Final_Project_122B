@@ -48,7 +48,7 @@ public class HoverDiv extends HttpServlet {
 		}
 		
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql:///storemarketing?autoReconnect=true&useSSL=false","root","mysqlpass");
+			connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
 			
 			String prepQuery = "SELECT m.merchID, m.merchName, m.merchPrice, m.merchPic, st.storeType, s.storeID"
 					+ " FROM MerchandiseTbl m, StoreTypeTbl st, StoreSellsTbl s"

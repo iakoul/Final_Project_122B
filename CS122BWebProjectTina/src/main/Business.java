@@ -1,3 +1,5 @@
+package main;
+
 public class Business {
 	private long id;
 	private String name;

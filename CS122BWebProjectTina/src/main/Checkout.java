@@ -69,7 +69,7 @@ public class Checkout extends HttpServlet {
 			}
 			
 			try {
-				connection = DriverManager.getConnection("jdbc:mysql:///storemarketing?autoReconnect=true&useSSL=false","root","mysqlpass");
+				connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
 				
 				String prepQuery = "SELECT c.CCID, "
 						+ "c.firstName, "

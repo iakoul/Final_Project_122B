@@ -97,7 +97,7 @@ public class ShoppingCart extends HttpServlet {
 			}
 			
 			try {
-				connection = DriverManager.getConnection("jdbc:mysql:///storemarketing?autoReconnect=true&useSSL=false","root","mysqlpass");
+				connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
 				
 				out.println("<div id=\"container\" style=\"margin: 0 auto;\">"); //container
 				out.println("<div id=\"header\" style=\"text-align: center;\">"); //header

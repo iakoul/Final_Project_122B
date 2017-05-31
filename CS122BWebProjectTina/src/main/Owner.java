@@ -1,3 +1,5 @@
+package main;
+
 public class Owner {
 	private int id;
 	private String name;

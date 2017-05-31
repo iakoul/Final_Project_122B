@@ -1,3 +1,5 @@
+package main;
+
 public class Plaza {
 	private double id;
 	private String name;

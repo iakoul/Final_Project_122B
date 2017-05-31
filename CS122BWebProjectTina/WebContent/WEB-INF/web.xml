@@ -18,43 +18,43 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>login</servlet-name>
-    <servlet-class>Login</servlet-class>
+    <servlet-class>main.Login</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>logout</servlet-name>
-    <servlet-class>Logout</servlet-class>
+    <servlet-class>main.Logout</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>advancedSearch</servlet-name>
-    <servlet-class>SearchResult</servlet-class>
+    <servlet-class>main.SearchResult</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>itemDisplay</servlet-name>
-    <servlet-class>ItemResult</servlet-class>
+    <servlet-class>main.ItemResult</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>storeDisplay</servlet-name>
-    <servlet-class>StoreResult</servlet-class>
+    <servlet-class>main.StoreResult</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>plazaDisplay</servlet-name>
-    <servlet-class>PlazaResult</servlet-class>
+    <servlet-class>main.PlazaResult</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>cityDisplay</servlet-name>
-    <servlet-class>CityResult</servlet-class>
+    <servlet-class>main.CityResult</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>employeeLogin</servlet-name>
-    <servlet-class>EmployeeLogin</servlet-class>
+    <servlet-class>main.EmployeeLogin</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>insertItem</servlet-name>
-    <servlet-class>InsertItem</servlet-class>
+    <servlet-class>main.InsertItem</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>metadataResult</servlet-name>
-    <servlet-class>MetadataResult</servlet-class>
+    <servlet-class>main.MetadataResult</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>adminConsole</servlet-name>
@@ -82,7 +82,7 @@
   </servlet>
   <servlet>
   	<servlet-name>autosuggest</servlet-name>
-  	<servlet-class>Autosuggest</servlet-class>
+  	<servlet-class>main.Autosuggest</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>addToCart</servlet-name>

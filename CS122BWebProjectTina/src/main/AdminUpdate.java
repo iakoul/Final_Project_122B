@@ -56,7 +56,7 @@ public class AdminUpdate extends HttpServlet {
 				out.println(e.getMessage());
 			}
 			try {
-				connection = DriverManager.getConnection("jdbc:mysql:///storemarketing?autoReconnect=true&useSSL=false","root","mysqlpass");
+				connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
 				
 				if (request.getParameter("add-store") != null && request.getParameter("add-store").equals("true")) {
 					/*
