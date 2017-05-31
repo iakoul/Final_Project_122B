@@ -63,7 +63,7 @@ public class AdminUpdate extends HttpServlet {
 			try {
 				connection = DriverManager.getConnection("jdbc:mysql:///storemarketing?autoReconnect=true&useSSL=false","root","mysqlpass");
 				
-				if (request.getParameter("add-city") != null && request.getParameter("add-city").equals("true")) {
+				if (request.getParameter("add-store") != null && request.getParameter("add-store").equals("true")) {
 					/*
 					 * add_store(IN sID BIGINT, IN sName CHAR(100), IN sAddr CHAR(100), IN sPhone CHAR(20), IN sYear INTEGER, IN sTypeID INTEGER, 
 					 * IN sType CHAR(100), IN sPlazaID BIGINT, IN sPlazaName CHAR(100), IN sCityID INTEGER,

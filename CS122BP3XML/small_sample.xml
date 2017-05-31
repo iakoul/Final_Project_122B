@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--DOCTYPE casts PUBLIC "-//DAML Project//DTD Play//EN"-->
 <input>
     <store-types>
         <store-type type-id="36">   Franchise                     </store-type>
