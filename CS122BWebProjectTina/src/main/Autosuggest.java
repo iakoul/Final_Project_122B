@@ -40,10 +40,15 @@ public class Autosuggest extends HttpServlet {
 	    boolean isAndroid = SearchResult.isStringEmpty(request.getParameter("isAndroid")) ? false : Boolean.parseBoolean(request.getParameter("isAndroid"));
 	    
 		try {
-			String terms[] = request.getParameter("query").split("\u0020");
+			String terms[] = { "" };
+			if (request.getParameter("query") != null) {
+				terms = request.getParameter("query").split("\u0020");
+			}
 			if (terms.length > 0 && !terms[0].equals("")) {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
+				
+				System.out.println("SearchType: " + request.getParameter("searchtype") + " query: " + (request.getParameter("query") != null ? request.getParameter("query") : "null"));
 				
 				String searchType = request.getParameter("searchtype");
 				String table = "";
@@ -77,7 +82,6 @@ public class Autosuggest extends HttpServlet {
 						break;
 				}
 				if (fulltext) {
-					
 					//select merchName from merchandisetbl where match(`merchName`) AGAINST ('+qtd a8rh*' IN BOOLEAN MODE) LIMIT 10;
 					
 					String prepQuery = "SELECT " + column + " FROM " + table + " WHERE MATCH(`" + column + "`) AGAINST (? IN BOOLEAN MODE)";
@@ -96,7 +100,6 @@ public class Autosuggest extends HttpServlet {
 							}
 						}
 					}
-					
 					Vector<String> newTermList = new Vector<String>();
 					
 					for (int i = 0; i < termList.size(); ++i) {
@@ -120,7 +123,6 @@ public class Autosuggest extends HttpServlet {
 					
 					pstmt.setString(1, searchTerms);
 					ResultSet results = pstmt.executeQuery();
-					
 					if(isAndroid) {
 						ArrayList<Item> items = new ArrayList<Item>();
 						while(results.next()) {
@@ -140,12 +142,10 @@ public class Autosuggest extends HttpServlet {
 						if (!output.equals("[ ")) {
 							out.println(output.substring(0, output.length() - 2) + " ]");
 						} else {
-							out.println(output + "]");
+							output += "]";
+							out.println(output);
 						}
 					}
-					
-					
-					
 				} else {
 					String prepQuery = "SELECT " + column + " FROM " + table + " WHERE ";
 					
