@@ -5,6 +5,10 @@ public class Item {
 	private double price;
 	private int quantity;
 
+	public Item(String name) {
+		this.name = name;
+	}
+
 	public Item(int id, String name, int type, double price) {
 		this.id = id;
 		this.name = name;

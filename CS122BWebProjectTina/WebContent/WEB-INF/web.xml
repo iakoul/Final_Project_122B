@@ -82,7 +82,7 @@
   </servlet>
   <servlet>
   	<servlet-name>autosuggest</servlet-name>
-  	<servlet-class>main.Autosuggest</servlet-class>
+  	<servlet-class>Autosuggest</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>addToCart</servlet-name>
