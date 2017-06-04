@@ -8,12 +8,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 /**
  * Servlet implementation class test
@@ -21,18 +24,20 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/HoverDiv")
 public class HoverDiv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Connection connection = null;
+	//Connection connection = null;
 
     public HoverDiv() {
         super();
     }
 
     public void destroy() {
+    	/*
     	try {
     		connection.close();
     	} catch (Exception e) {
     		System.out.println(e.getMessage());
     	}
+    	*/
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,13 +53,33 @@ public class HoverDiv extends HttpServlet {
 		}
 		
 		try {
-			connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
+			//connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
+			
+			Context initCtx = new InitialContext();
+            if (initCtx == null)
+                out.println("initCtx is NULL");
+
+            Context envCtx = (Context) initCtx.lookup("java:comp/env");
+            if (envCtx == null)
+                out.println("envCtx is NULL");
+
+            // Look up our data source
+            DataSource ds = (DataSource) envCtx.lookup("jdbc/storemarketing");
+
+            if (ds == null)
+                out.println("ds is null.");
+
+            Connection dbcon = ds.getConnection();
+            if (dbcon == null)
+                out.println("dbcon is null.");
+			
 			
 			String prepQuery = "SELECT m.merchID, m.merchName, m.merchPrice, m.merchPic, st.storeType, s.storeID"
 					+ " FROM MerchandiseTbl m, StoreTypeTbl st, StoreSellsTbl s"
 					+ " WHERE m.merchID = ? AND m.merchType = st.TypeID AND m.merchID = s.merchID"
 					+ " LIMIT 1;";
-			PreparedStatement pstmt = connection.prepareStatement(prepQuery);
+			//PreparedStatement pstmt = connection.prepareStatement(prepQuery);
+			PreparedStatement pstmt = dbcon.prepareStatement(prepQuery);
 			pstmt.setString(1, request.getParameter("merchid"));
 			ResultSet results = pstmt.executeQuery();
 			
@@ -73,8 +98,9 @@ public class HoverDiv extends HttpServlet {
 						+ "</form>");
 			}
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
+			dbcon.close();
+		} catch (Exception e) {
+			out.println(e.getMessage());
 		}
 		
 		

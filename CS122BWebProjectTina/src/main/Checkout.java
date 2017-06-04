@@ -12,12 +12,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 /**
  * Servlet implementation class Checkout
@@ -26,17 +30,19 @@ import javax.servlet.http.HttpSession;
 public class Checkout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	Connection connection = null;
+	//Connection connection = null;
     public Checkout() {
         super();
     }
 
     public void destroy() {
+    	/*
     	try {
     		connection.close();
     	} catch (Exception e) {
     		System.out.println(e.getMessage());
     	}
+    	*/
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -62,14 +68,32 @@ public class Checkout extends HttpServlet {
 	    	}
 			//Incorporate mySQL driver
 			try {
-				Class.forName("com.mysql.jdbc.Driver").newInstance();
+				//Class.forName("com.mysql.jdbc.Driver").newInstance();
 			} catch (final Exception e) {
 				out.println("mySQL driver was not loaded");
 				out.println(e.getMessage());
 			}
 			
 			try {
-				connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
+				//connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
+				
+				Context initCtx = new InitialContext();
+	            if (initCtx == null)
+	                out.println("initCtx is NULL");
+
+	            Context envCtx = (Context) initCtx.lookup("java:comp/env");
+	            if (envCtx == null)
+	                out.println("envCtx is NULL");
+
+	            // Look up our data source
+	            DataSource ds = (DataSource) envCtx.lookup("jdbc/storemarketing");
+
+	            if (ds == null)
+	                out.println("ds is null.");
+
+	            Connection dbcon = ds.getConnection();
+	            if (dbcon == null)
+	                out.println("dbcon is null.");
 				
 				String prepQuery = "SELECT c.CCID, "
 						+ "c.firstName, "
@@ -79,7 +103,8 @@ public class Checkout extends HttpServlet {
 						+ "CreditCardsTbl c "
 						+ "WHERE "
 						+ "c.CCID = ?;";
-				PreparedStatement pstmt = connection.prepareStatement(prepQuery);
+				//PreparedStatement pstmt = connection.prepareStatement(prepQuery);
+				PreparedStatement pstmt = dbcon.prepareStatement(prepQuery);
 				pstmt.setString(1, request.getParameter("ccnum").toString());
 				ResultSet results = pstmt.executeQuery();
 				
@@ -102,7 +127,8 @@ public class Checkout extends HttpServlet {
 									+ "?, " //storeID
 									+ "?" //qty
 									+ ");";
-							pstmt = connection.prepareStatement(prepQuery);
+							//pstmt = connection.prepareStatement(prepQuery);
+					        pstmt = dbcon.prepareStatement(prepQuery);
 							pstmt.setString(1, session.getAttribute("username").toString());
 							pstmt.setString(2, request.getParameter("ccnum").toString());
 							ArrayList<String> key = (ArrayList<String>)pair.getKey();
@@ -126,7 +152,9 @@ public class Checkout extends HttpServlet {
 					out.println("</body>\n</html>");
 					response.setHeader("Refresh", "3; URL=./shoppingCart");
 				}
-			} catch (SQLException e) {
+				dbcon.close();
+				pstmt.close();
+			} catch (Exception e) {
 				out.println(e.getMessage());
 			}
 		}

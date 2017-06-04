@@ -12,12 +12,15 @@ import java.util.List;
 import java.util.Vector;
 import java.util.ArrayList;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 import com.google.gson.*;
 /**
@@ -26,7 +29,7 @@ import com.google.gson.*;
 @WebServlet("/Autosuggest")
 public class Autosuggest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Connection connection = null;
+	//Connection connection = null;
 	
     public Autosuggest() {
         super();
@@ -45,8 +48,29 @@ public class Autosuggest extends HttpServlet {
 				terms = request.getParameter("query").split("\u0020");
 			}
 			if (terms.length > 0 && !terms[0].equals("")) {
-				Class.forName("com.mysql.jdbc.Driver").newInstance();
-				connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
+				
+				Context initCtx = new InitialContext();
+	            if (initCtx == null)
+	                out.println("initCtx is NULL");
+
+	            Context envCtx = (Context) initCtx.lookup("java:comp/env");
+	            if (envCtx == null)
+	                out.println("envCtx is NULL");
+
+	            // Look up our data source
+	            DataSource ds = (DataSource) envCtx.lookup("jdbc/storemarketing");
+
+	            if (ds == null)
+	                out.println("ds is null.");
+
+	            Connection dbcon = ds.getConnection();
+	            if (dbcon == null)
+	                out.println("dbcon is null.");
+
+				
+				
+				//Class.forName("com.mysql.jdbc.Driver").newInstance();
+				//connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
 				
 				//System.out.println("SearchType: " + request.getParameter("searchtype") + " query: " + (request.getParameter("query") != null ? request.getParameter("query") : "null"));
 				
@@ -89,7 +113,8 @@ public class Autosuggest extends HttpServlet {
 						prepQuery += " LIMIT 10;";
 					}
 					
-					PreparedStatement pstmt = connection.prepareStatement(prepQuery);
+					//PreparedStatement pstmt = connection.prepareStatement(prepQuery);
+					PreparedStatement pstmt = dbcon.prepareStatement(prepQuery);
 					
 					List<String> termList = Arrays.asList(terms); 
 					
@@ -158,8 +183,9 @@ public class Autosuggest extends HttpServlet {
 				    }
 				    prepQuery += " LIMIT 10;";
 					
-					PreparedStatement pstmt = connection.prepareStatement(prepQuery);
-					
+					//PreparedStatement pstmt = connection.prepareStatement(prepQuery);
+				    PreparedStatement pstmt = dbcon.prepareStatement(prepQuery);
+				    
 					for (int i = 1; i < terms.length + 1; ++i){
 						if (terms.length > 1 && i == terms.length) {
 							pstmt.setString(i, terms[i - 1] + "%");
@@ -180,6 +206,7 @@ public class Autosuggest extends HttpServlet {
 						out.println(output + "]");
 					}
 				}
+				dbcon.close();
 			} else if (terms[0].equals("")) {
 				out.println("[]");
 			}

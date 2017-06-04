@@ -7,12 +7,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.Types;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 /**
  * Servlet implementation class AdminUpdate
@@ -21,17 +25,19 @@ import javax.servlet.http.HttpSession;
 public class AdminUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	Connection connection = null;
+	//Connection connection = null;
     public AdminUpdate() {
         super();
     }
 
     public void destroy() {
+    	/*
     	try {
     		connection.close();
     	} catch (Exception e) {
     		System.out.println(e.getMessage());
     	}
+    	*/
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,15 +55,36 @@ public class AdminUpdate extends HttpServlet {
 	    out.println("<body bgcolor=\"#FDF5E6\">\n");
 		if (session.getAttribute("loggedIn") != null && (Boolean)session.getAttribute("loggedIn") && session.getAttribute("isEmployee") != null && (Boolean)session.getAttribute("isEmployee")) {
 			//Incorporate mySQL driver
+			/*
 			try {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 			} catch (final Exception e) {
 				out.println("mySQL driver was not loaded");
 				out.println(e.getMessage());
 			}
+			*/
 			try {
-				connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
 				
+				Context initCtx = new InitialContext();
+	            if (initCtx == null)
+	                out.println("initCtx is NULL");
+
+	            Context envCtx = (Context) initCtx.lookup("java:comp/env");
+	            if (envCtx == null)
+	                out.println("envCtx is NULL");
+
+	            // Look up our data source
+	            DataSource ds = (DataSource) envCtx.lookup("jdbc/storemarketing");
+
+	            if (ds == null)
+	                out.println("ds is null.");
+
+	            Connection dbcon = ds.getConnection();
+	            if (dbcon == null)
+	                out.println("dbcon is null.");
+				
+				//connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
+	            
 				if (request.getParameter("add-store") != null && request.getParameter("add-store").equals("true")) {
 					/*
 					 * add_store(IN sID BIGINT, IN sName CHAR(100), IN sAddr CHAR(100), IN sPhone CHAR(20), IN sYear INTEGER, IN sTypeID INTEGER, 
@@ -66,7 +93,8 @@ public class AdminUpdate extends HttpServlet {
 					 */
 					
 					String prepCall = "{CALL add_store(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
-					CallableStatement cs = connection.prepareCall(prepCall);
+					//CallableStatement cs = connection.prepareCall(prepCall);
+					CallableStatement cs = dbcon.prepareCall(prepCall);
 					
 					if (request.getParameter("storeid").equals("")) {
 						cs.setString(1, "1");
@@ -130,7 +158,8 @@ public class AdminUpdate extends HttpServlet {
 				} else if (request.getParameter("add-item") != null && request.getParameter("add-item").equals("true")) {
 					String prepMerchQuery = "INSERT INTO MerchandiseTbl VALUES (?, ?, ?, ?, ?);";
 					
-					PreparedStatement pstmt = connection.prepareStatement(prepMerchQuery);
+					//PreparedStatement pstmt = connection.prepareStatement(prepMerchQuery);
+					PreparedStatement pstmt = dbcon.prepareStatement(prepMerchQuery);
 					pstmt.setString(1, request.getParameter("itemid"));
 					pstmt.setString(2, request.getParameter("item-name"));
 					if (request.getParameter("item-type").equals("")) {
@@ -152,7 +181,8 @@ public class AdminUpdate extends HttpServlet {
 					
 					String prepSellsQuery = "INSERT INTO StoreSellsTbl VALUES (?, ?);";
 					
-					pstmt = connection.prepareStatement(prepSellsQuery);
+					//pstmt = connection.prepareStatement(prepSellsQuery);
+					pstmt = dbcon.prepareStatement(prepSellsQuery);
 					pstmt.setString(1, request.getParameter("storeid"));
 					pstmt.setString(2, request.getParameter("itemid"));
 					

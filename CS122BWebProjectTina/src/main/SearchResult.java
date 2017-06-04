@@ -9,6 +9,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.RequestDispatcher;
 import java.sql.*;
 
@@ -153,17 +156,35 @@ public class SearchResult extends HttpServlet {
 		String type = request.getParameter("type");
 
 
-		Connection connection = null;
+		//Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet result = null;
 
 		try {
 			// Load driver
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			//Class.forName("com.mysql.jdbc.Driver").newInstance();
 
 			// Connect to mySQL
-			connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
+			//connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
 
+			Context initCtx = new InitialContext();
+            if (initCtx == null)
+                out.println("initCtx is NULL");
+
+            Context envCtx = (Context) initCtx.lookup("java:comp/env");
+            if (envCtx == null)
+                out.println("envCtx is NULL");
+
+            // Look up our data source
+            DataSource ds = (DataSource) envCtx.lookup("jdbc/storemarketing");
+
+            if (ds == null)
+                out.println("ds is null.");
+
+            Connection dbcon = ds.getConnection();
+            if (dbcon == null)
+                out.println("dbcon is null.");
+			
 			String query;
 			// create the ORDER BY, LIMIT, and OFFSET clause to add to the query
 			String orderByLimitOffsetClause = createOrderByLimitOffset(ascItem, ascType, ascPrice);
@@ -183,8 +204,9 @@ public class SearchResult extends HttpServlet {
 
 				query += orderByLimitOffsetClause;
 				
-				statement = connection.prepareStatement(query);
-
+				//statement = connection.prepareStatement(query);
+				statement = dbcon.prepareStatement(query);
+				
 				// add argument for browsing by letter
 				if(!startingLetter.equals("num") && !startingLetter.equals("Other")) {
 					statement.setNString(index++, startingLetter + "%");
@@ -195,7 +217,8 @@ public class SearchResult extends HttpServlet {
 				query = "SELECT DISTINCT m.merchID, m.merchName, m.merchType, m.merchPrice FROM StoreTypeTbl st JOIN StoreTbl s ON st.typeID = s.typeID JOIN StoreSellsTbl ss ON ss.storeID = s.storeID JOIN MerchandiseTbl m on ss.merchID = m.merchID WHERE st.storeType = ? ";
 				query += orderByLimitOffsetClause;
 				
-				statement = connection.prepareStatement(query);
+				//statement = connection.prepareStatement(query);
+				statement = dbcon.prepareStatement(query);
 				// add argument for browsing by type
 				statement.setNString(index++, type);
 			}
@@ -204,8 +227,9 @@ public class SearchResult extends HttpServlet {
 				query = createQuery(business, city, payment, item, price);
 				query += orderByLimitOffsetClause;
 
-				statement = connection.prepareStatement(query);
-
+				//statement = connection.prepareStatement(query);
+				statement = dbcon.prepareStatement(query);
+				
 				// add search arguments
 				if(!isStringEmpty(item)) {
 					statement.setNString(index++, "%"+item+"%");
@@ -245,8 +269,7 @@ public class SearchResult extends HttpServlet {
 
 			RequestDispatcher rd = request.getRequestDispatcher("ResultTable.jsp");
 			rd.forward(request, response);
-
-
+			dbcon.close();
 		}
 		catch(Exception e) {
 			out.println(e.getMessage());
@@ -266,7 +289,7 @@ public class SearchResult extends HttpServlet {
 				// ignore
 			}
 			try {
-				connection.close();
+				//connection.close();
 			}
 			catch(Exception e) {
 				// ignore

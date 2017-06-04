@@ -8,6 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.RequestDispatcher;
 import java.sql.*;
 
@@ -24,7 +27,7 @@ public class CityResult extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = SearchResult.isStringEmpty(request.getParameter("id")) ? -1 : Integer.parseInt(request.getParameter("id"));
 
-		Connection connection = null;
+		//Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet result = null;
 
@@ -32,17 +35,38 @@ public class CityResult extends HttpServlet {
 
 		try {
 			// Load driver
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			//Class.forName("com.mysql.jdbc.Driver").newInstance();
 
 			// Connect to mySQL
-			connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
+			//connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
 
+			
+			Context initCtx = new InitialContext();
+            if (initCtx == null)
+                out.println("initCtx is NULL");
+
+            Context envCtx = (Context) initCtx.lookup("java:comp/env");
+            if (envCtx == null)
+                out.println("envCtx is NULL");
+
+            // Look up our data source
+            DataSource ds = (DataSource) envCtx.lookup("jdbc/storemarketing");
+
+            if (ds == null)
+                out.println("ds is null.");
+
+            Connection dbcon = ds.getConnection();
+            if (dbcon == null)
+                out.println("dbcon is null.");
+			
+			
 			// query to get city info
 			String plazaQuery = "SELECT c.cityName " +
 								"FROM CityTbl c " +
 								"WHERE c.cityID = ? ";
 
-			statement = connection.prepareStatement(plazaQuery);
+			//statement = connection.prepareStatement(plazaQuery);
+			statement = dbcon.prepareStatement(plazaQuery);
 			statement.setInt(1, id);
 			result = statement.executeQuery();
 
@@ -57,7 +81,8 @@ public class CityResult extends HttpServlet {
 							"FROM PlazaTbl p " +
 							"WHERE p.cityID = ? ";
 
-			statement = connection.prepareStatement(storeQuery);
+			//statement = connection.prepareStatement(storeQuery);
+			statement = dbcon.prepareStatement(storeQuery);
 			statement.setDouble(1, id);
 
 			// execute query
@@ -76,6 +101,7 @@ public class CityResult extends HttpServlet {
 			request.setAttribute("plazas", plazaList);
 			RequestDispatcher rd = request.getRequestDispatcher("ShowCity.jsp");
 			rd.forward(request, response);
+			dbcon.close();
 		}
 		catch(Exception e) {
 			out.println(e.getMessage());
@@ -94,7 +120,7 @@ public class CityResult extends HttpServlet {
 				// ignore
 			}
 			try {
-				connection.close();
+				//connection.close();
 			}
 			catch(Exception e) {
 				// ignore

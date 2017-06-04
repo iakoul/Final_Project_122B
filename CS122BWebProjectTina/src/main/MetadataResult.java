@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.RequestDispatcher;
 import java.sql.*;
 
@@ -26,7 +29,7 @@ public class MetadataResult extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		Connection connection = null;
+		//Connection connection = null;
 		ResultSet resultTables = null;
 		ResultSet resultColumns = null;
 
@@ -39,14 +42,33 @@ public class MetadataResult extends HttpServlet {
 		if(loggedIn == true && isEmployee == true) {
 			try {
 				// Load driver
-				Class.forName("com.mysql.jdbc.Driver").newInstance();
+				//Class.forName("com.mysql.jdbc.Driver").newInstance();
 
 				// Connect to mySQL
-				connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
+				//connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
 
+				Context initCtx = new InitialContext();
+	            if (initCtx == null)
+	                out.println("initCtx is NULL");
+
+	            Context envCtx = (Context) initCtx.lookup("java:comp/env");
+	            if (envCtx == null)
+	                out.println("envCtx is NULL");
+
+	            // Look up our data source
+	            DataSource ds = (DataSource) envCtx.lookup("jdbc/storemarketing");
+
+	            if (ds == null)
+	                out.println("ds is null.");
+
+	            Connection dbcon = ds.getConnection();
+	            if (dbcon == null)
+	                out.println("dbcon is null.");
+				
 				List<MetadataTable> tables = new ArrayList<MetadataTable>();
 
-				DatabaseMetaData dbMetaData = connection.getMetaData();
+				//DatabaseMetaData dbMetaData = connection.getMetaData();
+				DatabaseMetaData dbMetaData = dbcon.getMetaData();
 				resultTables = dbMetaData.getTables(null, null, null, null);
 				while(resultTables.next()) {
 					String tableName = resultTables.getString(3);
@@ -66,7 +88,7 @@ public class MetadataResult extends HttpServlet {
 				request.setAttribute("tables", tables);
 				RequestDispatcher rd = request.getRequestDispatcher("Dashboard.jsp");
 				rd.forward(request, response);
-
+				dbcon.close();
 			}
 			catch(Exception e) {
 				out.println(e.getMessage());
@@ -80,7 +102,7 @@ public class MetadataResult extends HttpServlet {
 					// ignore
 				}
 				try {
-					connection.close();
+					//connection.close();
 				}
 				catch(Exception e) {
 					// ignore

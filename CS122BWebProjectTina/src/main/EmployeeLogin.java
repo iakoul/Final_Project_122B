@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.RequestDispatcher;
 import java.sql.*;
 
@@ -35,7 +38,7 @@ public class EmployeeLogin extends HttpServlet {
 			return;
 		}
 
-		Connection connection = null;
+		//Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet result = null;
 
@@ -48,13 +51,33 @@ public class EmployeeLogin extends HttpServlet {
 		if((loggedIn == null || loggedIn == false) && (isEmployee == null || isEmployee == false)) {
 			try {
 				// Load driver
-				Class.forName("com.mysql.jdbc.Driver").newInstance();
+				//Class.forName("com.mysql.jdbc.Driver").newInstance();
 
 				// Connect to mySQL
-				connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
+				//connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
 
+				Context initCtx = new InitialContext();
+	            if (initCtx == null)
+	                out.println("initCtx is NULL");
+
+	            Context envCtx = (Context) initCtx.lookup("java:comp/env");
+	            if (envCtx == null)
+	                out.println("envCtx is NULL");
+
+	            // Look up our data source
+	            DataSource ds = (DataSource) envCtx.lookup("jdbc/storemarketing");
+
+	            if (ds == null)
+	                out.println("ds is null.");
+
+	            Connection dbcon = ds.getConnection();
+	            if (dbcon == null)
+	                out.println("dbcon is null.");
+				
+				
 				String loginQuery = "SELECT email, password FROM Employees WHERE email = ? AND password = ? ";
-				statement = connection.prepareStatement(loginQuery);
+				//statement = connection.prepareStatement(loginQuery);
+				statement = dbcon.prepareStatement(loginQuery);
 				statement.setString(1, username);
 				statement.setString(2, password);
 				result = statement.executeQuery();
@@ -73,7 +96,7 @@ public class EmployeeLogin extends HttpServlet {
 					RequestDispatcher rd = request.getRequestDispatcher("EmployeeLogin.jsp");
 					rd.forward(request, response);
 				}
-
+				dbcon.close();
 			}
 			catch(Exception e) {
 				out.println(e.getMessage());
@@ -92,7 +115,7 @@ public class EmployeeLogin extends HttpServlet {
 					// ignore
 				}
 				try {
-					connection.close();
+					//connection.close();
 				}
 				catch(Exception e) {
 					// ignore
