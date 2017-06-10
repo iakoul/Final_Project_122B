@@ -1,0 +1,4 @@
+Connection pooling
+
+We use connection pooling in our project at any point where we need to access the database. This includes the search results, the purchase page where we enter purchase information into the database, the metadata page, the login page, and anywhere else we would normally set up a database connection. Connection pooling allows us to reuse connections between threads rather than create a new one every time one is needed.
+

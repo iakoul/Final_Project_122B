@@ -45,13 +45,14 @@ public class HoverDiv extends HttpServlet {
 	    response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
 	    
+	    /*
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		} catch (final Exception e) {
 			out.println("mySQL driver was not loaded");
 			out.println(e.getMessage());
 		}
-		
+		*/
 		try {
 			//connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
 			

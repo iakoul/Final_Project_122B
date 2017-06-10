@@ -1,8 +1,17 @@
-<Context>
-
+<Context>	
+<!-- This needs to be combined into one, the url will specify master and slave connections
+	<Resource name="jdbc/storemarketing" auth="Container" type="javax.sql.DataSource"
+		maxTotal="100" maxIdle="30" maxWaitMillis="10000" username="root"
+		password="mysqlpass" driverClassName="com.mysql.jdbc.ReplicationDriver"
+		url="jdbc:mysql:replication://172.31.31.235:3306,172.31.16.126:3306/storemarketing?loadBalanceBlacklistTimeout=5000&amp;loadBalanceConnectionGroup=ugc&amp;loadBalanceEnableJMX=true&amp;autoReconnect=true&amp;autoReconnectForPools=true" />
+-->
 	<Resource name="jdbc/storemarketing" auth="Container" type="javax.sql.DataSource"
 		maxTotal="100" maxIdle="30" maxWaitMillis="10000" username="root"
 		password="mysqlpass" driverClassName="com.mysql.jdbc.Driver"
-		url="jdbc:mysql:///storemarketing?autoReconnect=true&amp;useSSL=false" />
+		url="jdbc:mysql://localhost:3306/storemarketing?autoReconnect=true&amp;useSSL=false" />
 
+	<Resource name="jdbc/storemarketingwrite" auth="Container" type="javax.sql.DataSource"
+		maxTotal="100" maxIdle="30" maxWaitMillis="10000" username="root"
+		password="mysqlpass" driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://172.31.23.208:3306/storemarketing?autoReconnect=true&amp;useSSL=false" />
 </Context>

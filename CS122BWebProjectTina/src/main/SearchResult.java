@@ -1,5 +1,8 @@
 package main;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
@@ -136,6 +139,7 @@ public class SearchResult extends HttpServlet {
 
 	// handle search request
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		long startTimeTS = System.nanoTime();
 		// to test
 		PrintWriter out = response.getWriter();
 
@@ -160,13 +164,16 @@ public class SearchResult extends HttpServlet {
 		PreparedStatement statement = null;
 		ResultSet result = null;
 
+		FileWriter filewriter = null;
+		BufferedWriter bufferwriter = null;
+		
 		try {
 			// Load driver
 			//Class.forName("com.mysql.jdbc.Driver").newInstance();
 
 			// Connect to mySQL
 			//connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
-
+			long startTimeTJ = System.nanoTime();
 			Context initCtx = new InitialContext();
             if (initCtx == null)
                 out.println("initCtx is NULL");
@@ -252,7 +259,10 @@ public class SearchResult extends HttpServlet {
 
 			// execute query
 			result = statement.executeQuery();
-
+			
+			long endTimeTJ = System.nanoTime();
+			long elapsedTimeTJ = endTimeTJ - startTimeTJ;
+			
 			// create with result of query
 			List<Item> searchResult = new ArrayList<Item>();
 			
@@ -270,12 +280,34 @@ public class SearchResult extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("ResultTable.jsp");
 			rd.forward(request, response);
 			dbcon.close();
+			long endTimeTS = System.nanoTime();
+			long elapsedTimeTS = endTimeTS - startTimeTS;
+			
+			
+			File file = new File("timing.log");
+
+			// if file doesnt exists, then create it
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+			filewriter = new FileWriter(file, true);
+			bufferwriter = new BufferedWriter(filewriter);
+			
+			bufferwriter.write("Total search servlet time (TS) in ns is: " + elapsedTimeTS + " : Total search JDBC time (TJ) in ns is: " + elapsedTimeTJ + "\n");
+			System.out.println("Log is located at " + file.getAbsolutePath());
 		}
 		catch(Exception e) {
 			out.println(e.getMessage());
 			//e.printStackTrace();
 		}
 		finally {
+			
+			if (bufferwriter != null)
+				bufferwriter.close();
+
+			if (filewriter != null)
+				filewriter.close();
+			
 			try {
 				result.close();
 			}

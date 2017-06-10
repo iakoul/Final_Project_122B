@@ -61,7 +61,7 @@ public class InsertItem extends HttpServlet {
 	                out.println("envCtx is NULL");
 
 	            // Look up our data source
-	            DataSource ds = (DataSource) envCtx.lookup("jdbc/storemarketing");
+	            DataSource ds = (DataSource) envCtx.lookup("jdbc/storemarketingwrite");
 
 	            if (ds == null)
 	                out.println("ds is null.");
