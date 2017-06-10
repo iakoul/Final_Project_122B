@@ -294,6 +294,7 @@ public class SearchResult extends HttpServlet {
 			bufferwriter = new BufferedWriter(filewriter);
 			
 			bufferwriter.write("Total search servlet time (TS) in ns is: " + elapsedTimeTS + " : Total search JDBC time (TJ) in ns is: " + elapsedTimeTJ + "\n");
+			bufferwriter.flush();
 			System.out.println("Log is located at " + file.getAbsolutePath());
 		}
 		catch(Exception e) {
@@ -301,7 +302,7 @@ public class SearchResult extends HttpServlet {
 			//e.printStackTrace();
 		}
 		finally {
-			//finallies
+
 			if (bufferwriter != null)
 				bufferwriter.close();
 
