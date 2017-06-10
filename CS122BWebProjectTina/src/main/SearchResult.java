@@ -301,7 +301,7 @@ public class SearchResult extends HttpServlet {
 			//e.printStackTrace();
 		}
 		finally {
-			
+			//finallies
 			if (bufferwriter != null)
 				bufferwriter.close();
 
