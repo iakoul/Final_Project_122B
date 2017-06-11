@@ -1,5 +1,8 @@
 package main;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -27,17 +30,24 @@ public class ItemResult extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = SearchResult.isStringEmpty(request.getParameter("id")) ? -1 : Integer.parseInt(request.getParameter("id"));
 
+		long startTimeTS = System.nanoTime();
+		
 		//Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet result = null;
 
+		
+		FileWriter filewriter = null;
+		BufferedWriter bufferwriter = null;
+		
 		PrintWriter out = response.getWriter();
 
 		try {
-			// Load driver
+			long startTimeTJ = System.nanoTime();
+			//Load driver
 			//Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-			// Connect to mySQL
+			//Connect to mySQL
 			//connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
 
 			
@@ -58,13 +68,21 @@ public class ItemResult extends HttpServlet {
             Connection dbcon = ds.getConnection();
             if (dbcon == null)
                 out.println("dbcon is null.");
-
+			
 			// query to get item details
 			String itemQuery = "SELECT m.merchID, m.merchName, m.merchType, m.merchPrice FROM MerchandiseTbl m WHERE m.merchID = ? ";
 			//statement = connection.prepareStatement(itemQuery);
 			statement = dbcon.prepareStatement(itemQuery);
 			statement.setInt(1, id);
 			result = statement.executeQuery();
+            
+            /*
+            //non-prepared statements
+            String itemQuery = "SELECT m.merchID, m.merchName, m.merchType, m.merchPrice FROM MerchandiseTbl m WHERE m.merchID = " + id;
+            Statement statement = dbcon.createStatement();
+            result = statement.executeQuery(itemQuery);
+            */
+            
 			if(result.next()) {
 				int itemId = result.getInt("m.merchID");
 				String itemName = result.getString("m.merchName");
@@ -73,7 +91,7 @@ public class ItemResult extends HttpServlet {
 				Item item = new Item(itemId, itemName, itemType, itemPrice);
 				request.setAttribute("item", item);
 			}
-
+			
 			// query to get stores
 			String storeQuery = "SELECT s.storeID, s.storeName " +
 							"FROM MerchandiseTbl m JOIN StoreSellsTbl sells ON m.merchID = sells.merchID JOIN StoreTbl s ON sells.storeID = s.storeID " +
@@ -85,7 +103,20 @@ public class ItemResult extends HttpServlet {
 
 			// execute query
 			result = statement.executeQuery();
-
+			
+			/*
+			//non-prepared statements
+			String storeQuery = "SELECT s.storeID, s.storeName " +
+					"FROM MerchandiseTbl m JOIN StoreSellsTbl sells ON m.merchID = sells.merchID JOIN StoreTbl s ON sells.storeID = s.storeID " +
+					"WHERE m.merchID = " + id;
+			statement = dbcon.createStatement();
+            result = statement.executeQuery(storeQuery);
+			
+			*/
+			
+			long endTimeTJ = System.nanoTime();
+			long elapsedTimeTJ = endTimeTJ - startTimeTJ;
+			
 			// create with result of query
 			List<Business> businessList = new ArrayList<Business>();
 			
@@ -102,6 +133,23 @@ public class ItemResult extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("ShowItem.jsp");
 			rd.forward(request, response);
 			dbcon.close();
+			
+			long endTimeTS = System.nanoTime();
+			long elapsedTimeTS = endTimeTS - startTimeTS;
+			
+			
+			File file = new File("timing.log");
+
+			// if file doesnt exists, then create it
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+			filewriter = new FileWriter(file, true);
+			bufferwriter = new BufferedWriter(filewriter);
+			
+			bufferwriter.write("Total search servlet time (TS) in ns is: " + elapsedTimeTS + " : Total search JDBC time (TJ) in ns is: " + elapsedTimeTJ + "\n");
+			bufferwriter.flush();
+			System.out.println("Log is located at " + file.getAbsolutePath());
 		}
 		catch(Exception e) {
 			out.println(e.getMessage());

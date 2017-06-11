@@ -41,6 +41,7 @@ public class Login extends HttpServlet {
 		Boolean loggedIn = (Boolean)session.getAttribute("loggedIn");
 
 		if(!isAndroid) { // check if logged into browser
+			/*
 			String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 			boolean valid = VerifyUtils.verify(gRecaptchaResponse);
 			if (!valid) { // verify recaptcha is correct
@@ -49,7 +50,7 @@ public class Login extends HttpServlet {
 				rd.forward(request, response);
 				return;
 			}
-
+			*/
 			if(loggedIn != null && loggedIn == true) {
 				response.sendRedirect("Main.jsp");
 				return;
@@ -59,14 +60,14 @@ public class Login extends HttpServlet {
 		try {
 
 
-			/*
-			// Load driver
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			
+			//Load driver
+			//Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-			// Connect to mySQL
-			connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
-			 */
-
+			//Connect to mySQL
+			//connection = DriverManager.getConnection(MyConstants.DB_ADDRESS, MyConstants.DB_USERNAME, MyConstants.DB_PASSWORD);
+			
+			
 			Context initCtx = new InitialContext();
             if (initCtx == null)
                 out.println("initCtx is NULL");
@@ -84,15 +85,24 @@ public class Login extends HttpServlet {
             Connection dbcon = ds.getConnection();
             if (dbcon == null)
                 out.println("dbcon is null.");
-
-            
             
 			//String loginQuery = "SELECT u.firstName FROM UsersTbl u WHERE u.username = ? AND u.hashPW = ? ";
 			String loginQuery = "SELECT u.firstName, u.hashPW FROM UsersTbl u WHERE u.username = ?";
+			
+			//String nonpsQuery = "SELEC u.firstName, u.hashPW FROM UsersTbl u WHERE u.username = " + username;
+			
+			/*
+			Statement statement = dbcon.createStatement();
+			result = statement.executeQuery(nonpsQuery);
+			*/
+			
 			statement = dbcon.prepareStatement(loginQuery);
 			//statement = connection.prepareStatement(loginQuery);
 			statement.setString(1, username);
 			//statement.setString(2, password);
+			 
+			 
+			
 			result = statement.executeQuery();
 
 			if(result.next() && BCrypt.checkpw(password, result.getString("u.hashPW"))) {
