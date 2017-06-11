@@ -41,7 +41,7 @@ public class Login extends HttpServlet {
 		Boolean loggedIn = (Boolean)session.getAttribute("loggedIn");
 
 		if(!isAndroid) { // check if logged into browser
-			/*
+			/* ReCaptcha disabled for Jmeter testing
 			String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
 			boolean valid = VerifyUtils.verify(gRecaptchaResponse);
 			if (!valid) { // verify recaptcha is correct
