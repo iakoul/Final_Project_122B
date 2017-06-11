@@ -30,7 +30,7 @@ public class Login extends HttpServlet {
 		PreparedStatement statement = null;
 		ResultSet result = null;
 		PrintWriter out = response.getWriter();
-
+		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
